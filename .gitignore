@@ -4,4 +4,12 @@ papers/
 # Ignore the txt version datasets
 testdatasets_txt/
 
+# Virtual environments
 venv/
+.env
+
+# macOS
+.DS_Store
+
+# VSCode settings
+.vscode/
