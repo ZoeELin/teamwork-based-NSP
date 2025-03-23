@@ -1,0 +1,7 @@
+# Ignore the reference papers
+papers/
+
+# Ignore the txt version datasets
+testdatasets_txt/
+
+venv/
