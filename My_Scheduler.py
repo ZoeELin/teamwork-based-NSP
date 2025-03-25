@@ -2,6 +2,8 @@ import json
 import random
 import math
 import copy
+import os
+import re
 from collections import defaultdict
 import pandas as pd
 
@@ -369,22 +371,22 @@ def optimal_scheduler(sce_filepath, weekdata_filepath):
                     shift_coverage[day][shift] = True
                     break  # Move on to the next shift
 
-    assignment = simulated_annealing(
+    assignments = simulated_annealing(
         assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
     )
 
-    one_week_solution = package_solution_2JSON(assignment, scenario["id"])
+    # Visualize the schedule in an easy-to-read table format in terminal
+    tablate_schedule(assignments)
 
-    return one_week_solution
+    return assignments
 
 
-def parse_week_solution(data):
+def parse_week_solution(assignments):
     """
     Parse a json format to a dictionary format.
     Input: json format solution
     Output: schedule in dictionary format
     """
-    assignments = data["assignments"]
 
     nurses = set()
     nurses.update(a["nurse"] for a in assignments)
@@ -392,7 +394,7 @@ def parse_week_solution(data):
     # Initialize empty schedule
     schedule_dict = defaultdict(lambda: ["-"] * 7)
 
-    for assignment in data["assignments"]:
+    for assignment in assignments:
         nurse = assignment["nurse"]
         day = assignment["day"]
         shift = assignment["shiftType"]
@@ -400,26 +402,37 @@ def parse_week_solution(data):
         day_idx = DAYS_WEEK_ABB.index(day)
         schedule_dict[nurse][day_idx] = (shift, skill)
 
+    print(assignment)
+
     return schedule_dict
 
 
-def tablate_schedule(data):
+def tablate_schedule(assignments):
     """
-    Visualize the weekly schedule from a dictionary format to a table format,
-    including assigned skill for each
-    Input: schedule in JSON format
-    Output: print in table format
+    Convert a list of assignment dicts into a nurse-wise weekly schedule table
+    Input: assignments (list of dicts)
+    Output: print a table (row = nurse, col = day, cell = shift(skill))
     """
 
-    # Parse the data
-    data = parse_week_solution(data)
+    schedule = {}
+    for assignment in assignments:
+        nurse = assignment["nurse"]
+        day = assignment["day"]
+        shift = assignment["shiftType"]
+        skill = assignment["skill"]
+
+        if nurse not in schedule:
+            schedule[nurse] = ["-"] * 7  # 每位護士的每一天都初始化為 -
+
+        day_index = DAYS_WEEK_ABB.index(day)
+        schedule[nurse][day_index] = (shift, skill)
 
     # Print the header
     print(f"{'Name':<10} " + " ".join(f"{day:<10}" for day in DAYS_WEEK_ABB))
     print("-" * 10 + " " + " ".join("-" * 10 for _ in DAYS_WEEK_ABB))
 
     # Print each nurse's schedule
-    for name, shifts in data.items():
+    for name, shifts in schedule.items():
         row = []
         for entry in shifts:
             if entry == "-":
@@ -431,15 +444,37 @@ def tablate_schedule(data):
         print(f"{name:<10} " + " ".join(f"{cell:<10}" for cell in row))
 
 
-def package_solution_2JSON(assignments, id, week=0):
+def package_solution_2JSON(assignments, weekdata_filepath):
     """
-    Package the solution into a JSON format.
+    Package the solution into a JSON format and write to a file.
+    - Extracts scenario from filename (-<scenario_id>-)
+    - Extracts week number (the final number before .json)
     """
+    filename = os.path.basename(weekdata_filepath)  # e.g., WD-n021w4-0.json
+
+    # 使用正則表達式從檔名中提取 scenario 和 week
+    match = re.match(r".*-([^-]+)-(\d+)\.json", filename)
+    if not match:
+        raise ValueError(f"Filename format is incorrect: {filename}")
+
+    scenario = match.group(1)  # 'n021w4'
+    week = int(match.group(2))  # '0'
+
+    # 建立 solution JSON
     solution = {
-        "scenario": id,
+        "scenario": scenario,
         "week": week,
         "assignments": assignments,
     }
+
+    # 輸出目錄與檔案名稱
+    output_dir = os.path.dirname(weekdata_filepath)  # e.g., testdatasets_json/n021w4
+    output_path = os.path.join(output_dir, f"Sol-{scenario}-{week}.json")
+
+    # 將 solution 寫入 JSON 檔案
+    with open(output_path, "w") as f:
+        json.dump(solution, f, indent=4)
+
     return solution
 
 
@@ -458,15 +493,9 @@ def package_solution_2JSON(assignments, id, week=0):
 #     )
 
 
-json_sol = optimal_scheduler(
+final_assignments = optimal_scheduler(
     "testdatasets_json/n021w4/Sc-n021w4.json",
     "testdatasets_json/n021w4/WD-n021w4-0.json",
 )
 
-
-# json_sol = basic_scheduler(
-#     "testdatasets_json/n021w4/Sc-n021w4.json",
-#     "testdatasets_json/n021w4/WD-n021w4-0.json",
-# )
-
-tablate_schedule(json_sol)
+package_solution_2JSON(final_assignments, "testdatasets_json/n021w4/WD-n021w4-0.json")
