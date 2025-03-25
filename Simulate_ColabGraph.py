@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # === 1. Read scenario file ===
 # Put the path of the scenario file here!
-sce_filepath = "testdatasets_json/n021w4/Sc-n021w4.json"
+sce_filepath = "testdatasets_json/n012w8/Sc-n012w8.json"
 with open(sce_filepath, "r") as f:
     scenario = json.load(f)
 
@@ -22,9 +22,9 @@ for i in range(len(nurses)):
     for j in range(i + 1, len(nurses)):
         nurse1 = nurses[i]
         nurse2 = nurses[j]
-        score = round(random.uniform(0.1, 1), 2)
-
-        G.add_edge(nurse1, nurse2, weight=score)
+        score = round(random.randint(0, 30), 2)
+        if score > 0:
+            G.add_edge(nurse1, nurse2, weight=score)
 
         # Add cooperation data
         cooperation_data.append(
@@ -42,7 +42,7 @@ plt.figure(figsize=(8, 6))
 pos = nx.spring_layout(G, seed=42)
 edge_labels = nx.get_edge_attributes(G, "weight")
 nx.draw(G, pos, with_labels=True, node_color="lightblue", node_size=2000, font_size=10)
-# nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels) # Show edge labels
+# nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)  # Show edge labels
 
 plt.title("Nurse Cooperation Graph")
 plt.tight_layout()
