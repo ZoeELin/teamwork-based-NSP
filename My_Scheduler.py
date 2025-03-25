@@ -452,7 +452,7 @@ def package_solution_2JSON(assignments, weekdata_filepath):
     """
     filename = os.path.basename(weekdata_filepath)  # e.g., WD-n021w4-0.json
 
-    # 使用正則表達式從檔名中提取 scenario 和 week
+    # Extract the scenario and week from the filename
     match = re.match(r".*-([^-]+)-(\d+)\.json", filename)
     if not match:
         raise ValueError(f"Filename format is incorrect: {filename}")
@@ -460,18 +460,18 @@ def package_solution_2JSON(assignments, weekdata_filepath):
     scenario = match.group(1)  # 'n021w4'
     week = int(match.group(2))  # '0'
 
-    # 建立 solution JSON
+    # Create solution JSON
     solution = {
         "scenario": scenario,
         "week": week,
         "assignments": assignments,
     }
 
-    # 輸出目錄與檔案名稱
+    # Output directory and file path
     output_dir = os.path.dirname(weekdata_filepath)  # e.g., testdatasets_json/n021w4
     output_path = os.path.join(output_dir, f"Sol-{scenario}-{week}.json")
 
-    # 將 solution 寫入 JSON 檔案
+    # Write JSON file
     with open(output_path, "w") as f:
         json.dump(solution, f, indent=4)
 
