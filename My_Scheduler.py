@@ -55,10 +55,29 @@ def generate_carryover(schedule):
     return carryover
 
 
+def calculate_h1_penalty(nurses, assignments):
+    """
+    H1: Only one assignment per day
+    If a nurse has more than one shift on the same day, a penalty is incurred "ten times".
+    Input: nurses (from scenario), assignments (current schedule)
+    Output: penalty score (int)
+    """
+    penalty = 0
+    for nurse_id in nurses:
+        for assignment in assignments:
+            if assignment["nurse"] == nurse_id:
+                day = assignment["day"]
+                if len(assignments[nurse_id][day]) > 1:
+                    penalty += (len(assignments[nurse_id][day]) - 1) * 10
+
+    return penalty
+
+
 def calculate_h2_penalty(nurses, assignments, week_data_filepath):
     """
-    Calculate the total number of missing required skills from week data,
-    based on the current schedule. Check against hard constraint H2.
+    H2: undersupply of required skills
+    If a nurse is assigned to a shift that requires a skill they do not have,
+    a penalty is incurred "two times".
     Input: nurses (from scenario), assignments (current schedule), week_data (dict)
     Output: penalty score (int)
     """
@@ -73,7 +92,7 @@ def calculate_h2_penalty(nurses, assignments, week_data_filepath):
     coverage_count = {}
     for assignment in assignments:
         key = (assignment["shiftType"], assignment["skill"], assignment["day"])
-        # Check H4: if nurse has the required skill
+        # Calculate skill-qualified assignments(H4: legel assignments)
         if assignment["skill"] in nurse_skills.get(assignment["nurse"], set()):
             coverage_count[key] = coverage_count.get(key, 0) + 1
 
@@ -91,6 +110,76 @@ def calculate_h2_penalty(nurses, assignments, week_data_filepath):
                 if actual_coverage < minimum_required:
                     penalty += minimum_required - actual_coverage
     return penalty
+
+
+def calculate_h3_penalty(forbidden_successions, assignments):
+    """
+    H3: Forbidden shift successions.
+    If a nurse is assigned to a shift that is forbidden to follow the previous shift,
+    a penalty is incurred "eight times".
+    Input: forbidden_successions (from scenario), assignments (current schedule)
+    Output: penalty score (int)
+    """
+    # Create a daily nurse shift schedule dict
+    # e.g., {nurse_id: { day: shiftType }}
+    nurse_schedule = {}
+    for assignment in assignments:
+        nurse = assignment["nurse"]
+        day = assignment["day"]
+        shift = assignment["shiftType"]
+        nurse_schedule.setdefault(nurse, {})[day] = shift
+
+    # Convert the forbidden successions list to a map for quick lookup
+    # e.g., {"Late": {"Early", "Late"}, "Early": {"Late"}}
+    forbidden_map = {}
+    for rule in forbidden_successions:
+        preceding = rule["precedingShiftType"]
+        succeeding_list = rule["succeedingShiftTypes"]
+        forbidden_map.setdefault(preceding, set()).update(succeeding_list)
+
+    # Calculate the number of violations
+    penalty = 0
+    for nurse, schedule in nurse_schedule.items():
+        for i in range(len(DAYS_WEEK_ABB) - 1):
+            day1 = DAYS_WEEK_ABB[i]
+            day2 = DAYS_WEEK_ABB[i + 1]
+            shift1 = schedule.get(day1)
+            shift2 = schedule.get(day2)
+
+            if shift1 and shift2:
+                if shift2 in forbidden_map.get(shift1, set()):
+                    penalty += 20
+
+    return penalty
+
+
+def calculate_h4_penalty(nurses, assignments):
+    """
+    H4: The skill needs of each shift must be met.
+    Check if the nurse has been assigned to a shift that they do not have the required skill for.
+    Return the number of violations as a penalty.
+    Input: nurses (from scenario), assignments (current schedule)
+    Output: penalty score (int)
+    """
+    # Map nurse ID to skill set
+    nurse_skills = {n["id"]: set(n["skills"]) for n in nurses}
+
+    penalty = 0
+    for assignment in assignments:
+        nurse_id = assignment["nurse"]
+        required_skill = assignment["skill"]
+        if required_skill not in nurse_skills.get(nurse_id, set()):
+            penalty += 1  # Violate H4：Nurses who do not have the skill but are scheduled for a shift have Penalty +2
+    return penalty
+
+
+def calculate_total_penalty(nurses, forbidden_successions, assignments, week_filepath):
+    h1 = calculate_h1_penalty(nurses, assignments)
+    h2 = calculate_h2_penalty(nurses, assignments, week_filepath)
+    h3 = calculate_h3_penalty(forbidden_successions, assignments)
+    h4 = calculate_h4_penalty(nurses, assignments)
+    print(f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}")
+    return h1 + h2 + h3 + h4
 
 
 def get_neighbor(assignments, nurses, shift_types):
@@ -119,6 +208,113 @@ def get_neighbor(assignments, nurses, shift_types):
     return new_assignments
 
 
+def simulated_annealing(
+    assignments, forbidden_successions, nurses, shift_types, week_filepath
+):
+    """
+    Simulated Annealing (SA) algorithm to optimize the schedule.
+    Input: initial assignments, nurses, scenario, shift_types, week_filepath
+    Output: optimized schedule
+    """
+
+    # ==== Simulated Annealing (SA) ====
+    temperature = 100.0
+    cooling_rate = 0.99
+    min_temp = 0.1
+    max_iter = 3000
+
+    current_assignments = assignments
+    current_penalty = calculate_h2_penalty(nurses, current_assignments, week_filepath)
+    best_assignments = current_assignments
+    best_penalty = current_penalty
+
+    for iteration in range(max_iter):
+        if temperature < min_temp or best_penalty == 0:
+            break
+
+        neighbor_assignment = get_neighbor(current_assignments, nurses, shift_types)
+        neighbor_penalty = calculate_total_penalty(
+            nurses, forbidden_successions, neighbor_assignment, week_filepath
+        )
+
+        delta = neighbor_penalty - current_penalty
+        if delta < 0 or random.random() < math.exp(-delta / temperature):
+            current_assignments = neighbor_assignment
+            current_penalty = neighbor_penalty
+
+            if current_penalty < best_penalty:
+                best_assignments = current_assignments
+                best_penalty = current_penalty
+
+        temperature *= cooling_rate
+
+    print(f"Final penalty: {best_penalty}")
+
+    return best_assignments
+
+
+def basic_scheduler(sce_filepath, weekdata_filepath):
+    """
+    Generate a basic random schedule for a given scenario.
+    Input: filepath to the scenario JSON file
+    """
+    # Load scenario
+    with open(sce_filepath, "r") as f:
+        scenario = json.load(f)
+
+    shift_types = [s["id"] for s in scenario["shiftTypes"]]
+    nurses = scenario["nurses"]
+    forbidden_successions = scenario["forbiddenShiftTypeSuccessions"]
+    assignments = []
+
+    # Initialize an empty map to track assigned shifts per day
+    shift_coverage = {
+        day: {shift: False for shift in shift_types} for day in DAYS_WEEK_ABB
+    }
+
+    # Randomly assign 3–5 shifts to each nurse, skip duplicates
+    for nurse in scenario["nurses"]:
+        nurse_id = nurse["id"]
+        assigned_days = random.sample(
+            DAYS_WEEK_ABB, k=random.randint(5, 7)
+        )  # Randomly assign 5-7 shifts to each nurse
+
+        prev_shift = None
+        for day in sorted(
+            assigned_days, key=lambda d: DAYS_WEEK_ABB.index(d)
+        ):  # Sort by day index
+            valid_shifts = [
+                s
+                for s in shift_types
+                if not any(
+                    rule["precedingShiftType"] == prev_shift
+                    and s in rule["succeedingShiftTypes"]
+                    for rule in scenario["forbiddenShiftTypeSuccessions"]
+                )
+            ]
+            if not valid_shifts:
+                continue  # skip iteration if no valid shift
+
+            shift = random.choice(valid_shifts)
+            prev_shift = shift
+            assignments.append(
+                {
+                    "nurse": nurse_id,
+                    "day": day,
+                    "shiftType": shift,
+                    "skill": random.choice(nurse["skills"]),
+                }
+            )
+
+    assignment = simulated_annealing(
+        assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
+    )
+
+    one_week_solution = package_solution_2JSON(assignments, scenario["id"])
+
+    return one_week_solution
+
+
 def optimal_scheduler(sce_filepath, weekdata_filepath):
     """
     Generate a random schedule for a given scenario,
@@ -132,6 +328,7 @@ def optimal_scheduler(sce_filepath, weekdata_filepath):
 
     shift_types = [s["id"] for s in scenario["shiftTypes"]]
     nurses = scenario["nurses"]
+    forbidden_successions = scenario["forbiddenShiftTypeSuccessions"]
     assignments = []
 
     # Initialize an empty map to track assigned shifts per day
@@ -176,116 +373,12 @@ def optimal_scheduler(sce_filepath, weekdata_filepath):
                     break  # Move on to the next shift
 
     assignment = simulated_annealing(
-        assignments, nurses, shift_types, weekdata_filepath
+        assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
     )
 
     one_week_solution = package_solution_2JSON(assignment, scenario["id"])
 
     return one_week_solution
-
-
-def package_solution_2JSON(assignments, id, week=0):
-    """
-    Package the solution into a JSON format.
-    """
-    solution = {
-        "scenario": id,
-        "week": week,
-        "assignments": assignments,
-    }
-    return solution
-
-
-def simulated_annealing(assignments, nurses, shift_types, week_filepath):
-    """
-    Simulated Annealing (SA) algorithm to optimize the schedule.
-    Input: initial assignments, nurses, scenario, shift_types, week_filepath
-    Output: optimized schedule
-    """
-
-    # ==== Simulated Annealing (SA) ====
-    temperature = 100.0
-    cooling_rate = 0.98
-    min_temp = 0.1
-    max_iter = 2000
-
-    current_assignments = assignments
-    current_penalty = calculate_h2_penalty(nurses, current_assignments, week_filepath)
-    best_assignments = current_assignments
-    best_penalty = current_penalty
-
-    for iteration in range(max_iter):
-        if temperature < min_temp or best_penalty == 0:
-            break
-
-        neighbor_assignment = get_neighbor(current_assignments, nurses, shift_types)
-        neighbor_penalty = calculate_h2_penalty(
-            nurses, neighbor_assignment, week_filepath
-        )
-
-        delta = neighbor_penalty - current_penalty
-        if delta < 0 or random.random() < math.exp(-delta / temperature):
-            current_assignments = neighbor_assignment
-            current_penalty = neighbor_penalty
-
-            if current_penalty < best_penalty:
-                best_assignments = current_assignments
-                best_penalty = current_penalty
-
-        temperature *= cooling_rate
-
-    print(f"Final H2 penalty: {best_penalty}")
-
-    return best_assignments
-
-
-def basic_scheduler(sce_filepath):
-    """
-    Generate a basic random schedule for a given scenario.
-    Input: filepath to the scenario JSON file
-    """
-    # Load scenario
-    with open(sce_filepath, "r") as f:
-        scenario = json.load(f)
-
-    shift_ids = [s["id"] for s in scenario["shiftTypes"]]
-    nurses = scenario["nurses"]
-    assignments = []
-
-    # Initialize an empty map to track assigned shifts per day
-    shift_coverage = {
-        day: {shift: False for shift in shift_ids} for day in DAYS_WEEK_ABB
-    }
-
-    # Randomly assign 3–5 shifts to each nurse, skip duplicates
-    for nurse in scenario["nurses"]:
-
-        assigned_days = random.sample(
-            DAYS_WEEK_ABB, k=random.randint(3, 5)
-        )  # Randomly assign 3-5 shifts to each nurse
-
-        prev_shift = None
-        for day in sorted(
-            assigned_days, key=lambda d: DAYS_WEEK_ABB.index(d)
-        ):  # Sort by day index
-            valid_shifts = [
-                s
-                for s in shift_ids
-                if not any(
-                    rule["precedingShiftType"] == prev_shift
-                    and s in rule["succeedingShiftTypes"]
-                    for rule in scenario["forbiddenShiftTypeSuccessions"]
-                )
-            ]
-
-    # Package as JSON
-    one_week_schedule = {
-        "scenario": scenario["id"],
-        "week": 0,
-        "assignments": assignments,
-    }
-
-    tablate_schedule(one_week_schedule)
 
 
 def parse_week_solution(data):
@@ -341,6 +434,18 @@ def tablate_schedule(data):
         print(f"{name:<10} " + " ".join(f"{cell:<10}" for cell in row))
 
 
+def package_solution_2JSON(assignments, id, week=0):
+    """
+    Package the solution into a JSON format.
+    """
+    solution = {
+        "scenario": id,
+        "week": week,
+        "assignments": assignments,
+    }
+    return solution
+
+
 # # 🧪 測試使用
 # sol_file = "testdatasets_json/n005w4/Solution_H_0-WD_1-2-3-3/Sol-n005w4-1-0.json"  # 你的 JSON solution 檔案
 # personal_schedule = parse_json_solution(sol_file)
@@ -357,9 +462,14 @@ def tablate_schedule(data):
 
 
 json_sol = optimal_scheduler(
-    "testdatasets_json/n005w4/Sc-n005w4.json",
-    "testdatasets_json/n005w4/WD-n005w4-0.json",
+    "testdatasets_json/n021w4/Sc-n021w4.json",
+    "testdatasets_json/n021w4/WD-n021w4-0.json",
 )
 
+
+# json_sol = basic_scheduler(
+#     "testdatasets_json/n021w4/Sc-n021w4.json",
+#     "testdatasets_json/n021w4/WD-n021w4-0.json",
+# )
 
 tablate_schedule(json_sol)
