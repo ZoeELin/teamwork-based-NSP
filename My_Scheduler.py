@@ -6,7 +6,16 @@ from collections import defaultdict
 import pandas as pd
 
 # Days of the week
-DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+DAYS_WEEK_ABB = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+DAYS_WEEK = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+]
 
 
 def generate_carryover(schedule):
@@ -70,19 +79,11 @@ def calculate_h2_penalty(nurses, assignments, week_data_filepath):
 
     # Compare against week requirements (H2)
     penalty = 0
-    days_of_the_week = [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-    ]
+
     for req in week_data["requirements"]:
         shift = req["shiftType"]
         skill = req["skill"]
-        for day in days_of_the_week:
+        for day in DAYS_WEEK:
             day_key = f"requirementOn{day}"
             if day_key in req:
                 minimum_required = req[day_key]["minimum"]
@@ -92,7 +93,7 @@ def calculate_h2_penalty(nurses, assignments, week_data_filepath):
     return penalty
 
 
-def get_neighbor(assignments, scenario, shift_ids):
+def get_neighbor(assignments, nurses, shift_types):
     """
     Generate a neighbor solution by randomly modifying an assignment.
     """
@@ -103,13 +104,13 @@ def get_neighbor(assignments, scenario, shift_ids):
     assignment = new_assignments[index]
 
     # Get the nurse object
-    nurse = next(n for n in scenario["nurses"] if n["id"] == assignment["nurse"])
+    nurse = next(n for n in nurses if n["id"] == assignment["nurse"])
 
     # Randomly pick a new skill (nurse must have this skill)
     new_skill = random.choice(nurse["skills"])
 
     # Randomly pick a new shift
-    new_shift = random.choice(shift_ids)
+    new_shift = random.choice(shift_types)
 
     # Apply the changes
     assignment["skill"] = new_skill
@@ -118,7 +119,7 @@ def get_neighbor(assignments, scenario, shift_ids):
     return new_assignments
 
 
-def optimal_scheduler(sce_filepath, week_filepath):
+def optimal_scheduler(sce_filepath, weekdata_filepath):
     """
     Generate a random schedule for a given scenario,
     with consideration of hard constraints(H1, H3 from INRC2 definitions).
@@ -129,16 +130,18 @@ def optimal_scheduler(sce_filepath, week_filepath):
     with open(sce_filepath, "r") as f:
         scenario = json.load(f)
 
-    shift_ids = [s["id"] for s in scenario["shiftTypes"]]
+    shift_types = [s["id"] for s in scenario["shiftTypes"]]
     nurses = scenario["nurses"]
     assignments = []
 
     # Initialize an empty map to track assigned shifts per day
-    shift_coverage = {day: {shift: False for shift in shift_ids} for day in DAYS}
+    shift_coverage = {
+        day: {shift: False for shift in shift_types} for day in DAYS_WEEK_ABB
+    }
 
     # Ensure each shift per day has at least one nurse
-    for day in DAYS:
-        for shift in shift_ids:
+    for day in DAYS_WEEK_ABB:
+        for shift in shift_types:
             # Find eligible nurses who can take this shift
             random.shuffle(nurses)  # Shuffle to randomize selection
             for nurse in nurses:
@@ -172,6 +175,34 @@ def optimal_scheduler(sce_filepath, week_filepath):
                     shift_coverage[day][shift] = True
                     break  # Move on to the next shift
 
+    assignment = simulated_annealing(
+        assignments, nurses, shift_types, weekdata_filepath
+    )
+
+    one_week_solution = package_solution_2JSON(assignment, scenario["id"])
+
+    return one_week_solution
+
+
+def package_solution_2JSON(assignments, id, week=0):
+    """
+    Package the solution into a JSON format.
+    """
+    solution = {
+        "scenario": id,
+        "week": week,
+        "assignments": assignments,
+    }
+    return solution
+
+
+def simulated_annealing(assignments, nurses, shift_types, week_filepath):
+    """
+    Simulated Annealing (SA) algorithm to optimize the schedule.
+    Input: initial assignments, nurses, scenario, shift_types, week_filepath
+    Output: optimized schedule
+    """
+
     # ==== Simulated Annealing (SA) ====
     temperature = 100.0
     cooling_rate = 0.98
@@ -183,37 +214,29 @@ def optimal_scheduler(sce_filepath, week_filepath):
     best_assignments = current_assignments
     best_penalty = current_penalty
 
-    # for iteration in range(max_iter):
-    #     if temperature < min_temp or best_penalty == 0:
-    #         break
+    for iteration in range(max_iter):
+        if temperature < min_temp or best_penalty == 0:
+            break
 
-    #     neighbor = get_neighbor(current_assignments, scenario, shift_ids)
-    #     neighbor_penalty = calculate_h2_penalty(nurse, neighbor, week_filepath)
+        neighbor_assignment = get_neighbor(current_assignments, nurses, shift_types)
+        neighbor_penalty = calculate_h2_penalty(
+            nurses, neighbor_assignment, week_filepath
+        )
 
-    #     delta = neighbor_penalty - current_penalty
-    #     if delta < 0 or random.random() < math.exp(-delta / temperature):
-    #         current_assignments = neighbor
-    #         current_penalty = neighbor_penalty
+        delta = neighbor_penalty - current_penalty
+        if delta < 0 or random.random() < math.exp(-delta / temperature):
+            current_assignments = neighbor_assignment
+            current_penalty = neighbor_penalty
 
-    #         if current_penalty < best_penalty:
-    #             best_assignments = current_assignments
-    #             best_penalty = current_penalty
+            if current_penalty < best_penalty:
+                best_assignments = current_assignments
+                best_penalty = current_penalty
 
-    #     temperature *= cooling_rate
+        temperature *= cooling_rate
 
     print(f"Final H2 penalty: {best_penalty}")
 
-    # Package as JSON
-    one_week_solution = {
-        "scenario": scenario["id"],
-        "week": 0,
-        "assignments": assignments,
-    }
-
-    return one_week_solution
-
-
-# def simulated_annealing():
+    return best_assignments
 
 
 def basic_scheduler(sce_filepath):
@@ -230,18 +253,20 @@ def basic_scheduler(sce_filepath):
     assignments = []
 
     # Initialize an empty map to track assigned shifts per day
-    shift_coverage = {day: {shift: False for shift in shift_ids} for day in DAYS}
+    shift_coverage = {
+        day: {shift: False for shift in shift_ids} for day in DAYS_WEEK_ABB
+    }
 
     # Randomly assign 3–5 shifts to each nurse, skip duplicates
     for nurse in scenario["nurses"]:
 
         assigned_days = random.sample(
-            DAYS, k=random.randint(3, 5)
+            DAYS_WEEK_ABB, k=random.randint(3, 5)
         )  # Randomly assign 3-5 shifts to each nurse
 
         prev_shift = None
         for day in sorted(
-            assigned_days, key=lambda d: DAYS.index(d)
+            assigned_days, key=lambda d: DAYS_WEEK_ABB.index(d)
         ):  # Sort by day index
             valid_shifts = [
                 s
@@ -282,7 +307,7 @@ def parse_week_solution(data):
         day = assignment["day"]
         shift = assignment["shiftType"]
         skill = assignment["skill"]
-        day_idx = DAYS.index(day)
+        day_idx = DAYS_WEEK_ABB.index(day)
         schedule_dict[nurse][day_idx] = (shift, skill)
 
     return schedule_dict
@@ -300,8 +325,8 @@ def tablate_schedule(data):
     data = parse_week_solution(data)
 
     # Print the header
-    print(f"{'Name':<10} " + " ".join(f"{day:<10}" for day in DAYS))
-    print("-" * 10 + " " + " ".join("-" * 10 for _ in DAYS))
+    print(f"{'Name':<10} " + " ".join(f"{day:<10}" for day in DAYS_WEEK_ABB))
+    print("-" * 10 + " " + " ".join("-" * 10 for _ in DAYS_WEEK_ABB))
 
     # Print each nurse's schedule
     for name, shifts in data.items():
@@ -330,8 +355,11 @@ def tablate_schedule(data):
 #         f"SameShiftDays={info['consecutive_same_shift_type']}"
 #     )
 
+
 json_sol = optimal_scheduler(
     "testdatasets_json/n005w4/Sc-n005w4.json",
     "testdatasets_json/n005w4/WD-n005w4-0.json",
 )
+
+
 tablate_schedule(json_sol)
