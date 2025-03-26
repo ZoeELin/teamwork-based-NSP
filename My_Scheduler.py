@@ -4,6 +4,7 @@ import math
 import copy
 import os
 import re
+import time
 from collections import defaultdict
 import pandas as pd
 
@@ -539,7 +540,9 @@ def tablate_schedule(assignments):
         skill = assignment["skill"]
 
         if nurse not in schedule:
-            schedule[nurse] = ["-"] * 7  # 每位護士的每一天都初始化為 -
+            schedule[nurse] = [
+                "-"
+            ] * 7  # Initialize each nurse's shift '-' for each day
 
         day_index = DAYS_WEEK_ABB.index(day)
         schedule[nurse][day_index] = (shift, skill)
@@ -561,32 +564,21 @@ def tablate_schedule(assignments):
         print(f"{name:<10} " + " ".join(f"{cell:<10}" for cell in row))
 
 
-def package_solution_2JSON(assignments, weekdata_filepath):
+def package_solution_2JSON(assignments, output_dir, scenario_id, week_id):
     """
     Package the solution into a JSON format and write to a file.
     - Extracts scenario from filename (-<scenario_id>-)
     - Extracts week number (the final number before .json)
     """
-    filename = os.path.basename(weekdata_filepath)  # e.g., WD-n021w4-0.json
-
-    # Extract the scenario and week from the filename
-    match = re.match(r".*-([^-]+)-(\d+)\.json", filename)
-    if not match:
-        raise ValueError(f"Filename format is incorrect: {filename}")
-
-    scenario = match.group(1)  # 'n021w4'
-    week = int(match.group(2))  # '0'
-
     # Create solution JSON
     solution = {
-        "scenario": scenario,
-        "week": week,
+        "scenario": scenario_id,
+        "week": week_id,
         "assignments": assignments,
     }
 
     # Output directory and file path
-    output_dir = os.path.dirname(weekdata_filepath)  # e.g., testdatasets_json/n021w4
-    output_path = os.path.join(output_dir, f"Sol-{scenario}-{week}.json")
+    output_path = os.path.join(output_dir, f"Sol-{scenario_id}-{week_id}.json")
 
     # Write JSON file
     with open(output_path, "w") as f:
@@ -610,9 +602,42 @@ def package_solution_2JSON(assignments, weekdata_filepath):
 #     )
 
 
-final_assignments = supreme_scheduler(
-    "testdatasets_json/n021w4/Sc-n021w4.json",
-    "testdatasets_json/n021w4/WD-n021w4-0.json",
-)
+# final_assignments = supreme_scheduler(
+#     "testdatasets_json/n021w4/Sc-n021w4.json",
+#     "testdatasets_json/n021w4/WD-n021w4-0.json",
+# )
 
 # package_solution_2JSON(final_assignments, "testdatasets_json/n021w4/WD-n021w4-0.json")
+
+
+def main():
+    sce_path = "testdatasets_json/n005w4/Sc-n005w4.json"
+    output_dir = os.path.dirname(sce_path)
+    WD_files = [f for f in os.listdir(output_dir) if f.startswith("WD-")]
+
+    start = time.perf_counter()
+
+    for week_data_filename in WD_files:
+        print(f"\nProcessing: {week_data_filename}")
+        print("=" * 80)
+        wd_path = os.path.join(output_dir, week_data_filename)
+        print(wd_path)
+        final_assignments = supreme_scheduler(sce_path, wd_path)
+
+        # Extract the scenario and week from the filename
+        match = re.match(r".*-([^-]+)-(\d+)\.json", week_data_filename)
+        if not match:
+            raise ValueError(f"Filename format is incorrect: {week_data_filename}")
+
+        scenario_name = match.group(1)
+        week_id = int(match.group(2))
+
+        package_solution_2JSON(final_assignments, output_dir, scenario_name, week_id)
+
+    end = time.perf_counter()
+
+    print(f"\nExecution time: {end - start:.4f} seconds")
+
+
+if __name__ == "__main__":
+    main()
