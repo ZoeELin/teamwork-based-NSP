@@ -57,6 +57,21 @@ def generate_carryover(schedule):
     return carryover
 
 
+def build_cooperation_lookup(cooperation_data):
+    """
+    Turn cooperation_data (list of dicts) into a two-way lookup table
+    e.g., lookup["Alice"]["Bob"] = 15
+    """
+    lookup = {}
+    for entry in cooperation_data:
+        n1 = entry["nurse1"]
+        n2 = entry["nurse2"]
+        score = entry["cooperation_score"]
+        lookup.setdefault(n1, {})[n2] = score
+        lookup.setdefault(n2, {})[n1] = score  # 雙向對稱
+    return lookup
+
+
 def calculate_h1_penalty(nurses, assignments):
     """
     H1: Only one assignment per day, 10 penalty points for each violation
@@ -271,7 +286,7 @@ def basic_scheduler(sce_filepath, weekdata_filepath):
         day: {shift: False for shift in shift_types} for day in DAYS_WEEK_ABB
     }
 
-    # Randomly assign 3–5 shifts to each nurse, skip duplicates
+    # Randomly assign 5-7 shifts to each nurse, skip duplicates
     for nurse in scenario["nurses"]:
         nurse_id = nurse["id"]
         assigned_days = random.sample(
@@ -305,7 +320,7 @@ def basic_scheduler(sce_filepath, weekdata_filepath):
                 }
             )
 
-    assignment = simulated_annealing(
+    assignments = simulated_annealing(
         assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
     )
 
@@ -381,6 +396,110 @@ def optimal_scheduler(sce_filepath, weekdata_filepath):
     return assignments
 
 
+def supreme_scheduler(sce_filepath, weekdata_filepath):
+    """
+    Generate a schedule that satisfies H1-H4.
+    Input: scenario file path, week data file path
+    Output: a list of assignments(list of dictionary), e.g., {nurse, day, shiftType, skill}
+    """
+    with open(sce_filepath, "r") as f:
+        scenario = json.load(f)
+    with open(weekdata_filepath, "r") as f:
+        week_data = json.load(f)
+
+    shift_types = [s["id"] for s in scenario["shiftTypes"]]
+    nurses = scenario["nurses"]
+    forbidden_successions = scenario["forbiddenShiftTypeSuccessions"]
+
+    # Requirements for the number of persons needed per day per skill per shift (H2)
+    shift_requirements = {
+        day: {} for day in DAYS_WEEK_ABB
+    }  # e.g., {'Mon': {('Early', 'Nurse'): 2, ('Late', 'Nurse'): 1}}
+    for req in week_data["requirements"]:
+        shift = req["shiftType"]
+        skill = req["skill"]
+
+        for day in DAYS_WEEK:
+            day_key = f"requirementOn{day}"
+            if day_key in req:
+                minimum_required = req[day_key]["minimum"]
+                if minimum_required > 0:
+                    shift_requirements[day[0:3]][(shift, skill)] = minimum_required
+
+    assignments = []
+    nurse_last_shift = defaultdict(lambda: None)  # nurse_id -> (day, shift)
+    nurse_day_shift = defaultdict(lambda: {})  # nurse_id -> {day: shift}
+
+    for day in DAYS_WEEK_ABB:
+        # All that day (shiftType, skill) needed
+        required_slots = shift_requirements.get(
+            day, {}
+        )  # e.g., {('Early', 'Nurse'): 2, ('Late', 'Nurse'): 1}
+
+        # Each shift-skill pair needs a certain number of nurses
+        for (shift, skill), needed in required_slots.items():
+            count = 0
+            random.shuffle(nurses)  # Randomize the order of nurses
+
+            for nurse in nurses:
+                if count >= needed:
+                    break
+                nurse_id = nurse["id"]
+
+                # H1: Only one assignment per day
+                if day in nurse_day_shift[nurse_id]:
+                    continue
+
+                # H4: Nurses missing required skill
+                if skill not in nurse["skills"]:
+                    continue
+
+                # H3: Chech forbidden succession
+                prev_day_idx = DAYS_WEEK_ABB.index(day) - 1
+                if prev_day_idx >= 0:
+                    prev_day = DAYS_WEEK_ABB[prev_day_idx]
+                    prev_shift = nurse_day_shift[nurse_id].get(prev_day)
+
+                    for rule in forbidden_successions:
+                        if (
+                            rule["precedingShiftType"] == prev_shift
+                            and shift in rule["succeedingShiftTypes"]
+                        ):
+                            break
+                    else:
+                        # No violation found
+                        assignments.append(
+                            {
+                                "nurse": nurse_id,
+                                "day": day,
+                                "shiftType": shift,
+                                "skill": skill,
+                            }
+                        )
+                        nurse_day_shift[nurse_id][day] = shift
+                        count += 1
+                else:
+                    # No previous day, no violation
+                    assignments.append(
+                        {
+                            "nurse": nurse_id,
+                            "day": day,
+                            "shiftType": shift,
+                            "skill": skill,
+                        }
+                    )
+                    nurse_day_shift[nurse_id][day] = shift
+                    count += 1
+
+    tablate_schedule(assignments)
+
+    calculate_total_penalty(
+        nurses, forbidden_successions, assignments, weekdata_filepath
+    )
+
+    return assignments
+
+
 def parse_week_solution(assignments):
     """
     Parse a json format to a dictionary format.
@@ -401,8 +520,6 @@ def parse_week_solution(assignments):
         skill = assignment["skill"]
         day_idx = DAYS_WEEK_ABB.index(day)
         schedule_dict[nurse][day_idx] = (shift, skill)
-
-    print(assignment)
 
     return schedule_dict
 
@@ -493,9 +610,9 @@ def package_solution_2JSON(assignments, weekdata_filepath):
 #     )
 
 
-final_assignments = optimal_scheduler(
+final_assignments = supreme_scheduler(
     "testdatasets_json/n021w4/Sc-n021w4.json",
     "testdatasets_json/n021w4/WD-n021w4-0.json",
 )
 
-package_solution_2JSON(final_assignments, "testdatasets_json/n021w4/WD-n021w4-0.json")
+# package_solution_2JSON(final_assignments, "testdatasets_json/n021w4/WD-n021w4-0.json")
