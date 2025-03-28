@@ -458,11 +458,11 @@ def supreme_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
 
                 # H1: Only one assignment per day
                 if day in nurse_day_shift[nurse_id]:
-                    continue
+                    continue  # Break h1, skip this nurse
 
                 # H4: Nurses missing required skill
                 if skill not in nurse["skills"]:
-                    continue
+                    continue  # Break h4, ship this nurse
 
                 # H3: Chech forbidden succession
                 prev_day_idx = DAYS_WEEK_ABB.index(day) - 1
@@ -481,19 +481,7 @@ def supreme_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
                         for rule in forbidden_successions
                     )
                     if forbidden:
-                        continue  # Skip this nurse
-                else:
-                    # No violation found
-                    assignments.append(
-                        {
-                            "nurse": nurse_id,
-                            "day": day,
-                            "shiftType": shift,
-                            "skill": skill,
-                        }
-                    )
-                    nurse_day_shift[nurse_id][day] = shift
-                    count += 1
+                        continue  # Break the succession day, skip this nurse
 
                 # No previous day, no violation
                 assignments.append(
@@ -512,8 +500,8 @@ def supreme_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
     calculate_total_penalty(
         nurses, forbidden_successions, assignments, weekdata_filepath
     )
-    print("##############################################")
-    print("History data:", create_next_history_data(assignments, his_filepath))
+
+    create_next_history_data(assignments, his_filepath)
 
     return assignments
 
@@ -525,16 +513,14 @@ def create_next_history_data(assignments, prev_history_filepath):
     Output: new history data (dict)
     """
 
-    # === 建立護士 -> 該週排班明細 ===
-    nurse_schedule = defaultdict(list)
+    # Create nurses list
+    nurses_list = defaultdict(list)
     for a in assignments:
-        nurse_schedule[a["nurse"]].append(a)
+        nurses_list[a["nurse"]].append(a)
 
     # Read and get previous history data
     with open(prev_history_filepath, "r") as f:
         prev_history_data = json.load(f)
-    # print(f"Previous history data: {prev_history_data}")
-    # print(f"Previous history data type: {type(prev_history_data)}")
 
     prev_week = prev_history_data["week"]
     scenario = prev_history_data["scenario"]
@@ -557,8 +543,7 @@ def create_next_history_data(assignments, prev_history_filepath):
         }
 
         # Get this week's assignments for the nurse
-        nurse_week_assignments = nurse_schedule.get(nurse_id, [])
-        print(f"nurse_week_assignments: {nurse_week_assignments}")
+        nurse_week_assignments = nurses_list.get(nurse_id, [])
         assigned_days = [
             a["day"] for a in nurse_week_assignments
         ]  # e.g., ['Mon', 'Tue', 'Wed']
@@ -575,8 +560,6 @@ def create_next_history_data(assignments, prev_history_filepath):
             new_record["numberOfWorkingWeekends"] += 1
 
         # Change lastAssignedShiftType if the nurse worked on Sunday
-        print(f"nurse_week_assignments: {nurse_week_assignments}")
-        print(type(nurse_week_assignments))
         if "Sun" in assigned_days:
             for a in nurse_week_assignments:
                 if a["day"] == "Sun":
@@ -584,29 +567,47 @@ def create_next_history_data(assignments, prev_history_filepath):
                     break
             new_record["lastAssignedShiftType"] = last_shift
 
-        if not last_shift:
-            # 遍歷週期內的 assignment，倒序計算連續相同班別
+        if last_shift:
+            # Counting consecutive equal classes in reverse week day order
             count_work_day = 0
             count_same_shift = 0
             for day in reversed(DAYS_WEEK_ABB):
-                for a in nurse_week_assignments:
+                for a in reversed(nurse_week_assignments):
                     if a["day"] == day and a["shiftType"] == last_shift:
                         count_same_shift += 1
                         count_work_day += 1
-                    elif a["day"] == day and a["shiftType"] == last_shift:
-                        count_same_shift += 1
+                    elif a["day"] == day:
+                        count_work_day += 1
                     else:
-                        break  # 遇到不同班就停止
+                        continue  # Skip this nurse_week_assignment
+                break  # Stop counting when not work at that day
             new_record["numberOfConsecutiveAssignments"] = count_same_shift
             new_record["numberOfConsecutiveWorkingDays"] = count_work_day
+        else:
+            count_off_day = 0
+            for day in reversed(DAYS_WEEK_ABB):
+                if day not in assigned_days:
+                    count_off_day += 1
+                else:
+                    break
+            new_record["numberOfConsecutiveDaysOff"] = count_off_day
 
         new_nurse_history.append(new_record)
 
-    return {
+    # Formating to JSON history
+    history_json = {
         "week": prev_week + 1,
         "scenario": scenario,
         "nurseHistory": new_nurse_history,
     }
+
+    # Output directory and file path
+    output_dir = os.path.dirname(prev_history_filepath)
+    output_path = os.path.join(output_dir, f"H{prev_week+1}-{scenario}.json")
+
+    # Write JSON file
+    with open(output_path, "w") as f:
+        json.dump(history_json, f, indent=4)
 
 
 def parse_week_solution(assignments):
