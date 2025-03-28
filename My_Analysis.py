@@ -67,7 +67,7 @@ def analyze_contract_assignments(data):
 
 
 # Load JSON scenario data
-sce_filepath = "datasets_json/n120w8/Sc-n120w8.json"
+sce_filepath = "testdatasets_json/n005w4/Sc-n005w4.json"
 with open(sce_filepath, "r") as f:
     data = json.load(f)
 
