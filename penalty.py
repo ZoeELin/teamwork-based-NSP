@@ -23,15 +23,15 @@ def calculate_h1_penalty(assignments, nurses):
         nurse_id = nurse["id"]
         for day, count in nurse_day_count[nurse_id].items():
             if count > 1:
-                penalty += (count - 1) * 10
+                penalty += (count - 1) * 500
 
     return penalty
 
 
 def calculate_h2_penalty(nurses, assignments, week_data_filepath):
     """
-    H2: undersupply of required skills, 1 penalty point for each missing nurse
-    Check a nurse is assigned to a shift that requires a skill they do not have
+    H2: undersupply of required skills, 1 penalty point for each missing nurse.
+    Check a nurse is assigned to a shift that requires a skill they do not have.
     Input: nurses (from scenario), assignments (current schedule), week_data (dict)
     Output: penalty score (int)
     """
@@ -66,10 +66,10 @@ def calculate_h2_penalty(nurses, assignments, week_data_filepath):
     return penalty
 
 
-def calculate_h3_penalty(forbidden_successions, assignments):
+def calculate_h3_penalty(assignments, forbidden_successions):
     """
-    H3: Forbidden shift successions, 20 penalty points for each violation
-    Check if a nurse is assigned to a shift that is forbidden to follow the previous shift
+    H3: Forbidden shift successions, 20 penalty points for each violation.
+    Check if a nurse is assigned to a shift that is forbidden to follow the previous shift.
     Input: forbidden_successions (from scenario), assignments (current schedule)
     Output: penalty score (int)
     """
@@ -80,7 +80,7 @@ def calculate_h3_penalty(forbidden_successions, assignments):
         nurse = assignment["nurse"]
         day = assignment["day"]
         shift = assignment["shiftType"]
-        nurse_schedule.setdefault(nurse, {})[day] = shift
+        nurse_schedule.setdefault(nurse, {}).setdefault(day, []).append(shift)
 
     # Convert the forbidden successions list to a map for quick lookup
     # e.g., {"Late": {"Early", "Late"}, "Early": {"Late"}}
@@ -96,12 +96,13 @@ def calculate_h3_penalty(forbidden_successions, assignments):
         for i in range(len(DAYS_WEEK_ABB) - 1):
             day1 = DAYS_WEEK_ABB[i]
             day2 = DAYS_WEEK_ABB[i + 1]
-            shift1 = schedule.get(day1)
-            shift2 = schedule.get(day2)
+            shifts_day1 = schedule.get(day1, [])
+            shifts_day2 = schedule.get(day2, [])
 
-            if shift1 and shift2:
-                if shift2 in forbidden_map.get(shift1, set()):
-                    penalty += 20
+            for shift1 in shifts_day1:
+                for shift2 in shifts_day2:
+                    if shift2 in forbidden_map.get(shift1, set()):
+                        penalty += 20
 
     return penalty
 
@@ -128,7 +129,7 @@ def calculate_h4_penalty(nurses, assignments):
 def calculate_total_penalty(nurses, forbidden_successions, assignments, week_filepath):
     h1 = calculate_h1_penalty(assignments, nurses)
     h2 = calculate_h2_penalty(nurses, assignments, week_filepath)
-    h3 = calculate_h3_penalty(forbidden_successions, assignments)
+    h3 = calculate_h3_penalty(assignments, forbidden_successions)
     h4 = calculate_h4_penalty(nurses, assignments)
     print(f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}")
     return h1 + h2 + h3 + h4
@@ -137,7 +138,8 @@ def calculate_total_penalty(nurses, forbidden_successions, assignments, week_fil
 test_assignments = [
     {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
     {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
-    {"nurse": "Andrea", "day": "Tue", "shiftType": "Early", "skill": "Nurse"},
+    {"nurse": "Andrea", "day": "Tue", "shiftType": "Night", "skill": "Nurse"},
+    {"nurse": "Andrea", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
 ]
 
 test_nurses = [
@@ -145,5 +147,12 @@ test_nurses = [
     {"id": "Stefaan", "contract": "PartTime", "skills": ["HeadNurse", "Nurse"]},
 ]
 
+test_forbidden_successions = [
+    {"precedingShiftType": "Early", "succeedingShiftTypes": []},
+    {"precedingShiftType": "Late", "succeedingShiftTypes": ["Early"]},
+    {"precedingShiftType": "Night", "succeedingShiftTypes": ["Early", "Late"]},
+]
+
 
 # print(calculate_h1_penalty(test_assignments, test_nurses))
+# print(calculate_h3_penalty(test_assignments, test_forbidden_successions))
