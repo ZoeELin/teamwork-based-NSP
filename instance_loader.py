@@ -8,7 +8,8 @@ def select_instance_files(
     history_index: int = 0,
 ):
     """
-    A set of instance required files is automatically organized based on the starting week and the number of scheduled weeks
+    A set of instance required files is automatically organized,
+    based on the starting week and the number of scheduled weeks
     Args:
         dataset_folder (str): dataset file path
         dataset_name (str): scenario
