@@ -1,9 +1,10 @@
 import json
+from collections import defaultdict
 
 from constants import DAYS_WEEK_ABB, DAYS_WEEK
 
 
-def calculate_h1_penalty(nurses, assignments):
+def calculate_h1_penalty(assignments, nurses):
     """
     H1: Only one assignment per day, 10 penalty points for each violation
     Check if a nurse has more than one shift on the same day
@@ -11,12 +12,18 @@ def calculate_h1_penalty(nurses, assignments):
     Output: penalty score (int)
     """
     penalty = 0
-    for nurse_id in nurses:
-        for assignment in assignments:
-            if assignment["nurse"] == nurse_id:
-                day = assignment["day"]
-                if len(assignments[nurse_id][day]) > 1:
-                    penalty += (len(assignments[nurse_id][day]) - 1) * 10
+    nurse_day_count = defaultdict(lambda: defaultdict(int))
+
+    for assignment in assignments:
+        nurse_id = assignment["nurse"]
+        day = assignment["day"]
+        nurse_day_count[nurse_id][day] += 1
+
+    for nurse in nurses:
+        nurse_id = nurse["id"]
+        for day, count in nurse_day_count[nurse_id].items():
+            if count > 1:
+                penalty += (count - 1) * 10
 
     return penalty
 
@@ -119,9 +126,24 @@ def calculate_h4_penalty(nurses, assignments):
 
 
 def calculate_total_penalty(nurses, forbidden_successions, assignments, week_filepath):
-    h1 = calculate_h1_penalty(nurses, assignments)
+    h1 = calculate_h1_penalty(assignments, nurses)
     h2 = calculate_h2_penalty(nurses, assignments, week_filepath)
     h3 = calculate_h3_penalty(forbidden_successions, assignments)
     h4 = calculate_h4_penalty(nurses, assignments)
     print(f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}")
     return h1 + h2 + h3 + h4
+
+
+test_assignments = [
+    {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
+    {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
+    {"nurse": "Andrea", "day": "Tue", "shiftType": "Early", "skill": "Nurse"},
+]
+
+test_nurses = [
+    {"id": "Andrea", "contract": "FullTime", "skills": ["HeadNurse", "Nurse"]},
+    {"id": "Stefaan", "contract": "PartTime", "skills": ["HeadNurse", "Nurse"]},
+]
+
+
+# print(calculate_h1_penalty(test_assignments, test_nurses))
