@@ -72,7 +72,7 @@ def basic_scheduler(sce_filepath, weekdata_filepath):
     return one_week_solution
 
 
-def optimal_scheduler(sce_filepath, weekdata_filepath):
+def optimal_scheduler(sce_filepath, weekdata_filepath, his_filepath):
     """
     Generate a random schedule for a given scenario,
     with consideration of hard constraints(H1, H3 from INRC2 definitions).
@@ -86,7 +86,19 @@ def optimal_scheduler(sce_filepath, weekdata_filepath):
     shift_types = [s["id"] for s in scenario["shiftTypes"]]
     nurses = scenario["nurses"]
     forbidden_successions = scenario["forbiddenShiftTypeSuccessions"]
+
+    nurseHistory = dict()
+    if his_filepath:
+        with open(his_filepath, "r") as f:
+            history_data = json.load(f)
+        nurseHistory = {
+            data["nurse"]: data["lastAssignedShiftType"]
+            for data in history_data["nurseHistory"]
+        }  # e.g., {'Patrick': 'Night', 'Andrea': 'None', ...}
+
     assignments = []
+
+    nurse_day_shift = defaultdict(lambda: {})  # {nurse_id : {day: shift}}
 
     # Initialize an empty map to track assigned shifts per day
     shift_coverage = {
@@ -96,45 +108,63 @@ def optimal_scheduler(sce_filepath, weekdata_filepath):
     # Ensure each shift per day has at least one nurse
     for day in DAYS_WEEK_ABB:
         for shift in shift_types:
+            if shift_coverage[day][shift]:
+                break
+
             # Find eligible nurses who can take this shift
             random.shuffle(nurses)  # Shuffle to randomize selection
             for nurse in nurses:
-                # Check H1: maximum one shift per nurse per day
-                if any(
-                    a["nurse"] == nurse["id"] and a["day"] == day for a in assignments
-                ):
-                    continue
+
+                nurse_id = nurse["id"]
+
+                # Check H1: Only one assignment per day
+                if day in nurse_day_shift[nurse_id]:
+                    continue  # Break h1, skip this nurse
+
                 skill = random.choice(nurse["skills"])
-                prev_shift = (
-                    None  # Simplified assumption: no previous shift in this pass
-                )
 
                 # Check H3: forbidden succession rules
-                valid = all(
-                    not (
+                prev_day_idx = DAYS_WEEK_ABB.index(day) - 1
+                prev_shift = None
+                if prev_day_idx == -1 and his_filepath:  # Sunday (last day of the week)
+                    prev_shift = nurseHistory.get(nurse_id)
+
+                if prev_day_idx >= 0:
+                    prev_day = DAYS_WEEK_ABB[prev_day_idx]
+                    prev_shift = nurse_day_shift[nurse_id].get(prev_day)
+
+                if prev_shift:
+                    forbidden = any(
                         rule["precedingShiftType"] == prev_shift
                         and shift in rule["succeedingShiftTypes"]
+                        for rule in forbidden_successions
                     )
-                    for rule in scenario["forbiddenShiftTypeSuccessions"]
-                )
-                if valid:
-                    assignments.append(
-                        {
-                            "nurse": nurse["id"],
-                            "day": day,
-                            "shiftType": shift,
-                            "skill": skill,
-                        }
-                    )
-                    shift_coverage[day][shift] = True
-                    break  # Move on to the next shift
+                    if forbidden:
+                        continue  # Break the succession day, skip this nurse
 
-    assignments = optimizer.simulated_annealing(
-        assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
-    )
+                nurse_day_shift[nurse_id] = {day: shift}
+                assignments.append(
+                    {
+                        "nurse": nurse_id,
+                        "day": day,
+                        "shiftType": shift,
+                        "skill": skill,
+                    }
+                )
+            shift_coverage[day][shift] = True
+
+    # assignments = optimizer.simulated_annealing(
+    #     assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
+    # )
 
     # Visualize the schedule in an easy-to-read table format in terminal
     utils.display_schedule(assignments)
+
+    penalty.calculate_total_penalty(
+        nurses, forbidden_successions, assignments, weekdata_filepath
+    )
+
+    history.create_next_history_data(assignments, his_filepath)
 
     return assignments
 
@@ -193,19 +223,20 @@ def supreme_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
             random.shuffle(nurses)  # Randomize the order of nurses
 
             for nurse in nurses:
+                # Check H2: Under-staﬃng
                 if count >= needed:
                     break
                 nurse_id = nurse["id"]
 
-                # H1: Only one assignment per day
+                # Check H1: Only one assignment per day
                 if day in nurse_day_shift[nurse_id]:
                     continue  # Break h1, skip this nurse
 
-                # H4: Nurses missing required skill
+                # Check H4: Nurses missing required skill
                 if skill not in nurse["skills"]:
                     continue  # Break h4, ship this nurse
 
-                # H3: Chech forbidden succession
+                # Check H3: Chech forbidden succession
                 prev_day_idx = DAYS_WEEK_ABB.index(day) - 1
                 prev_shift = None
                 if prev_day_idx == -1 and his_filepath:  # Sunday (last day of the week)
