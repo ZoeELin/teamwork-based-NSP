@@ -1,9 +1,9 @@
 import os
 import time
-
-
 import utils
 import scheduler
+
+from history import create_next_history_data
 
 
 def run_scheduler_pipeline(instance):
@@ -16,6 +16,7 @@ def run_scheduler_pipeline(instance):
     """
     output_dir = os.path.dirname(instance["scenario"])
     week_idx = 0
+    his_filepath = instance["history"]
 
     start = time.perf_counter()
 
@@ -28,12 +29,14 @@ def run_scheduler_pipeline(instance):
         print("=" * 80)
 
         final_assignments = scheduler.supreme_scheduler(
-            instance["scenario"], week_data, instance["history"]
+            instance["scenario"], week_data, his_filepath
         )
 
         utils.package_solution_2JSON(
             final_assignments, output_dir, instance["scenario_name"], week_idx
         )
+
+        his_filepath = create_next_history_data(final_assignments, his_filepath)
 
         week_idx += 1
 
