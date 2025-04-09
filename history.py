@@ -107,3 +107,5 @@ def create_next_history_data(assignments, prev_history_filepath):
     # Write JSON file
     with open(output_path, "w") as f:
         json.dump(history_json, f, indent=4)
+
+    return output_path

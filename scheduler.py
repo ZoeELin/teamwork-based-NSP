@@ -276,3 +276,71 @@ def supreme_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
     history.create_next_history_data(assignments, his_filepath)
 
     return assignments
+
+
+def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
+    """
+    Initial solution that randomly assigns nurses to meet shift requirements (H2 only).
+    Input: scenario file path, week data file path
+    Output: a list of assignments (list of dictionaries), e.g., {nurse, day, shiftType, skill}
+    """
+    with open(sce_filepath, "r") as f:
+        scenario = json.load(f)
+    with open(weekdata_filepath, "r") as f:
+        week_data = json.load(f)
+
+    nurses = scenario["nurses"]
+    shift_types = [s["id"] for s in scenario["shiftTypes"]]
+    forbidden_successions = scenario["forbiddenShiftTypeSuccessions"]
+    assignments = []
+
+    # Build shift requirements from week data
+    shift_requirements = {day: {} for day in DAYS_WEEK_ABB}
+    for req in week_data["requirements"]:
+        shift = req["shiftType"]
+        skill = req["skill"]
+
+        for day in DAYS_WEEK:
+            day_key = f"requirementOn{day}"
+            if day_key in req:
+                minimum_required = req[day_key]["minimum"]
+                if minimum_required > 0:
+                    shift_requirements[day[:3]][(shift, skill)] = minimum_required
+
+    # Randomly assign nurses to each required shift (satisfying only H2)
+    for day in DAYS_WEEK_ABB:
+        required_slots = shift_requirements.get(day, {})
+        for (shift, skill), needed in required_slots.items():
+            eligible_nurses = [n for n in nurses if skill in n["skills"]]
+            if len(eligible_nurses) < needed:
+                print(
+                    f"Warning: not enough nurses with skill {skill} for {shift} on {day}"
+                )
+
+            for _ in range(needed):
+                if not eligible_nurses:
+                    break
+                nurse = random.choice(eligible_nurses)
+                assignments.append(
+                    {
+                        "nurse": nurse["id"],
+                        "day": day,
+                        "shiftType": shift,
+                        "skill": skill,
+                    }
+                )
+
+    assignments = optimizer.simulated_annealing(
+        assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
+    )
+
+    penalty.calculate_total_penalty(
+        nurses, forbidden_successions, assignments, weekdata_filepath
+    )
+
+    history.create_next_history_data(assignments, his_filepath)
+
+    # Visualize the schedule in an easy-to-read table format in terminal
+    # utils.display_schedule(assignments)
+
+    return assignments

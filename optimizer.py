@@ -117,10 +117,10 @@ def simulated_annealing(
     """
 
     # ==== Simulated Annealing (SA) ====
-    temperature = 110.0
-    cooling_rate = 0.99
+    temperature = 100
+    cooling_rate = 0.9
     min_temp = 0.1
-    max_iter = 500
+    max_iter = 300
 
     current_assignments = assignments
     current_penalty = calculate_total_penalty(
@@ -131,6 +131,7 @@ def simulated_annealing(
 
     for iteration in range(max_iter):
         if temperature < min_temp or best_penalty == 0:
+            print(f"Final penalty: {best_penalty}")
             break
 
         # Get neighborhood to swap or change for each happened 50%

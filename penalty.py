@@ -23,12 +23,12 @@ def calculate_h1_penalty(assignments, nurses):
         nurse_id = nurse["id"]
         for day, count in nurse_day_count[nurse_id].items():
             if count > 1:
-                penalty += (count - 1) * 500
+                penalty += (count - 1) * 1000
 
     return penalty
 
 
-def calculate_h2_penalty(nurses, assignments, week_data_filepath):
+def calculate_h2_penalty(assignments, nurses, week_data_filepath):
     """
     H2: undersupply of required skills, 1 penalty point for each missing nurse.
     Check a nurse is assigned to a shift that requires a skill they do not have.
@@ -62,13 +62,13 @@ def calculate_h2_penalty(nurses, assignments, week_data_filepath):
                 minimum_required = req[day_key]["minimum"]
                 actual_coverage = coverage_count.get((shift, skill, day[0:3]), 0)
                 if actual_coverage < minimum_required:
-                    penalty += minimum_required - actual_coverage
+                    penalty += (minimum_required - actual_coverage) * 500
     return penalty
 
 
 def calculate_h3_penalty(assignments, forbidden_successions):
     """
-    H3: Forbidden shift successions, 20 penalty points for each violation.
+    H3: Forbidden shift successions, adding penalty points for each violation.
     Check if a nurse is assigned to a shift that is forbidden to follow the previous shift.
     Input: forbidden_successions (from scenario), assignments (current schedule)
     Output: penalty score (int)
@@ -102,14 +102,14 @@ def calculate_h3_penalty(assignments, forbidden_successions):
             for shift1 in shifts_day1:
                 for shift2 in shifts_day2:
                     if shift2 in forbidden_map.get(shift1, set()):
-                        penalty += 20
+                        penalty += 500
 
     return penalty
 
 
-def calculate_h4_penalty(nurses, assignments):
+def calculate_h4_penalty(assignments, nurses):
     """
-    H4: The skill needs of each shift must be met, 1 penalty point for each missing skill
+    H4: The skill needs of each shift must be met, adding point for each missing skill
     Check if the nurse has been assigned to a shift that they do not have the required skill for
     Input: nurses (from scenario), assignments (current schedule)
     Output: penalty score (int)
@@ -122,15 +122,17 @@ def calculate_h4_penalty(nurses, assignments):
         nurse_id = assignment["nurse"]
         required_skill = assignment["skill"]
         if required_skill not in nurse_skills.get(nurse_id, set()):
-            penalty += 2  # Penalty +2
+            penalty += 1000  # Penalty +1
     return penalty
 
 
-def calculate_total_penalty(nurses, forbidden_successions, assignments, week_filepath):
+def calculate_total_penalty(
+    nurses, forbidden_successions, assignments, weekdata_filepath
+):
     h1 = calculate_h1_penalty(assignments, nurses)
-    h2 = calculate_h2_penalty(nurses, assignments, week_filepath)
+    h2 = calculate_h2_penalty(assignments, nurses, weekdata_filepath)
     h3 = calculate_h3_penalty(assignments, forbidden_successions)
-    h4 = calculate_h4_penalty(nurses, assignments)
+    h4 = calculate_h4_penalty(assignments, nurses)
     print(f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}")
     return h1 + h2 + h3 + h4
 
