@@ -2,7 +2,8 @@ import json
 from collections import defaultdict
 import itertools
 
-from constants import DAYS_WEEK_ABB, DAYS_WEEK
+import utils
+from constants import DAYS_WEEK_ABB, DAYS_WEEK, WEEKEND_DAYS
 
 
 def calculate_h1_penalty(assignments, nurses):
@@ -163,6 +164,120 @@ def calculate_s1_penalty(assignments, nurses, week_data_filepath):
     return penalty
 
 
+def calculate_consecutive_work_penalty(work_seq, min_work, max_work, weight):
+    penalty = 0
+    sequences = utils.get_consecutive_sequences(work_seq)
+    for length in sequences:
+        if length < min_work:
+            penalty += (min_work - length) * weight
+        elif length > max_work:
+            penalty += (length - max_work) * weight
+    print("Consecutive work penalty:", penalty)
+    return penalty
+
+
+def calculate_consecutive_off_penalty(work_seq, min_off, max_off, weight):
+    penalty = 0
+    off_seq = [1 - w for w in work_seq]
+    sequences = utils.get_consecutive_sequences(off_seq)
+    for length in sequences:
+        if length < min_off:
+            penalty += (min_off - length) * weight
+        elif length > max_off:
+            penalty += (length - max_off) * weight
+    print("Consecutive off penalty:", penalty)
+    return penalty
+
+
+def calculate_shift_specific_penalty(
+    schedule, shift_constraints, nurse_id, days, weight
+):
+    penalty = 0
+    for shift_type, limits in shift_constraints.items():
+        shift_seq = [
+            1 if schedule[nurse_id].get(day) == shift_type else 0 for day in days
+        ]
+        sequences = utils.get_consecutive_sequences(shift_seq)
+        for length in sequences:
+            if length < limits["min"]:
+                penalty += (limits["min"] - length) * weight
+            elif length > limits["max"]:
+                penalty += (length - limits["max"]) * weight
+    print("Shift specific penalty:", penalty)
+    return penalty
+
+
+def calculate_incomplete_weekend_penalty(schedule, nurse, weekend_days, weight):
+    penalty = 0
+    if nurse.get("completeWeekends", False):
+        for sat, sun in weekend_days:
+            worked_sat = schedule[nurse["id"]].get(sat) is not None
+            worked_sun = schedule[nurse["id"]].get(sun) is not None
+            if worked_sat != worked_sun:
+                penalty += weight
+    print("Incomplete weekend penalty:", penalty)
+    return penalty
+
+
+def calculate_s2_s3_s5_penalty(assignments, nurses, scenario_filepath):
+    """
+    Calculates penalties for:
+    S2: Consecutive assignments
+    S3: Consecutive days off
+    S5: Complete weekend (only Sat+Sun or none)
+    """
+    # Load scenario data
+    scenario = utils.load_scenario_data(scenario_filepath)
+
+    nurse_contract_map = {n["id"]: n["contract"] for n in scenario["nurses"]}
+    contract_limits = {c["id"]: c for c in scenario["contracts"]}
+    shift_constraints = {
+        s["id"]: {
+            "min": s["minimumNumberOfConsecutiveAssignments"],
+            "max": s["maximumNumberOfConsecutiveAssignments"],
+        }
+        for s in scenario["shiftTypes"]
+    }
+
+    schedule = defaultdict(lambda: defaultdict(lambda: None))  # nurse -> day -> shift
+    for a in assignments:
+        schedule[a["nurse"]][a["day"]] = a["shiftType"]
+
+    total_penalty = 0
+    for nurse in nurses:
+        nurse_id = nurse["id"]
+        contract_id = nurse_contract_map[nurse_id]
+        contract = contract_limits[contract_id]
+
+        working_seq = [1 if schedule[nurse_id].get(day) else 0 for day in DAYS_WEEK_ABB]
+
+        # S2
+        total_penalty += calculate_consecutive_work_penalty(
+            working_seq,
+            contract["minimumNumberOfConsecutiveWorkingDays"],
+            contract["maximumNumberOfConsecutiveWorkingDays"],
+            weight=30,
+        )
+        total_penalty += calculate_shift_specific_penalty(
+            schedule, shift_constraints, nurse_id, DAYS_WEEK_ABB, weight=15
+        )
+
+        # S3
+        total_penalty += calculate_consecutive_off_penalty(
+            working_seq,
+            contract["minimumNumberOfConsecutiveDaysOff"],
+            contract["maximumNumberOfConsecutiveDaysOff"],
+            weight=30,
+        )
+
+        # S5
+        total_penalty += calculate_incomplete_weekend_penalty(
+            schedule, nurse, WEEKEND_DAYS, weight=30
+        )
+
+    return total_penalty
+
+
 def calculate_ComC_penalty(assignments, cooperation_matrix, epsilon=0.01):
     """
     Calculate the ComC (Communication Cost) penalty score for the overall schedule.
@@ -247,12 +362,19 @@ test_forbidden_successions = [
 
 # print(calculate_h1_penalty(test_assignments, test_nurses))
 # print(calculate_h3_penalty(test_assignments, test_forbidden_successions))
+# print(
+#     calculate_s1_penalty(
+#         test_assignments, test_nurses, "testdatasets_json/n005w4/WD-n005w4-0.json"
+#     )
+# )
+
 print(
-    calculate_s1_penalty(
-        test_assignments, test_nurses, "testdatasets_json/n005w4/WD-n005w4-0.json"
+    calculate_s2_s3_s5_penalty(
+        test_assignments,
+        test_nurses,
+        "testdatasets_json/n005w4/Sc-n005w4.json",
     )
 )
-
 
 # test_coop_matrix = [
 #     {"nurse1": "HN_0", "nurse2": "NU_3", "cooperation_score": 0.5},
