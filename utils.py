@@ -10,6 +10,11 @@ def load_scenario_data(filepath):
         return json.load(f)
 
 
+def load_week_data(filepath):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+
 def get_consecutive_sequences(binary_list):
     sequences = []
     count = 0

@@ -108,7 +108,7 @@ def change(assignments, nurses, shift_types):
 
 
 def simulated_annealing(
-    assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
+    assignments, forbidden_successions, nurses, shift_types, weekdata_filepath, scenario
 ):
     """
     Simulated Annealing (SA) algorithm to optimize the schedule.
@@ -124,7 +124,7 @@ def simulated_annealing(
 
     current_assignments = assignments
     current_penalty = calculate_total_penalty(
-        nurses, forbidden_successions, current_assignments, weekdata_filepath
+        nurses, forbidden_successions, current_assignments, weekdata_filepath, scenario
     )
     best_assignments = current_assignments
     best_penalty = current_penalty

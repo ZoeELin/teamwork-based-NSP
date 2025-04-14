@@ -30,17 +30,13 @@ def calculate_h1_penalty(assignments, nurses):
     return penalty
 
 
-def calculate_h2_penalty(assignments, nurses, week_data_filepath):
+def calculate_h2_penalty(assignments, nurses, week_data):
     """
     H2: undersupply of required skills, 1 penalty point for each missing nurse.
     Check a nurse is assigned to a shift that requires a skill they do not have.
     Input: nurses (from scenario), assignments (current schedule), week_data (dict)
     Output: penalty score (int)
     """
-    # Load week data
-    with open(week_data_filepath, "r") as f:
-        week_data = json.load(f)
-
     # Map nurse ID to skills
     nurse_skills = {n["id"]: set(n["skills"]) for n in nurses}
 
@@ -128,16 +124,13 @@ def calculate_h4_penalty(assignments, nurses):
     return penalty
 
 
-def calculate_s1_penalty(assignments, nurses, week_data_filepath):
+def calculate_s1_penalty(assignments, nurses, week_data):
     """
     S1: Insuﬃcient staﬃng for optimal coverage
     Check a nurse is assigned to a shift that requires the optimal skill they do not have.
     Input: nurses (from scenario), assignments (current schedule), week_data (dict)
     Output: penalty score (int)
     """
-    # Load week data
-    with open(week_data_filepath, "r") as f:
-        week_data = json.load(f)
 
     # Map nurse ID to skills
     nurse_skills = {n["id"]: set(n["skills"]) for n in nurses}
@@ -219,16 +212,13 @@ def calculate_incomplete_weekend_penalty(schedule, nurse, weekend_days, weight):
     return penalty
 
 
-def calculate_s2_s3_s5_penalty(assignments, nurses, scenario_filepath):
+def calculate_s2_s3_s5_penalty(assignments, nurses, scenario):
     """
     Calculates penalties for:
     S2: Consecutive assignments
     S3: Consecutive days off
     S5: Complete weekend (only Sat+Sun or none)
     """
-    # Load scenario data
-    scenario = utils.load_scenario_data(scenario_filepath)
-
     nurse_contract_map = {n["id"]: n["contract"] for n in scenario["nurses"]}
     contract_limits = {c["id"]: c for c in scenario["contracts"]}
     shift_constraints = {
@@ -278,15 +268,12 @@ def calculate_s2_s3_s5_penalty(assignments, nurses, scenario_filepath):
     return total_penalty
 
 
-def calculate_s4_penalty(assignments, week_data_filepath):
+def calculate_s4_penalty(assignments, week_data):
     """
     S4: Preferences - Each assignment to an undesired shift is penalised.
     Nurses' shift off requests come from week_data["shiftOffRequests"].
     If a nurse is assigned to a shift they requested off, add penalty points.
     """
-
-    week_data = utils.load_week_data(week_data_filepath)
-
     # Build set of off requests for quick lookup
     off_requests = set()
     for req in week_data.get("shiftOffRequests", []):
@@ -352,14 +339,21 @@ def calculate_ComC_penalty(assignments, cooperation_matrix, epsilon=0.01):
 
 
 def calculate_total_penalty(
-    nurses, forbidden_successions, assignments, weekdata_filepath
+    nurses, forbidden_successions, assignments, weekdata_filepath, scenario
 ):
+    # Load week data
+    week_data = utils.load_week_data(weekdata_filepath)
+
     h1 = calculate_h1_penalty(assignments, nurses)
-    h2 = calculate_h2_penalty(assignments, nurses, weekdata_filepath)
+    h2 = calculate_h2_penalty(assignments, nurses, week_data)
     h3 = calculate_h3_penalty(assignments, forbidden_successions)
     h4 = calculate_h4_penalty(assignments, nurses)
+    s1 = calculate_s1_penalty(assignments, nurses, week_data)
+    s2_s3_s5 = calculate_s2_s3_s5_penalty(assignments, nurses, scenario)
+    s4 = calculate_s4_penalty(assignments, week_data)
     print(f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}")
-    return h1 + h2 + h3 + h4
+    print(f"S1: {s1}, S2+S3+S5: {s2_s3_s5}, S4: {s4}")
+    return h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4
 
 
 test_assignments = [

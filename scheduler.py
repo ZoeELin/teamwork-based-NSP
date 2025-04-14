@@ -64,7 +64,12 @@ def basic_scheduler(sce_filepath, weekdata_filepath):
             )
 
     assignments = optimizer.simulated_annealing(
-        assignments, forbidden_successions, nurses, shift_types, weekdata_filepath
+        assignments,
+        forbidden_successions,
+        nurses,
+        shift_types,
+        weekdata_filepath,
+        sce_filepath,
     )
 
     one_week_solution = utils.package_solution_2JSON(assignments, scenario["id"])
@@ -161,7 +166,7 @@ def optimal_scheduler(sce_filepath, weekdata_filepath, his_filepath):
     utils.display_schedule(assignments)
 
     penalty.calculate_total_penalty(
-        nurses, forbidden_successions, assignments, weekdata_filepath
+        nurses, forbidden_successions, assignments, weekdata_filepath, scenario
     )
 
     history.create_next_history_data(assignments, his_filepath)
