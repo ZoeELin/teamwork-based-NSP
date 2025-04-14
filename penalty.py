@@ -278,6 +278,35 @@ def calculate_s2_s3_s5_penalty(assignments, nurses, scenario_filepath):
     return total_penalty
 
 
+def calculate_s4_penalty(assignments, week_data_filepath):
+    """
+    S4: Preferences - Each assignment to an undesired shift is penalised.
+    Nurses' shift off requests come from week_data["shiftOffRequests"].
+    If a nurse is assigned to a shift they requested off, add penalty points.
+    """
+
+    week_data = utils.load_week_data(week_data_filepath)
+
+    # Build set of off requests for quick lookup
+    off_requests = set()
+    for req in week_data.get("shiftOffRequests", []):
+        off_requests.add((req["nurse"], req["day"][0:3], req["shiftType"]))
+
+    # Check all assignments
+    penalty = 0
+    penalty_points = 10
+    for a in assignments:
+        nurse = a["nurse"]
+        day = a["day"]
+        shift = a["shiftType"]
+
+        # Match specific or 'Any' shift request
+        if (nurse, day, shift) in off_requests or (nurse, day, "Any") in off_requests:
+            penalty += penalty_points
+
+    return penalty
+
+
 def calculate_ComC_penalty(assignments, cooperation_matrix, epsilon=0.01):
     """
     Calculate the ComC (Communication Cost) penalty score for the overall schedule.
@@ -338,6 +367,8 @@ test_assignments = [
     {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
     {"nurse": "Andrea", "day": "Tue", "shiftType": "Night", "skill": "Nurse"},
     {"nurse": "Andrea", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
+    {"nurse": "Sara", "day": "Thu", "shiftType": "Early", "skill": "Nurse"},
+    {"nurse": "Stefaan", "day": "Sat", "shiftType": "Late", "skill": "Nurse"},
 ]
 
 # test_assignments = [
@@ -368,12 +399,16 @@ test_forbidden_successions = [
 #     )
 # )
 
+# print(
+#     calculate_s2_s3_s5_penalty(
+#         test_assignments,
+#         test_nurses,
+#         "testdatasets_json/n005w4/Sc-n005w4.json",
+#     )
+# )
+
 print(
-    calculate_s2_s3_s5_penalty(
-        test_assignments,
-        test_nurses,
-        "testdatasets_json/n005w4/Sc-n005w4.json",
-    )
+    calculate_s4_penalty(test_assignments, "testdatasets_json/n005w4/WD-n005w4-0.json")
 )
 
 # test_coop_matrix = [
