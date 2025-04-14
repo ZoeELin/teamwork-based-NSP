@@ -127,6 +127,42 @@ def calculate_h4_penalty(assignments, nurses):
     return penalty
 
 
+def calculate_s1_penalty(assignments, nurses, week_data_filepath):
+    """
+    S1: Insuﬃcient staﬃng for optimal coverage
+    Check a nurse is assigned to a shift that requires the optimal skill they do not have.
+    Input: nurses (from scenario), assignments (current schedule), week_data (dict)
+    Output: penalty score (int)
+    """
+    # Load week data
+    with open(week_data_filepath, "r") as f:
+        week_data = json.load(f)
+
+    # Map nurse ID to skills
+    nurse_skills = {n["id"]: set(n["skills"]) for n in nurses}
+
+    # Count valid assignments by (day, shift, skill)
+    coverage_count = {}
+    for assignment in assignments:
+        key = (assignment["shiftType"], assignment["skill"], assignment["day"])
+        # Calculate skill-qualified assignments(H4: legel assignments)
+        if assignment["skill"] in nurse_skills.get(assignment["nurse"], set()):
+            coverage_count[key] = coverage_count.get(key, 0) + 1
+
+    penalty = 0
+    for req in week_data["requirements"]:
+        shift = req["shiftType"]
+        skill = req["skill"]
+        for day in DAYS_WEEK:
+            day_key = f"requirementOn{day}"
+            if day_key in req:
+                optimal_required = req[day_key]["optimal"]
+                actual_coverage = coverage_count.get((shift, skill, day[0:3]), 0)
+                if actual_coverage < optimal_required:
+                    penalty += (optimal_required - actual_coverage) * 30
+    return penalty
+
+
 def calculate_ComC_penalty(assignments, cooperation_matrix, epsilon=0.01):
     """
     Calculate the ComC (Communication Cost) penalty score for the overall schedule.
@@ -182,20 +218,20 @@ def calculate_total_penalty(
     return h1 + h2 + h3 + h4
 
 
-# test_assignments = [
-#     {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
-#     {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
-#     {"nurse": "Andrea", "day": "Tue", "shiftType": "Night", "skill": "Nurse"},
-#     {"nurse": "Andrea", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
-# ]
-
 test_assignments = [
-    {"nurse": "HN_0", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
-    {"nurse": "NU_3", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
-    {"nurse": "CT_14", "day": "Tue", "shiftType": "Night", "skill": "Nurse"},
-    {"nurse": "NU_3", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
-    {"nurse": "NU_2", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
+    {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
+    {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
+    {"nurse": "Andrea", "day": "Tue", "shiftType": "Night", "skill": "Nurse"},
+    {"nurse": "Andrea", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
 ]
+
+# test_assignments = [
+#     {"nurse": "HN_0", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
+#     {"nurse": "NU_3", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
+#     {"nurse": "CT_14", "day": "Tue", "shiftType": "Night", "skill": "Nurse"},
+#     {"nurse": "NU_3", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
+#     {"nurse": "NU_2", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
+# ]
 
 test_nurses = [
     {"id": "Andrea", "contract": "FullTime", "skills": ["HeadNurse", "Nurse"]},
@@ -211,39 +247,44 @@ test_forbidden_successions = [
 
 # print(calculate_h1_penalty(test_assignments, test_nurses))
 # print(calculate_h3_penalty(test_assignments, test_forbidden_successions))
+print(
+    calculate_s1_penalty(
+        test_assignments, test_nurses, "testdatasets_json/n005w4/WD-n005w4-0.json"
+    )
+)
 
 
-test_coop_matrix = [
-    {"nurse1": "HN_0", "nurse2": "NU_3", "cooperation_score": 0.5},
-    {"nurse1": "CT_14", "nurse2": "NU_10", "cooperation_score": 0.5},
-    {"nurse1": "HN_2", "nurse2": "TR_17", "cooperation_score": 1.5},
-    {"nurse1": "CT_14", "nurse2": "HN_1", "cooperation_score": 1.0},
-    {"nurse1": "NU_10", "nurse2": "TR_16", "cooperation_score": 0.5},
-    {"nurse1": "CT_14", "nurse2": "NU_3", "cooperation_score": 1.0},
-    {"nurse1": "CT_11", "nurse2": "NU_10", "cooperation_score": 0.3333333333333333},
-    {"nurse1": "NU_10", "nurse2": "NU_9", "cooperation_score": 1.0},
-    {"nurse1": "HN_0", "nurse2": "TR_17", "cooperation_score": 1.0},
-    {"nurse1": "NU_6", "nurse2": "TR_19", "cooperation_score": 0.5},
-    {"nurse1": "NU_8", "nurse2": "TR_16", "cooperation_score": 0.5},
-    {"nurse1": "CT_13", "nurse2": "TR_18", "cooperation_score": 0.5},
-    {"nurse1": "HN_0", "nurse2": "NU_5", "cooperation_score": 0.3333333333333333},
-    {"nurse1": "NU_6", "nurse2": "TR_16", "cooperation_score": 1.0},
-    {"nurse1": "NU_4", "nurse2": "NU_8", "cooperation_score": 0.5},
-    {"nurse1": "NU_9", "nurse2": "TR_20", "cooperation_score": 0.5},
-    {"nurse1": "HN_1", "nurse2": "TR_18", "cooperation_score": 0.3333333333333333},
-    {"nurse1": "NU_3", "nurse2": "TR_17", "cooperation_score": 0.5},
-    {"nurse1": "CT_13", "nurse2": "NU_7", "cooperation_score": 1.5},
-    {"nurse1": "NU_10", "nurse2": "TR_18", "cooperation_score": 0.3333333333333333},
-    {"nurse1": "HN_1", "nurse2": "TR_20", "cooperation_score": 0.5},
-    {"nurse1": "NU_9", "nurse2": "TR_18", "cooperation_score": 0.5},
-    {"nurse1": "NU_10", "nurse2": "NU_6", "cooperation_score": 1.0},
-    {"nurse1": "HN_2", "nurse2": "TR_16", "cooperation_score": 0.5},
-    {"nurse1": "NU_7", "nurse2": "TR_18", "cooperation_score": 0.5},
-    {"nurse1": "HN_1", "nurse2": "NU_9", "cooperation_score": 0.5},
-    {"nurse1": "CT_11", "nurse2": "TR_18", "cooperation_score": 0.3333333333333333},
-    {"nurse1": "NU_4", "nurse2": "TR_17", "cooperation_score": 0.5},
-    {"nurse1": "CT_11", "nurse2": "HN_1", "cooperation_score": 0.3333333333333333},
-]
+# test_coop_matrix = [
+#     {"nurse1": "HN_0", "nurse2": "NU_3", "cooperation_score": 0.5},
+#     {"nurse1": "CT_14", "nurse2": "NU_10", "cooperation_score": 0.5},
+#     {"nurse1": "HN_2", "nurse2": "TR_17", "cooperation_score": 1.5},
+#     {"nurse1": "CT_14", "nurse2": "HN_1", "cooperation_score": 1.0},
+#     {"nurse1": "NU_10", "nurse2": "TR_16", "cooperation_score": 0.5},
+#     {"nurse1": "CT_14", "nurse2": "NU_3", "cooperation_score": 1.0},
+#     {"nurse1": "CT_11", "nurse2": "NU_10", "cooperation_score": 0.3333333333333333},
+#     {"nurse1": "NU_10", "nurse2": "NU_9", "cooperation_score": 1.0},
+#     {"nurse1": "HN_0", "nurse2": "TR_17", "cooperation_score": 1.0},
+#     {"nurse1": "NU_6", "nurse2": "TR_19", "cooperation_score": 0.5},
+#     {"nurse1": "NU_8", "nurse2": "TR_16", "cooperation_score": 0.5},
+#     {"nurse1": "CT_13", "nurse2": "TR_18", "cooperation_score": 0.5},
+#     {"nurse1": "HN_0", "nurse2": "NU_5", "cooperation_score": 0.3333333333333333},
+#     {"nurse1": "NU_6", "nurse2": "TR_16", "cooperation_score": 1.0},
+#     {"nurse1": "NU_4", "nurse2": "NU_8", "cooperation_score": 0.5},
+#     {"nurse1": "NU_9", "nurse2": "TR_20", "cooperation_score": 0.5},
+#     {"nurse1": "HN_1", "nurse2": "TR_18", "cooperation_score": 0.3333333333333333},
+#     {"nurse1": "NU_3", "nurse2": "TR_17", "cooperation_score": 0.5},
+#     {"nurse1": "CT_13", "nurse2": "NU_7", "cooperation_score": 1.5},
+#     {"nurse1": "NU_10", "nurse2": "TR_18", "cooperation_score": 0.3333333333333333},
+#     {"nurse1": "HN_1", "nurse2": "TR_20", "cooperation_score": 0.5},
+#     {"nurse1": "NU_9", "nurse2": "TR_18", "cooperation_score": 0.5},
+#     {"nurse1": "NU_10", "nurse2": "NU_6", "cooperation_score": 1.0},
+#     {"nurse1": "HN_2", "nurse2": "TR_16", "cooperation_score": 0.5},
+#     {"nurse1": "NU_7", "nurse2": "TR_18", "cooperation_score": 0.5},
+#     {"nurse1": "HN_1", "nurse2": "NU_9", "cooperation_score": 0.5},
+#     {"nurse1": "CT_11", "nurse2": "TR_18", "cooperation_score": 0.3333333333333333},
+#     {"nurse1": "NU_4", "nurse2": "TR_17", "cooperation_score": 0.5},
+#     {"nurse1": "CT_11", "nurse2": "HN_1", "cooperation_score": 0.3333333333333333},
+# ]
 
 
-print(calculate_ComC_penalty(test_assignments, test_coop_matrix))
+# print(calculate_ComC_penalty(test_assignments, test_coop_matrix))
