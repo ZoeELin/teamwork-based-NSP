@@ -5,6 +5,26 @@ import os
 from constants import DAYS_WEEK_ABB, DAYS_WEEK
 
 
+def load_scenario_data(filepath):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+
+def get_consecutive_sequences(binary_list):
+    sequences = []
+    count = 0
+    for val in binary_list:
+        if val:
+            count += 1
+        else:
+            if count > 0:
+                sequences.append(count)
+            count = 0
+    if count > 0:
+        sequences.append(count)
+    return sequences
+
+
 def package_solution_2JSON(assignments, output_dir, scenario_id, week_id):
     """
     Package the solution into a JSON format and write to a file.

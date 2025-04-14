@@ -9,3 +9,4 @@ DAYS_WEEK = [
     "Saturday",
     "Sunday",
 ]
+WEEKEND_DAYS = [("Sat", "Sun")]
