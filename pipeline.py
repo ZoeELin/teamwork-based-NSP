@@ -24,12 +24,12 @@ def run_scheduler_pipeline(instance):
         f".......................................{instance['scenario_name']}......................................."
     )
 
-    for week_data in instance["week_data"]:
+    for week_data_file in instance["week_data"]:
         print(f"\nProcessing: week {week_idx}")
         print("=" * 80)
 
-        final_assignments = scheduler.supreme_scheduler(
-            instance["scenario"], week_data, his_filepath
+        final_assignments = scheduler.base_scheduler(
+            instance["scenario"], week_data_file, his_filepath
         )
 
         utils.package_solution_2JSON(

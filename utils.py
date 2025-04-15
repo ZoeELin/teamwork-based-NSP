@@ -5,12 +5,7 @@ import os
 from constants import DAYS_WEEK_ABB, DAYS_WEEK
 
 
-def load_scenario_data(filepath):
-    with open(filepath, "r") as f:
-        return json.load(f)
-
-
-def load_week_data(filepath):
+def load_data(filepath):
     with open(filepath, "r") as f:
         return json.load(f)
 

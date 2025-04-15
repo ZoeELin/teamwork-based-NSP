@@ -8,24 +8,22 @@ from constants import DAYS_WEEK_ABB, DAYS_WEEK, WEEKEND_DAYS
 
 def calculate_h1_penalty(assignments, nurses):
     """
-    H1: Only one assignment per day, 10 penalty points for each violation
+    H1: Only one assignment per day
     Check if a nurse has more than one shift on the same day
     Input: nurses (from scenario), assignments (current schedule)
     Output: penalty score (int)
     """
     penalty = 0
+    penalty_points = 1000
     nurse_day_count = defaultdict(lambda: defaultdict(int))
 
-    for assignment in assignments:
-        nurse_id = assignment["nurse"]
-        day = assignment["day"]
-        nurse_day_count[nurse_id][day] += 1
+    for a in assignments:
+        nurse_day_count[a["nurse"]][a["day"]] += 1
 
-    for nurse in nurses:
-        nurse_id = nurse["id"]
-        for day, count in nurse_day_count[nurse_id].items():
+    for nurse_id, day_counts in nurse_day_count.items():
+        for day, count in day_counts.items():
             if count > 1:
-                penalty += (count - 1) * 1000
+                penalty += (count - 1) * penalty_points
 
     return penalty
 
@@ -37,6 +35,8 @@ def calculate_h2_penalty(assignments, nurses, week_data):
     Input: nurses (from scenario), assignments (current schedule), week_data (dict)
     Output: penalty score (int)
     """
+    penalty_points = 500
+
     # Map nurse ID to skills
     nurse_skills = {n["id"]: set(n["skills"]) for n in nurses}
 
@@ -60,37 +60,52 @@ def calculate_h2_penalty(assignments, nurses, week_data):
                 minimum_required = req[day_key]["minimum"]
                 actual_coverage = coverage_count.get((shift, skill, day[0:3]), 0)
                 if actual_coverage < minimum_required:
-                    penalty += (minimum_required - actual_coverage) * 500
+                    penalty += (minimum_required - actual_coverage) * penalty_points
     return penalty
 
 
-def calculate_h3_penalty(assignments, forbidden_successions):
+def calculate_h3_penalty(
+    assignments, forbidden_successions, nurse_lastdayoflastweek_shift
+):
     """
     H3: Forbidden shift successions, adding penalty points for each violation.
     Check if a nurse is assigned to a shift that is forbidden to follow the previous shift.
     Input: forbidden_successions (from scenario), assignments (current schedule)
     Output: penalty score (int)
     """
-    # Create a daily nurse shift schedule dict
-    # e.g., {nurse_id: { day: shiftType }}
+    penalty_points = 500
+
+    # Step 1: Build nurse schedule per day
     nurse_schedule = {}
     for assignment in assignments:
         nurse = assignment["nurse"]
         day = assignment["day"]
         shift = assignment["shiftType"]
-        nurse_schedule.setdefault(nurse, {}).setdefault(day, []).append(shift)
+        nurse_schedule.setdefault(nurse, {}).setdefault(day, []).append(
+            shift
+        )  # e.g., {nurse_id: { day: shiftType }}
 
-    # Convert the forbidden successions list to a map for quick lookup
-    # e.g., {"Late": {"Early", "Late"}, "Early": {"Late"}}
+    # Step 2: Build forbidden map for fast lookup
     forbidden_map = {}
     for rule in forbidden_successions:
         preceding = rule["precedingShiftType"]
         succeeding_list = rule["succeedingShiftTypes"]
-        forbidden_map.setdefault(preceding, set()).update(succeeding_list)
+        forbidden_map.setdefault(preceding, set()).update(
+            succeeding_list
+        )  # e.g., {"Late": {"Early", "Late"}, "Early": {"Late"}}
 
-    # Calculate the number of violations
+    # Step 3: Calculate the number of violations
     penalty = 0
     for nurse, schedule in nurse_schedule.items():
+        # 3.1 Check Mon vs. nurseHistory (previous week)
+        history_shift = nurse_lastdayoflastweek_shift.get(nurse)
+        monday_shifts = schedule.get("Mon", [])
+        if history_shift and history_shift != "None":
+            for shift in monday_shifts:
+                if shift in forbidden_map.get(history_shift, set()):
+                    penalty += penalty_points
+
+        # 3.2 Check current week (Tue - Sun)
         for i in range(len(DAYS_WEEK_ABB) - 1):
             day1 = DAYS_WEEK_ABB[i]
             day2 = DAYS_WEEK_ABB[i + 1]
@@ -100,7 +115,7 @@ def calculate_h3_penalty(assignments, forbidden_successions):
             for shift1 in shifts_day1:
                 for shift2 in shifts_day2:
                     if shift2 in forbidden_map.get(shift1, set()):
-                        penalty += 500
+                        penalty += penalty_points
 
     return penalty
 
@@ -116,11 +131,12 @@ def calculate_h4_penalty(assignments, nurses):
     nurse_skills = {n["id"]: set(n["skills"]) for n in nurses}
 
     penalty = 0
+    penalty_points = 1000
     for assignment in assignments:
         nurse_id = assignment["nurse"]
         required_skill = assignment["skill"]
         if required_skill not in nurse_skills.get(nurse_id, set()):
-            penalty += 1000  # Penalty +1
+            penalty += penalty_points
     return penalty
 
 
@@ -165,7 +181,6 @@ def calculate_consecutive_work_penalty(work_seq, min_work, max_work, weight):
             penalty += (min_work - length) * weight
         elif length > max_work:
             penalty += (length - max_work) * weight
-    print("Consecutive work penalty:", penalty)
     return penalty
 
 
@@ -178,7 +193,6 @@ def calculate_consecutive_off_penalty(work_seq, min_off, max_off, weight):
             penalty += (min_off - length) * weight
         elif length > max_off:
             penalty += (length - max_off) * weight
-    print("Consecutive off penalty:", penalty)
     return penalty
 
 
@@ -196,7 +210,6 @@ def calculate_shift_specific_penalty(
                 penalty += (limits["min"] - length) * weight
             elif length > limits["max"]:
                 penalty += (length - limits["max"]) * weight
-    print("Shift specific penalty:", penalty)
     return penalty
 
 
@@ -208,11 +221,10 @@ def calculate_incomplete_weekend_penalty(schedule, nurse, weekend_days, weight):
             worked_sun = schedule[nurse["id"]].get(sun) is not None
             if worked_sat != worked_sun:
                 penalty += weight
-    print("Incomplete weekend penalty:", penalty)
     return penalty
 
 
-def calculate_s2_s3_s5_penalty(assignments, nurses, scenario):
+def calculate_s2_s3_s5_penalty(assignments, nurses, scenario, nurseHistory):
     """
     Calculates penalties for:
     S2: Consecutive assignments
@@ -229,6 +241,8 @@ def calculate_s2_s3_s5_penalty(assignments, nurses, scenario):
         for s in scenario["shiftTypes"]
     }
 
+    history_lookup = {h["nurse"]: h for h in nurseHistory}
+
     schedule = defaultdict(lambda: defaultdict(lambda: None))  # nurse -> day -> shift
     for a in assignments:
         schedule[a["nurse"]][a["day"]] = a["shiftType"]
@@ -238,8 +252,23 @@ def calculate_s2_s3_s5_penalty(assignments, nurses, scenario):
         nurse_id = nurse["id"]
         contract_id = nurse_contract_map[nurse_id]
         contract = contract_limits[contract_id]
+        history = history_lookup.get(
+            nurse_id,
+            {
+                "numberOfConsecutiveAssignments": 0,
+                "numberOfConsecutiveWorkingDays": 0,
+                "numberOfConsecutiveDaysOff": 0,
+            },
+        )
 
-        working_seq = [1 if schedule[nurse_id].get(day) else 0 for day in DAYS_WEEK_ABB]
+        working_seq = [
+            1 if schedule[nurse_id].get(day) else 0 for day in DAYS_WEEK_ABB
+        ]  # e.g., [1, 0, 1, 1, 0, ...]
+        # Extend the beginning with historical values
+        if history["numberOfConsecutiveWorkingDays"] > 0:
+            working_seq = [1] * history["numberOfConsecutiveWorkingDays"] + working_seq
+        elif history["numberOfConsecutiveDaysOff"] > 0:
+            working_seq = [0] * history["numberOfConsecutiveDaysOff"] + working_seq
 
         # S2
         total_penalty += calculate_consecutive_work_penalty(
@@ -339,21 +368,36 @@ def calculate_ComC_penalty(assignments, cooperation_matrix, epsilon=0.01):
 
 
 def calculate_total_penalty(
-    nurses, forbidden_successions, assignments, weekdata_filepath, scenario
+    nurses,
+    forbidden_successions,
+    assignments,
+    weekdata_filepath,
+    scenario,
+    nurses_lastshift_from_lastweek,
+    nurseHistory,
 ):
     # Load week data
-    week_data = utils.load_week_data(weekdata_filepath)
+    week_data = utils.load_data(weekdata_filepath)
 
     h1 = calculate_h1_penalty(assignments, nurses)
     h2 = calculate_h2_penalty(assignments, nurses, week_data)
-    h3 = calculate_h3_penalty(assignments, forbidden_successions)
+    h3 = calculate_h3_penalty(
+        assignments, forbidden_successions, nurses_lastshift_from_lastweek
+    )
     h4 = calculate_h4_penalty(assignments, nurses)
     s1 = calculate_s1_penalty(assignments, nurses, week_data)
-    s2_s3_s5 = calculate_s2_s3_s5_penalty(assignments, nurses, scenario)
+    s2_s3_s5 = calculate_s2_s3_s5_penalty(assignments, nurses, scenario, nurseHistory)
     s4 = calculate_s4_penalty(assignments, week_data)
-    print(f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}")
-    print(f"S1: {s1}, S2+S3+S5: {s2_s3_s5}, S4: {s4}")
-    return h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4
+
+    cooperation = utils.load_data("testdatasets_json/n021w4/coop-intensity.json")
+    ComC = 0
+    # ComC = calculate_ComC_penalty(assignments, cooperation)
+
+    # print(
+    #     f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}, S1: {s1}, S2+S3+S5: {s2_s3_s5}, S4: {s4}, ComC: {ComC:.4f}"
+    # )
+    # print(f"Penalty: {h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4 + ComC}")
+    return h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4 + ComC
 
 
 test_assignments = [
@@ -401,9 +445,9 @@ test_forbidden_successions = [
 #     )
 # )
 
-print(
-    calculate_s4_penalty(test_assignments, "testdatasets_json/n005w4/WD-n005w4-0.json")
-)
+# print(
+#     calculate_s4_penalty(test_assignments, "testdatasets_json/n005w4/WD-n005w4-0.json")
+# )
 
 # test_coop_matrix = [
 #     {"nurse1": "HN_0", "nurse2": "NU_3", "cooperation_score": 0.5},

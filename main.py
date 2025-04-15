@@ -20,9 +20,9 @@ def main():
 
 
 def test_one_week():
-    sce_path = "testdatasets_json/n005w4/Sc-n005w4.json"
-    weekdata_path = "testdatasets_json/n005w4/WD-n005w4-0.json"
-    history_path = "testdatasets_json/n005w4/H0-n005w4-0.json"
+    sce_path = "datasets_json/n030w4/Sc-n030w4.json"
+    weekdata_path = "datasets_json/n030w4/WD-n030w4-0.json"
+    history_path = "datasets_json/n030w4/H0-n030w4-0.json"
     start = time.perf_counter()
     scheduler.supreme_scheduler(sce_path, weekdata_path, history_path)
     end = time.perf_counter()
