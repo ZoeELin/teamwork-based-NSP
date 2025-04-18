@@ -389,7 +389,7 @@ def calculate_total_penalty(
     s2_s3_s5 = calculate_s2_s3_s5_penalty(assignments, nurses, scenario, nurseHistory)
     s4 = calculate_s4_penalty(assignments, week_data)
 
-    cooperation = utils.load_data("testdatasets_json/n021w4/coop-intensity.json")
+    # cooperation = utils.load_data("testdatasets_json/n021w4/coop-intensity.json")
     ComC = 0
     # ComC = calculate_ComC_penalty(assignments, cooperation)
 

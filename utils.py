@@ -37,6 +37,9 @@ def package_solution_2JSON(assignments, output_dir, scenario_id, week_id):
         "week": week_id,
         "assignments": assignments,
     }
+    
+    output_dir = f"Output/{scenario_id}/Solution"
+    os.makedirs(output_dir, exist_ok=True)
 
     # Output directory and file path
     output_path = os.path.join(output_dir, f"Sol-{scenario_id}-{week_id}.json")

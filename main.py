@@ -6,7 +6,7 @@ from cli import cli_interface
 
 
 def main():
-    instance = instance_loader.select_instance_files("testdatasets_json", "n021w4")
+    instance = instance_loader.select_instance_files("testdatasets_json", "n005w4")
 
     # args = cli_interface()  # Parse arguments using cli_interface
     # instance = instance_loader.select_instance_files(

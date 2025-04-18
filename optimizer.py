@@ -243,7 +243,7 @@ def simulated_annealing(
     temperature = 110
     cooling_rate = 0.95
     min_temp = 2.13
-    max_iter = 2 * 10**8
+    max_iter = 2 * 10
 
     current_assignments = assignments
     current_penalty = calculate_total_penalty(
@@ -307,7 +307,7 @@ def simulated_annealing_author_style(
     initial_temp=110.0,
     min_temp=2.13,
     cooling_rate=0.95,
-    max_iter=2 * 10**8,
+    max_iter=2 * 10,
     kmaxMS=20,
     kmaxMC=2,
     pMS=0.45,
