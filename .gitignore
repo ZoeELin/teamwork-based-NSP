@@ -5,6 +5,7 @@ papers/
 testdatasets_txt/
 
 # Virtual environments
+venv*
 venv/
 .env
 
