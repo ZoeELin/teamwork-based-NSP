@@ -101,17 +101,22 @@ def accumulate_coopdata(current, previous):
     ]
 
 
-
-def write_coopdata_2json(data, output_dir, run_id):
+def write_coopdata_2json(data, output_dir, run_id, use_ComC=False):
     """
     Write data to a JSON file.
     """
-    output_path = os.path.join(output_dir, f"coop-intensity-{run_id}.json")
+    if use_ComC:
+        output_path = os.path.join(output_dir, f"coop-intensity-ComC-{run_id}.json")
+    else:
+        output_path = os.path.join(output_dir, f"coop-intensity-{run_id}.json")
+
     with open(output_path, "w") as f:
         json.dump(data, f, indent=4)
 
+    print(f"Cooperation data saved to {output_path}")
 
-def visual_cooperation_graph(data, output_dir, run_id):
+
+def visual_cooperation_graph(data, output_dir, use_ComC=False):
     """
     Visualize the cooperation graph using NetworkX and Matplotlib.
     """
@@ -135,29 +140,38 @@ def visual_cooperation_graph(data, output_dir, run_id):
     # plt.tight_layout()
 
     output_img_path = output_dir + "/coop-graph.png"
+    if use_ComC:
+        output_img_path = output_dir + "/coop-graph-ComC.png"
     plt.savefig(output_img_path)
     plt.close()
+    print(f"Cooperation graph saved to {output_img_path}")
 
 
-
-def simulate_one_run(sol_dir, run_id=0):
+def simulate_one_run(sol_dir, run_id=0, use_ComC=False):
     """
     Main callable function to simulate and accumulate cooperation graphㄡ
     """
-    
-    schedule = read_solution(f"{sol_dir}/Solutions-{run_id}")
+    # Read the solution
+    if use_ComC:
+        schedule = read_solution(f"{sol_dir}/Solutions-ComC200-{run_id}")
+    else:
+        schedule = read_solution(f"{sol_dir}/Solutions-{run_id}")
+
+    # Calculate cooperation intensity from the solution
     coop_intensity = cal_coop_graph(schedule)
-    
+
     # Merge with previous cooperation data
     if int(run_id) > 1:
         prev_coop = load_previous_coopdata(sol_dir, str(int(run_id) - 1))
         coop_intensity = accumulate_coopdata(coop_intensity, prev_coop)
 
-    write_coopdata_2json(coop_intensity, sol_dir, run_id)
-    visual_cooperation_graph(coop_intensity, sol_dir, run_id)
+    write_coopdata_2json(coop_intensity, sol_dir, run_id, use_ComC)
+    visual_cooperation_graph(coop_intensity, sol_dir, use_ComC)
 
 
 if __name__ == "__main__":
     import sys
+
     run_id = sys.argv[1] if len(sys.argv) > 1 else "0"
-    simulate_one_run("Output/n021w4", run_id)
+    use_ComC = "--comc" in [arg.lower() for arg in sys.argv[2:]]
+    simulate_one_run("Output/n021w4", run_id, use_ComC)

@@ -304,7 +304,7 @@ def supreme_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
     return assignments
 
 
-def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
+def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0"):
     """
     Initial solution that randomly assigns nurses to meet shift requirements (H2 only).
     Input: scenario file path, week data file path
@@ -373,8 +373,21 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
                 assigned_today.add(nurse["id"])
                 eligible_nurses.remove(nurse)
 
+    penalty.calculate_total_penalty(
+        nurses,
+        forbidden_successions,
+        assignments,
+        weekdata_filepath,
+        scenario,
+        nurses_lastday_from_lastweek,
+        nurseHistory,
+        print_penalty=True,
+        run_id=int(run_id),
+    )
+
     # Step 2: Simulated Annealing
-    assignments = optimizer.simulated_annealing_author_style(
+    assignments = optimizer.simulated_annealing_with_ComC(
+        run_id,
         assignments,
         forbidden_successions,
         nurses,
@@ -389,15 +402,5 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
         history.create_next_history_data(assignments, his_filepath)
 
     utils.display_schedule(assignments)
-
-    penalty.calculate_total_penalty(
-        nurses,
-        forbidden_successions,
-        assignments,
-        weekdata_filepath,
-        scenario,
-        nurses_lastday_from_lastweek,
-        nurseHistory,
-    )
 
     return assignments

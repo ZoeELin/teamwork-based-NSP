@@ -19,7 +19,7 @@ def main():
     #     weeks_to_schedule=args.weeks_to_schedule,
     #     history_index=args.history_index,
     # )
-    pipeline.run_scheduler_pipeline(instance, run_id)
+    pipeline.run_scheduler_pipeline(instance, run_id, use_ComC=True)
 
 
 def test_one_week():

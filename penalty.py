@@ -323,7 +323,7 @@ def calculate_s4_penalty(assignments, week_data):
     return penalty
 
 
-def calculate_ComC_penalty(assignments, coop_dir, id=1, epsilon=0.01):
+def calculate_ComC_penalty(assignments, coop_dir, id=0, epsilon=0.01):
     """
     Calculate the ComC (Communication Cost) penalty score for the overall schedule.
     The fewer records of cooperation, the higher the ComC.
@@ -331,10 +331,9 @@ def calculate_ComC_penalty(assignments, coop_dir, id=1, epsilon=0.01):
     Output: penalty score (float)
     """
     weight = 100
-
     cooperation_matrix = []
     if id > 1:
-        cooperation = utils.load_data(f"{coop_dir}/coop-intensity-{id-1}.json")
+        cooperation_matrix = utils.load_data(f"{coop_dir}/coop-intensity-{id-1}.json")
 
     # Convert cooperation matrix to a dictionary for quick lookup
     coop_dict = {}
@@ -381,7 +380,8 @@ def calculate_total_penalty(
     scenario,
     nurses_lastshift_from_lastweek,
     nurseHistory,
-    run_id="1",
+    print_penalty=False,
+    run_id=0,
 ):
     # Load week data
     week_data = utils.load_data(weekdata_filepath)
@@ -396,13 +396,15 @@ def calculate_total_penalty(
     s2_s3_s5 = calculate_s2_s3_s5_penalty(assignments, nurses, scenario, nurseHistory)
     s4 = calculate_s4_penalty(assignments, week_data)
 
-    coop_dir = f"Output/{scenario}"
     ComC = 0
-    # ComC = calculate_ComC_penalty(assignments, coop_dir, run_id)
+    if int(run_id) > 1:
+        coop_dir = f"Output/{scenario['id']}"
+        ComC = calculate_ComC_penalty(assignments, coop_dir, int(run_id))
 
-    # print(
-    #     f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}, S1: {s1}, S2+S3+S5: {s2_s3_s5}, S4: {s4}, ComC: {ComC:.4f}"
-    # )
+    if print_penalty:
+        print(
+            f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}, S1: {s1}, S2+S3+S5: {s2_s3_s5}, S4: {s4}, ComC: {ComC:.4f}"
+        )
     # print(f"Penalty: {h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4 + ComC}")
     return h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4 + ComC
 
