@@ -323,13 +323,19 @@ def calculate_s4_penalty(assignments, week_data):
     return penalty
 
 
-def calculate_ComC_penalty(assignments, cooperation_matrix, epsilon=0.01):
+def calculate_ComC_penalty(assignments, coop_dir, id=1, epsilon=0.01):
     """
     Calculate the ComC (Communication Cost) penalty score for the overall schedule.
     The fewer records of cooperation, the higher the ComC.
-    Input: assignments (current schedule), cooperation_matrix (from cooperation graph), epsilon (default 0.01)
+    Input: assignments (current schedule), epsilon (default 0.01), coop_dir (directory of cooperation matrix), id (iteration number)
     Output: penalty score (float)
     """
+    weight = 100
+
+    cooperation_matrix = []
+    if id > 1:
+        cooperation = utils.load_data(f"{coop_dir}/coop-intensity-{id-1}.json")
+
     # Convert cooperation matrix to a dictionary for quick lookup
     coop_dict = {}
     for entry in cooperation_matrix:
@@ -362,7 +368,7 @@ def calculate_ComC_penalty(assignments, cooperation_matrix, epsilon=0.01):
 
         # Calculate the ComC penalty for this shift, normalized by the number of nurses in the shift
         ComC = team_total_cost / len(nurses)
-        team_penalties += ComC
+        team_penalties += (ComC) * weight
 
     return team_penalties
 
@@ -375,6 +381,7 @@ def calculate_total_penalty(
     scenario,
     nurses_lastshift_from_lastweek,
     nurseHistory,
+    run_id="1",
 ):
     # Load week data
     week_data = utils.load_data(weekdata_filepath)
@@ -389,9 +396,9 @@ def calculate_total_penalty(
     s2_s3_s5 = calculate_s2_s3_s5_penalty(assignments, nurses, scenario, nurseHistory)
     s4 = calculate_s4_penalty(assignments, week_data)
 
-    # cooperation = utils.load_data("testdatasets_json/n021w4/coop-intensity.json")
+    coop_dir = f"Output/{scenario}"
     ComC = 0
-    # ComC = calculate_ComC_penalty(assignments, cooperation)
+    # ComC = calculate_ComC_penalty(assignments, coop_dir, run_id)
 
     # print(
     #     f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}, S1: {s1}, S2+S3+S5: {s2_s3_s5}, S4: {s4}, ComC: {ComC:.4f}"
@@ -400,14 +407,14 @@ def calculate_total_penalty(
     return h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4 + ComC
 
 
-test_assignments = [
-    {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
-    {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
-    {"nurse": "Andrea", "day": "Tue", "shiftType": "Night", "skill": "Nurse"},
-    {"nurse": "Andrea", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
-    {"nurse": "Sara", "day": "Thu", "shiftType": "Early", "skill": "Nurse"},
-    {"nurse": "Stefaan", "day": "Sat", "shiftType": "Late", "skill": "Nurse"},
-]
+# test_assignments = [
+#     {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
+#     {"nurse": "Stefaan", "day": "Mon", "shiftType": "Early", "skill": "Nurse"},
+#     {"nurse": "Andrea", "day": "Tue", "shiftType": "Night", "skill": "Nurse"},
+#     {"nurse": "Andrea", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
+#     {"nurse": "Sara", "day": "Thu", "shiftType": "Early", "skill": "Nurse"},
+#     {"nurse": "Stefaan", "day": "Sat", "shiftType": "Late", "skill": "Nurse"},
+# ]
 
 # test_assignments = [
 #     {"nurse": "HN_0", "day": "Mon", "shiftType": "Early", "skill": "HeadNurse"},
@@ -417,16 +424,16 @@ test_assignments = [
 #     {"nurse": "NU_2", "day": "Wed", "shiftType": "Early", "skill": "Nurse"},
 # ]
 
-test_nurses = [
-    {"id": "Andrea", "contract": "FullTime", "skills": ["HeadNurse", "Nurse"]},
-    {"id": "Stefaan", "contract": "PartTime", "skills": ["HeadNurse", "Nurse"]},
-]
+# test_nurses = [
+#     {"id": "Andrea", "contract": "FullTime", "skills": ["HeadNurse", "Nurse"]},
+#     {"id": "Stefaan", "contract": "PartTime", "skills": ["HeadNurse", "Nurse"]},
+# ]
 
-test_forbidden_successions = [
-    {"precedingShiftType": "Early", "succeedingShiftTypes": []},
-    {"precedingShiftType": "Late", "succeedingShiftTypes": ["Early"]},
-    {"precedingShiftType": "Night", "succeedingShiftTypes": ["Early", "Late"]},
-]
+# test_forbidden_successions = [
+#     {"precedingShiftType": "Early", "succeedingShiftTypes": []},
+#     {"precedingShiftType": "Late", "succeedingShiftTypes": ["Early"]},
+#     {"precedingShiftType": "Night", "succeedingShiftTypes": ["Early", "Late"]},
+# ]
 
 
 # print(calculate_h1_penalty(test_assignments, test_nurses))

@@ -1,0 +1,1021 @@
+Run scenario: n021w4
+
+Processing: week 0
+================================================================================
+
+--- Temperature Level 1 ---
+Current temperature: 110.0000
+
+--- Temperature Level 2 ---
+Current temperature: 104.5000
+
+--- Temperature Level 3 ---
+Current temperature: 99.2750
+
+--- Temperature Level 4 ---
+Current temperature: 94.3112
+
+--- Temperature Level 5 ---
+Current temperature: 89.5957
+
+--- Temperature Level 6 ---
+Current temperature: 85.1159
+
+--- Temperature Level 7 ---
+Current temperature: 80.8601
+
+--- Temperature Level 8 ---
+Current temperature: 76.8171
+
+--- Temperature Level 9 ---
+Current temperature: 72.9762
+
+--- Temperature Level 10 ---
+Current temperature: 69.3274
+
+--- Temperature Level 11 ---
+Current temperature: 65.8611
+
+--- Temperature Level 12 ---
+Current temperature: 62.5680
+
+--- Temperature Level 13 ---
+Current temperature: 59.4396
+
+--- Temperature Level 14 ---
+Current temperature: 56.4676
+
+--- Temperature Level 15 ---
+Current temperature: 53.6442
+
+--- Temperature Level 16 ---
+Current temperature: 50.9620
+
+--- Temperature Level 17 ---
+Current temperature: 48.4139
+
+--- Temperature Level 18 ---
+Current temperature: 45.9932
+
+--- Temperature Level 19 ---
+Current temperature: 43.6936
+
+--- Temperature Level 20 ---
+Current temperature: 41.5089
+
+--- Temperature Level 21 ---
+Current temperature: 39.4335
+
+--- Temperature Level 22 ---
+Current temperature: 37.4618
+
+--- Temperature Level 23 ---
+Current temperature: 35.5887
+
+--- Temperature Level 24 ---
+Current temperature: 33.8093
+
+--- Temperature Level 25 ---
+Current temperature: 32.1188
+
+--- Temperature Level 26 ---
+Current temperature: 30.5129
+
+--- Temperature Level 27 ---
+Current temperature: 28.9872
+
+--- Temperature Level 28 ---
+Current temperature: 27.5378
+
+--- Temperature Level 29 ---
+Current temperature: 26.1610
+
+--- Temperature Level 30 ---
+Current temperature: 24.8529
+
+--- Temperature Level 31 ---
+Current temperature: 23.6103
+
+--- Temperature Level 32 ---
+Current temperature: 22.4298
+
+--- Temperature Level 33 ---
+Current temperature: 21.3083
+
+--- Temperature Level 34 ---
+Current temperature: 20.2429
+
+--- Temperature Level 35 ---
+Current temperature: 19.2307
+
+--- Temperature Level 36 ---
+Current temperature: 18.2692
+
+--- Temperature Level 37 ---
+Current temperature: 17.3557
+
+--- Temperature Level 38 ---
+Current temperature: 16.4879
+
+--- Temperature Level 39 ---
+Current temperature: 15.6635
+
+--- Temperature Level 40 ---
+Current temperature: 14.8804
+
+--- Temperature Level 41 ---
+Current temperature: 14.1363
+
+--- Temperature Level 42 ---
+Current temperature: 13.4295
+
+--- Temperature Level 43 ---
+Current temperature: 12.7580
+
+--- Temperature Level 44 ---
+Current temperature: 12.1201
+
+--- Temperature Level 45 ---
+Current temperature: 11.5141
+
+--- Temperature Level 46 ---
+Current temperature: 10.9384
+
+--- Temperature Level 47 ---
+Current temperature: 10.3915
+
+--- Temperature Level 48 ---
+Current temperature: 9.8719
+
+--- Temperature Level 49 ---
+Current temperature: 9.3783
+
+--- Temperature Level 50 ---
+Current temperature: 8.9094
+
+--- Temperature Level 51 ---
+Current temperature: 8.4639
+
+--- Temperature Level 52 ---
+Current temperature: 8.0407
+
+--- Temperature Level 53 ---
+Current temperature: 7.6387
+
+--- Temperature Level 54 ---
+Current temperature: 7.2568
+
+--- Temperature Level 55 ---
+Current temperature: 6.8939
+
+--- Temperature Level 56 ---
+Current temperature: 6.5492
+
+--- Temperature Level 57 ---
+Current temperature: 6.2218
+
+--- Temperature Level 58 ---
+Current temperature: 5.9107
+
+--- Temperature Level 59 ---
+Current temperature: 5.6152
+
+--- Temperature Level 60 ---
+Current temperature: 5.3344
+
+--- Temperature Level 61 ---
+Current temperature: 5.0677
+
+--- Temperature Level 62 ---
+Current temperature: 4.8143
+
+--- Temperature Level 63 ---
+Current temperature: 4.5736
+
+--- Temperature Level 64 ---
+Current temperature: 4.3449
+
+--- Temperature Level 65 ---
+Current temperature: 4.1277
+
+--- Temperature Level 66 ---
+Current temperature: 3.9213
+
+--- Temperature Level 67 ---
+Current temperature: 3.7252
+
+--- Temperature Level 68 ---
+Current temperature: 3.5389
+
+--- Temperature Level 69 ---
+Current temperature: 3.3620
+
+--- Temperature Level 70 ---
+Current temperature: 3.1939
+
+--- Temperature Level 71 ---
+Current temperature: 3.0342
+
+--- Temperature Level 72 ---
+Current temperature: 2.8825
+
+--- Temperature Level 73 ---
+Current temperature: 2.7384
+
+--- Temperature Level 74 ---
+Current temperature: 2.6015
+
+--- Temperature Level 75 ---
+Current temperature: 2.4714
+
+--- Temperature Level 76 ---
+Current temperature: 2.3478
+Final penalty: 8645.0000
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+HN_2       Early(H)   Night(C)   Night(H)   Night(N)   -          Early(H)   Early(C)  
+NU_7       Early(N)   Late(C)    Late(N)    Late(N)    Early(N)   -          Late(N)   
+TR_18      Early(T)   Day(T)     -          Day(T)     -          Late(T)    -         
+NU_3       Day(N)     Day(C)     -          -          Late(N)    -          -         
+TR_16      Day(T)     Early(T)   Early(T)   -          -          Early(T)   -         
+NU_5       Late(N)    -          -          -          Early(N)   Late(C)    -         
+TR_19      Late(T)    -          -          -          -          -          -         
+NU_4       Day(C)     Early(N)   -          Day(C)     Day(N)     -          -         
+NU_9       -          Early(C)   Late(C)    Early(C)   Night(N)   Night(C)   Night(N)  
+TR_20      -          Early(T)   -          -          Night(T)   Night(T)   -         
+HN_0       -          Day(N)     Early(N)   Early(H)   Early(C)   Early(N)   Early(C)  
+NU_10      -          Late(N)    Night(C)   -          -          Late(C)    Late(C)   
+HN_1       Early(C)   Night(N)   Day(N)     Day(N)     Day(C)     -          Day(N)    
+NU_6       -          Night(C)   Night(C)   -          -          Day(N)     Early(N)  
+CT_12      -          Early(C)   Early(C)   Early(C)   -          -          Day(C)    
+TR_17      -          -          Late(T)    Late(T)    -          -          -         
+NU_8       Night(C)   -          Night(N)   Early(N)   -          Late(N)    Late(C)   
+CT_11      -          -          -          Night(C)   Night(C)   Night(C)   -         
+CT_15      Late(C)    -          -          -          Late(C)    Late(C)    -         
+CT_13      -          -          -          Late(C)    -          Early(C)   Early(C)  
+CT_14      -          -          -          -          Day(C)     -          -         
+
+Processing: week 1
+================================================================================
+
+--- Temperature Level 1 ---
+Current temperature: 110.0000
+
+--- Temperature Level 2 ---
+Current temperature: 104.5000
+
+--- Temperature Level 3 ---
+Current temperature: 99.2750
+
+--- Temperature Level 4 ---
+Current temperature: 94.3112
+
+--- Temperature Level 5 ---
+Current temperature: 89.5957
+
+--- Temperature Level 6 ---
+Current temperature: 85.1159
+
+--- Temperature Level 7 ---
+Current temperature: 80.8601
+
+--- Temperature Level 8 ---
+Current temperature: 76.8171
+
+--- Temperature Level 9 ---
+Current temperature: 72.9762
+
+--- Temperature Level 10 ---
+Current temperature: 69.3274
+
+--- Temperature Level 11 ---
+Current temperature: 65.8611
+
+--- Temperature Level 12 ---
+Current temperature: 62.5680
+
+--- Temperature Level 13 ---
+Current temperature: 59.4396
+
+--- Temperature Level 14 ---
+Current temperature: 56.4676
+
+--- Temperature Level 15 ---
+Current temperature: 53.6442
+
+--- Temperature Level 16 ---
+Current temperature: 50.9620
+
+--- Temperature Level 17 ---
+Current temperature: 48.4139
+
+--- Temperature Level 18 ---
+Current temperature: 45.9932
+
+--- Temperature Level 19 ---
+Current temperature: 43.6936
+
+--- Temperature Level 20 ---
+Current temperature: 41.5089
+
+--- Temperature Level 21 ---
+Current temperature: 39.4335
+
+--- Temperature Level 22 ---
+Current temperature: 37.4618
+
+--- Temperature Level 23 ---
+Current temperature: 35.5887
+
+--- Temperature Level 24 ---
+Current temperature: 33.8093
+
+--- Temperature Level 25 ---
+Current temperature: 32.1188
+
+--- Temperature Level 26 ---
+Current temperature: 30.5129
+
+--- Temperature Level 27 ---
+Current temperature: 28.9872
+
+--- Temperature Level 28 ---
+Current temperature: 27.5378
+
+--- Temperature Level 29 ---
+Current temperature: 26.1610
+
+--- Temperature Level 30 ---
+Current temperature: 24.8529
+
+--- Temperature Level 31 ---
+Current temperature: 23.6103
+
+--- Temperature Level 32 ---
+Current temperature: 22.4298
+
+--- Temperature Level 33 ---
+Current temperature: 21.3083
+
+--- Temperature Level 34 ---
+Current temperature: 20.2429
+
+--- Temperature Level 35 ---
+Current temperature: 19.2307
+
+--- Temperature Level 36 ---
+Current temperature: 18.2692
+
+--- Temperature Level 37 ---
+Current temperature: 17.3557
+
+--- Temperature Level 38 ---
+Current temperature: 16.4879
+
+--- Temperature Level 39 ---
+Current temperature: 15.6635
+
+--- Temperature Level 40 ---
+Current temperature: 14.8804
+
+--- Temperature Level 41 ---
+Current temperature: 14.1363
+
+--- Temperature Level 42 ---
+Current temperature: 13.4295
+
+--- Temperature Level 43 ---
+Current temperature: 12.7580
+
+--- Temperature Level 44 ---
+Current temperature: 12.1201
+
+--- Temperature Level 45 ---
+Current temperature: 11.5141
+
+--- Temperature Level 46 ---
+Current temperature: 10.9384
+
+--- Temperature Level 47 ---
+Current temperature: 10.3915
+
+--- Temperature Level 48 ---
+Current temperature: 9.8719
+
+--- Temperature Level 49 ---
+Current temperature: 9.3783
+
+--- Temperature Level 50 ---
+Current temperature: 8.9094
+
+--- Temperature Level 51 ---
+Current temperature: 8.4639
+
+--- Temperature Level 52 ---
+Current temperature: 8.0407
+
+--- Temperature Level 53 ---
+Current temperature: 7.6387
+
+--- Temperature Level 54 ---
+Current temperature: 7.2568
+
+--- Temperature Level 55 ---
+Current temperature: 6.8939
+
+--- Temperature Level 56 ---
+Current temperature: 6.5492
+
+--- Temperature Level 57 ---
+Current temperature: 6.2218
+
+--- Temperature Level 58 ---
+Current temperature: 5.9107
+
+--- Temperature Level 59 ---
+Current temperature: 5.6152
+
+--- Temperature Level 60 ---
+Current temperature: 5.3344
+
+--- Temperature Level 61 ---
+Current temperature: 5.0677
+
+--- Temperature Level 62 ---
+Current temperature: 4.8143
+
+--- Temperature Level 63 ---
+Current temperature: 4.5736
+
+--- Temperature Level 64 ---
+Current temperature: 4.3449
+
+--- Temperature Level 65 ---
+Current temperature: 4.1277
+
+--- Temperature Level 66 ---
+Current temperature: 3.9213
+
+--- Temperature Level 67 ---
+Current temperature: 3.7252
+
+--- Temperature Level 68 ---
+Current temperature: 3.5389
+
+--- Temperature Level 69 ---
+Current temperature: 3.3620
+
+--- Temperature Level 70 ---
+Current temperature: 3.1939
+
+--- Temperature Level 71 ---
+Current temperature: 3.0342
+
+--- Temperature Level 72 ---
+Current temperature: 2.8825
+
+--- Temperature Level 73 ---
+Current temperature: 2.7384
+
+--- Temperature Level 74 ---
+Current temperature: 2.6015
+
+--- Temperature Level 75 ---
+Current temperature: 2.4714
+
+--- Temperature Level 76 ---
+Current temperature: 2.3478
+Final penalty: 6350.0000
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+HN_0       Early(N)   Late(C)    -          Early(C)   Day(C)     Day(H)     Night(N)  
+NU_4       Early(C)   Early(C)   Early(C)   Night(N)   Night(C)   -          Early(N)  
+TR_19      Early(T)   -          Day(T)     -          Early(T)   -          Late(T)   
+NU_9       Day(N)     -          -          Late(C)    Night(N)   Night(N)   Late(C)   
+NU_5       Late(N)    Early(N)   Day(N)     -          -          Late(N)    -         
+NU_6       Night(N)   Day(N)     -          Day(N)     -          -          -         
+TR_20      -          Early(T)   Late(T)    Night(T)   Night(T)   -          -         
+HN_2       Early(H)   Late(N)    -          Night(H)   Early(N)   Day(N)     Day(C)    
+NU_7       -          Night(N)   Night(N)   Night(C)   -          -          Late(N)   
+CT_13      -          Night(C)   -          -          -          -          -         
+TR_16      -          Night(T)   -          -          -          -          -         
+NU_8       -          -          Early(N)   Early(N)   -          -          -         
+HN_1       -          -          Day(C)     Day(H)     -          Early(N)   Day(N)    
+NU_3       -          -          Late(N)    -          Day(N)     Late(C)    -         
+NU_10      -          -          Late(C)    Late(N)    Late(N)    Night(C)   Night(C)  
+CT_11      -          -          Night(C)   -          -          -          -         
+TR_17      -          -          -          Day(T)     Day(T)     Day(T)     Day(T)    
+CT_12      -          -          -          -          -          Early(C)   -         
+TR_18      Night(T)   -          -          -          -          Day(T)     Night(T)  
+CT_15      -          -          -          Day(C)     -          -          -         
+
+Processing: week 2
+================================================================================
+
+--- Temperature Level 1 ---
+Current temperature: 110.0000
+
+--- Temperature Level 2 ---
+Current temperature: 104.5000
+
+--- Temperature Level 3 ---
+Current temperature: 99.2750
+
+--- Temperature Level 4 ---
+Current temperature: 94.3112
+
+--- Temperature Level 5 ---
+Current temperature: 89.5957
+
+--- Temperature Level 6 ---
+Current temperature: 85.1159
+
+--- Temperature Level 7 ---
+Current temperature: 80.8601
+
+--- Temperature Level 8 ---
+Current temperature: 76.8171
+
+--- Temperature Level 9 ---
+Current temperature: 72.9762
+
+--- Temperature Level 10 ---
+Current temperature: 69.3274
+
+--- Temperature Level 11 ---
+Current temperature: 65.8611
+
+--- Temperature Level 12 ---
+Current temperature: 62.5680
+
+--- Temperature Level 13 ---
+Current temperature: 59.4396
+
+--- Temperature Level 14 ---
+Current temperature: 56.4676
+
+--- Temperature Level 15 ---
+Current temperature: 53.6442
+
+--- Temperature Level 16 ---
+Current temperature: 50.9620
+
+--- Temperature Level 17 ---
+Current temperature: 48.4139
+
+--- Temperature Level 18 ---
+Current temperature: 45.9932
+
+--- Temperature Level 19 ---
+Current temperature: 43.6936
+
+--- Temperature Level 20 ---
+Current temperature: 41.5089
+
+--- Temperature Level 21 ---
+Current temperature: 39.4335
+
+--- Temperature Level 22 ---
+Current temperature: 37.4618
+
+--- Temperature Level 23 ---
+Current temperature: 35.5887
+
+--- Temperature Level 24 ---
+Current temperature: 33.8093
+
+--- Temperature Level 25 ---
+Current temperature: 32.1188
+
+--- Temperature Level 26 ---
+Current temperature: 30.5129
+
+--- Temperature Level 27 ---
+Current temperature: 28.9872
+
+--- Temperature Level 28 ---
+Current temperature: 27.5378
+
+--- Temperature Level 29 ---
+Current temperature: 26.1610
+
+--- Temperature Level 30 ---
+Current temperature: 24.8529
+
+--- Temperature Level 31 ---
+Current temperature: 23.6103
+
+--- Temperature Level 32 ---
+Current temperature: 22.4298
+
+--- Temperature Level 33 ---
+Current temperature: 21.3083
+
+--- Temperature Level 34 ---
+Current temperature: 20.2429
+
+--- Temperature Level 35 ---
+Current temperature: 19.2307
+
+--- Temperature Level 36 ---
+Current temperature: 18.2692
+
+--- Temperature Level 37 ---
+Current temperature: 17.3557
+
+--- Temperature Level 38 ---
+Current temperature: 16.4879
+
+--- Temperature Level 39 ---
+Current temperature: 15.6635
+
+--- Temperature Level 40 ---
+Current temperature: 14.8804
+
+--- Temperature Level 41 ---
+Current temperature: 14.1363
+
+--- Temperature Level 42 ---
+Current temperature: 13.4295
+
+--- Temperature Level 43 ---
+Current temperature: 12.7580
+
+--- Temperature Level 44 ---
+Current temperature: 12.1201
+
+--- Temperature Level 45 ---
+Current temperature: 11.5141
+
+--- Temperature Level 46 ---
+Current temperature: 10.9384
+
+--- Temperature Level 47 ---
+Current temperature: 10.3915
+
+--- Temperature Level 48 ---
+Current temperature: 9.8719
+
+--- Temperature Level 49 ---
+Current temperature: 9.3783
+
+--- Temperature Level 50 ---
+Current temperature: 8.9094
+
+--- Temperature Level 51 ---
+Current temperature: 8.4639
+
+--- Temperature Level 52 ---
+Current temperature: 8.0407
+
+--- Temperature Level 53 ---
+Current temperature: 7.6387
+
+--- Temperature Level 54 ---
+Current temperature: 7.2568
+
+--- Temperature Level 55 ---
+Current temperature: 6.8939
+
+--- Temperature Level 56 ---
+Current temperature: 6.5492
+
+--- Temperature Level 57 ---
+Current temperature: 6.2218
+
+--- Temperature Level 58 ---
+Current temperature: 5.9107
+
+--- Temperature Level 59 ---
+Current temperature: 5.6152
+
+--- Temperature Level 60 ---
+Current temperature: 5.3344
+
+--- Temperature Level 61 ---
+Current temperature: 5.0677
+
+--- Temperature Level 62 ---
+Current temperature: 4.8143
+
+--- Temperature Level 63 ---
+Current temperature: 4.5736
+
+--- Temperature Level 64 ---
+Current temperature: 4.3449
+
+--- Temperature Level 65 ---
+Current temperature: 4.1277
+
+--- Temperature Level 66 ---
+Current temperature: 3.9213
+
+--- Temperature Level 67 ---
+Current temperature: 3.7252
+
+--- Temperature Level 68 ---
+Current temperature: 3.5389
+
+--- Temperature Level 69 ---
+Current temperature: 3.3620
+
+--- Temperature Level 70 ---
+Current temperature: 3.1939
+
+--- Temperature Level 71 ---
+Current temperature: 3.0342
+
+--- Temperature Level 72 ---
+Current temperature: 2.8825
+
+--- Temperature Level 73 ---
+Current temperature: 2.7384
+
+--- Temperature Level 74 ---
+Current temperature: 2.6015
+
+--- Temperature Level 75 ---
+Current temperature: 2.4714
+
+--- Temperature Level 76 ---
+Current temperature: 2.3478
+Final penalty: 5955.0000
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+NU_8       Early(N)   Late(C)    -          Day(N)     Day(N)     Late(N)    Late(N)   
+NU_6       Day(N)     Late(C)    Night(N)   -          Late(N)    Day(N)     Day(N)    
+HN_1       Day(C)     Early(N)   Early(H)   Early(C)   Night(C)   -          -         
+TR_20      Day(T)     Day(T)     -          -          -          Early(T)   Early(T)  
+NU_10      Late(N)    Late(N)    -          Early(N)   Early(C)   Early(N)   -         
+TR_19      Late(T)    Late(T)    Night(T)   -          Early(T)   Day(T)     -         
+HN_0       Night(H)   Night(H)   Night(C)   -          Early(N)   -          Early(N)  
+NU_4       Night(N)   -          -          Late(N)    -          -          Late(N)   
+TR_18      Night(T)   -          -          Early(T)   -          -          -         
+NU_9       -          Early(N)   -          Day(N)     Night(N)   -          Day(C)    
+TR_16      -          Early(T)   Late(T)    -          Late(T)    Late(T)    Night(T)  
+NU_5       -          Day(N)     Day(N)     Night(N)   -          Early(C)   -         
+CT_12      -          Night(C)   -          -          -          -          -         
+HN_2       -          -          Early(N)   Night(C)   -          -          Night(N)  
+CT_15      -          -          Early(C)   Late(C)    Late(C)    Late(C)    Night(C)  
+NU_7       -          -          Late(N)    -          -          Day(C)     Early(C)  
+TR_17      -          -          -          Day(T)     -          -          -         
+CT_14      Night(C)   -          -          -          Day(C)     Day(C)     Night(C)  
+NU_3       -          -          -          -          -          Night(N)   -         
+CT_13      Early(C)   -          -          -          -          -          -         
+CT_11      Night(C)   -          -          -          -          -          -         
+
+Processing: week 3
+================================================================================
+
+--- Temperature Level 1 ---
+Current temperature: 110.0000
+
+--- Temperature Level 2 ---
+Current temperature: 104.5000
+
+--- Temperature Level 3 ---
+Current temperature: 99.2750
+
+--- Temperature Level 4 ---
+Current temperature: 94.3112
+
+--- Temperature Level 5 ---
+Current temperature: 89.5957
+
+--- Temperature Level 6 ---
+Current temperature: 85.1159
+
+--- Temperature Level 7 ---
+Current temperature: 80.8601
+
+--- Temperature Level 8 ---
+Current temperature: 76.8171
+
+--- Temperature Level 9 ---
+Current temperature: 72.9762
+
+--- Temperature Level 10 ---
+Current temperature: 69.3274
+
+--- Temperature Level 11 ---
+Current temperature: 65.8611
+
+--- Temperature Level 12 ---
+Current temperature: 62.5680
+
+--- Temperature Level 13 ---
+Current temperature: 59.4396
+
+--- Temperature Level 14 ---
+Current temperature: 56.4676
+
+--- Temperature Level 15 ---
+Current temperature: 53.6442
+
+--- Temperature Level 16 ---
+Current temperature: 50.9620
+
+--- Temperature Level 17 ---
+Current temperature: 48.4139
+
+--- Temperature Level 18 ---
+Current temperature: 45.9932
+
+--- Temperature Level 19 ---
+Current temperature: 43.6936
+
+--- Temperature Level 20 ---
+Current temperature: 41.5089
+
+--- Temperature Level 21 ---
+Current temperature: 39.4335
+
+--- Temperature Level 22 ---
+Current temperature: 37.4618
+
+--- Temperature Level 23 ---
+Current temperature: 35.5887
+
+--- Temperature Level 24 ---
+Current temperature: 33.8093
+
+--- Temperature Level 25 ---
+Current temperature: 32.1188
+
+--- Temperature Level 26 ---
+Current temperature: 30.5129
+
+--- Temperature Level 27 ---
+Current temperature: 28.9872
+
+--- Temperature Level 28 ---
+Current temperature: 27.5378
+
+--- Temperature Level 29 ---
+Current temperature: 26.1610
+
+--- Temperature Level 30 ---
+Current temperature: 24.8529
+
+--- Temperature Level 31 ---
+Current temperature: 23.6103
+
+--- Temperature Level 32 ---
+Current temperature: 22.4298
+
+--- Temperature Level 33 ---
+Current temperature: 21.3083
+
+--- Temperature Level 34 ---
+Current temperature: 20.2429
+
+--- Temperature Level 35 ---
+Current temperature: 19.2307
+
+--- Temperature Level 36 ---
+Current temperature: 18.2692
+
+--- Temperature Level 37 ---
+Current temperature: 17.3557
+
+--- Temperature Level 38 ---
+Current temperature: 16.4879
+
+--- Temperature Level 39 ---
+Current temperature: 15.6635
+
+--- Temperature Level 40 ---
+Current temperature: 14.8804
+
+--- Temperature Level 41 ---
+Current temperature: 14.1363
+
+--- Temperature Level 42 ---
+Current temperature: 13.4295
+
+--- Temperature Level 43 ---
+Current temperature: 12.7580
+
+--- Temperature Level 44 ---
+Current temperature: 12.1201
+
+--- Temperature Level 45 ---
+Current temperature: 11.5141
+
+--- Temperature Level 46 ---
+Current temperature: 10.9384
+
+--- Temperature Level 47 ---
+Current temperature: 10.3915
+
+--- Temperature Level 48 ---
+Current temperature: 9.8719
+
+--- Temperature Level 49 ---
+Current temperature: 9.3783
+
+--- Temperature Level 50 ---
+Current temperature: 8.9094
+
+--- Temperature Level 51 ---
+Current temperature: 8.4639
+
+--- Temperature Level 52 ---
+Current temperature: 8.0407
+
+--- Temperature Level 53 ---
+Current temperature: 7.6387
+
+--- Temperature Level 54 ---
+Current temperature: 7.2568
+
+--- Temperature Level 55 ---
+Current temperature: 6.8939
+
+--- Temperature Level 56 ---
+Current temperature: 6.5492
+
+--- Temperature Level 57 ---
+Current temperature: 6.2218
+
+--- Temperature Level 58 ---
+Current temperature: 5.9107
+
+--- Temperature Level 59 ---
+Current temperature: 5.6152
+
+--- Temperature Level 60 ---
+Current temperature: 5.3344
+
+--- Temperature Level 61 ---
+Current temperature: 5.0677
+
+--- Temperature Level 62 ---
+Current temperature: 4.8143
+
+--- Temperature Level 63 ---
+Current temperature: 4.5736
+
+--- Temperature Level 64 ---
+Current temperature: 4.3449
+
+--- Temperature Level 65 ---
+Current temperature: 4.1277
+
+--- Temperature Level 66 ---
+Current temperature: 3.9213
+
+--- Temperature Level 67 ---
+Current temperature: 3.7252
+
+--- Temperature Level 68 ---
+Current temperature: 3.5389
+
+--- Temperature Level 69 ---
+Current temperature: 3.3620
+
+--- Temperature Level 70 ---
+Current temperature: 3.1939
+
+--- Temperature Level 71 ---
+Current temperature: 3.0342
+
+--- Temperature Level 72 ---
+Current temperature: 2.8825
+
+--- Temperature Level 73 ---
+Current temperature: 2.7384
+
+--- Temperature Level 74 ---
+Current temperature: 2.6015
+
+--- Temperature Level 75 ---
+Current temperature: 2.4714
+
+--- Temperature Level 76 ---
+Current temperature: 2.3478
+Final penalty: 8925.0000
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+HN_0       Early(N)   Early(N)   Day(C)     -          Day(N)     Late(N)    Late(H)   
+NU_3       Early(C)   Day(C)     -          Early(C)   Early(N)   Day(C)     Early(N)  
+TR_19      Early(T)   -          -          Early(T)   -          -          -         
+HN_2       Day(H)     Night(C)   Late(N)    -          -          Night(H)   Night(N)  
+NU_5       Day(N)     -          -          Early(N)   -          Day(N)     -         
+NU_6       Day(C)     Day(N)     -          Early(N)   Late(C)    Early(N)   Early(C)  
+TR_18      Day(T)     -          -          Day(T)     -          -          Night(T)  
+HN_1       Late(N)    -          -          Night(N)   -          Early(C)   -         
+NU_10      Night(C)   Day(N)     Night(C)   -          -          -          Day(N)    
+TR_16      Night(T)   Late(T)    -          -          -          -          -         
+CT_12      -          Early(C)   -          -          -          Late(C)    Late(C)   
+NU_8       -          Day(N)     -          Day(N)     Day(N)     Late(C)    -         
+NU_7       Night(N)   Night(N)   Day(N)     -          Night(N)   Night(N)   -         
+NU_9       Day(N)     -          Early(C)   Late(N)    -          Late(C)    Late(N)   
+TR_17      -          Day(T)     Day(T)     Late(T)    Late(T)    -          -         
+TR_20      -          -          Late(T)    -          Day(T)     -          -         
+NU_4       Late(N)    Late(N)    -          -          Late(N)    Late(C)    Late(C)   
+CT_11      -          -          -          Night(C)   -          Night(C)   Night(C)  
+CT_13      Late(C)    -          -          -          Early(C)   -          -         
+CT_14      -          Late(C)    -          -          -          -          -         
+
+Execution time: 0.2665 seconds

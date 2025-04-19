@@ -2,11 +2,14 @@ import time
 import instance_loader
 import pipeline
 import scheduler
+import sys
 from cli import cli_interface
 
 
 def main():
-    instance = instance_loader.select_instance_files("testdatasets_json", "n005w4")
+    run_id = sys.argv[1] if len(sys.argv) > 1 else "0"  # 預設 run_id 為 0
+
+    instance = instance_loader.select_instance_files("testdatasets_json", "n021w4")
 
     # args = cli_interface()  # Parse arguments using cli_interface
     # instance = instance_loader.select_instance_files(
@@ -16,7 +19,7 @@ def main():
     #     weeks_to_schedule=args.weeks_to_schedule,
     #     history_index=args.history_index,
     # )
-    pipeline.run_scheduler_pipeline(instance)
+    pipeline.run_scheduler_pipeline(instance, run_id)
 
 
 def test_one_week():

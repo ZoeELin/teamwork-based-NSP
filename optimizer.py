@@ -307,7 +307,7 @@ def simulated_annealing_author_style(
     initial_temp=110.0,
     min_temp=2.13,
     cooling_rate=0.95,
-    max_iter=2 * 10,
+    max_iter=2 * 10 ** 6,
     kmaxMS=20,
     kmaxMC=2,
     pMS=0.45,
@@ -410,7 +410,7 @@ def simulated_annealing_author_style(
     ns_per_temp = max_iter // total_temp_levels
 
     for temp_idx in range(total_temp_levels):
-        print(f"\n=== Temperature Level {temp_idx + 1} ===")
+        print(f"\n--- Temperature Level {temp_idx + 1} ---")
         print(f"Current temperature: {temperature:.4f}")
         accepted = 0
         for inner_idx in range(ns_per_temp):

@@ -64,6 +64,7 @@ def cal_coop_graph(final_schedule):
         nurse1, nurse2 = sorted([i, j])
         nurses_coop_pairs.add((nurse1, nurse2, w))
 
+    # Convert to list of dicts
     cooperation_list = [
         {"nurse1": i, "nurse2": j, "cooperation_score": w}
         for (i, j, w) in nurses_coop_pairs
@@ -72,16 +73,45 @@ def cal_coop_graph(final_schedule):
     return cooperation_list
 
 
-def write_coopdata_2json(data, output_dir):
+def load_previous_coopdata(output_dir, prev_run_id):
+    path = os.path.join(output_dir, f"coop-intensity-{prev_run_id}.json")
+    if not os.path.exists(path):
+        return []
+    with open(path, "r") as f:
+        return json.load(f)
+
+
+def accumulate_coopdata(current, previous):
+    coop_dict = defaultdict(float)
+
+    # Add previous data
+    for entry in previous:
+        key = tuple(sorted((entry["nurse1"], entry["nurse2"])))
+        coop_dict[key] += entry["cooperation_score"]
+
+    # Add previous data to current data
+    for entry in current:
+        key = tuple(sorted((entry["nurse1"], entry["nurse2"])))
+        coop_dict[key] += entry["cooperation_score"]
+
+    # Convert to list of dicts
+    return [
+        {"nurse1": i, "nurse2": j, "cooperation_score": w}
+        for (i, j), w in coop_dict.items()
+    ]
+
+
+
+def write_coopdata_2json(data, output_dir, run_id):
     """
     Write data to a JSON file.
     """
-    output_path = os.path.join(output_dir, "coop-intensity.json")
+    output_path = os.path.join(output_dir, f"coop-intensity-{run_id}.json")
     with open(output_path, "w") as f:
         json.dump(data, f, indent=4)
 
 
-def visual_cooperation_graph(data, output_dir):
+def visual_cooperation_graph(data, output_dir, run_id):
     """
     Visualize the cooperation graph using NetworkX and Matplotlib.
     """
@@ -104,15 +134,30 @@ def visual_cooperation_graph(data, output_dir):
     plt.axis("off")
     # plt.tight_layout()
 
-    output_img_path = output_dir + "/coop_graph.png"
+    output_img_path = output_dir + "/coop-graph.png"
     plt.savefig(output_img_path)
     plt.close()
 
 
-schedule = read_solution("testdatasets_json/n021w4")
 
-coop_intensity = cal_coop_graph(schedule)
+def simulate_one_run(sol_dir, run_id=0):
+    """
+    Main callable function to simulate and accumulate cooperation graphㄡ
+    """
+    
+    schedule = read_solution(f"{sol_dir}/Solutions-{run_id}")
+    coop_intensity = cal_coop_graph(schedule)
+    
+    # Merge with previous cooperation data
+    if int(run_id) > 1:
+        prev_coop = load_previous_coopdata(sol_dir, str(int(run_id) - 1))
+        coop_intensity = accumulate_coopdata(coop_intensity, prev_coop)
 
-write_coopdata_2json(coop_intensity, "testdatasets_json/n021w4")
+    write_coopdata_2json(coop_intensity, sol_dir, run_id)
+    visual_cooperation_graph(coop_intensity, sol_dir, run_id)
 
-visual_cooperation_graph(coop_intensity, "testdatasets_json/n021w4")
+
+if __name__ == "__main__":
+    import sys
+    run_id = sys.argv[1] if len(sys.argv) > 1 else "0"
+    simulate_one_run("Output/n021w4", run_id)

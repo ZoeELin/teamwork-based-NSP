@@ -25,7 +25,7 @@ def get_consecutive_sequences(binary_list):
     return sequences
 
 
-def package_solution_2JSON(assignments, output_dir, scenario_id, week_id):
+def package_solution_2JSON(assignments, output_dir, scenario_id, week_id, run_id):
     """
     Package the solution into a JSON format and write to a file.
     - Extracts scenario from filename (-<scenario_id>-)
@@ -38,7 +38,7 @@ def package_solution_2JSON(assignments, output_dir, scenario_id, week_id):
         "assignments": assignments,
     }
     
-    output_dir = f"Output/{scenario_id}/Solution"
+    output_dir = f"Output/{scenario_id}/Solutions-{run_id}"
     os.makedirs(output_dir, exist_ok=True)
 
     # Output directory and file path
