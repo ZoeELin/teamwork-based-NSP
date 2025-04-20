@@ -373,7 +373,9 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0
                 assigned_today.add(nurse["id"])
                 eligible_nurses.remove(nurse)
 
-    penalty.calculate_total_penalty(
+    # Show penalty
+    print("\nFinish initial solution ...")
+    init_sol_penalty = penalty.calculate_total_penalty(
         nurses,
         forbidden_successions,
         assignments,
@@ -381,9 +383,10 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0
         scenario,
         nurses_lastday_from_lastweek,
         nurseHistory,
-        print_penalty=True,
+        print_each_penalty=True,
         run_id=int(run_id),
     )
+    print(f"Initial solution penalty: {init_sol_penalty}")
 
     # Step 2: Simulated Annealing
     assignments = optimizer.simulated_annealing_with_ComC(
@@ -401,6 +404,22 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0
     if his_filepath:
         history.create_next_history_data(assignments, his_filepath)
 
+    print("\nComplete simulated annealing ...")
+    print("Final solution...")
     utils.display_schedule(assignments)
+
+    # Show the final solution penalty
+    best_sol_penalty = penalty.calculate_total_penalty(
+        nurses,
+        forbidden_successions,
+        assignments,
+        weekdata_filepath,
+        scenario,
+        nurses_lastday_from_lastweek,
+        nurseHistory,
+        print_each_penalty=True,
+        run_id=int(run_id),
+    )
+    print(f"Best solution penalty: {best_sol_penalty}")
 
     return assignments

@@ -92,6 +92,7 @@ def display_schedule(assignments):
                 skill_abbr = skill[0]  # e.g., HeadNurse → H, Nurse → N
                 row.append(f"{shift}({skill_abbr})")
         print(f"{name:<10} " + " ".join(f"{cell:<10}" for cell in row))
+    print()
 
 
 def build_cooperation_lookup(cooperation_data):

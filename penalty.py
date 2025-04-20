@@ -380,7 +380,7 @@ def calculate_total_penalty(
     scenario,
     nurses_lastshift_from_lastweek,
     nurseHistory,
-    print_penalty=False,
+    print_each_penalty=False,
     run_id=0,
 ):
     # Load week data
@@ -401,11 +401,10 @@ def calculate_total_penalty(
         coop_dir = f"Output/{scenario['id']}"
         ComC = calculate_ComC_penalty(assignments, coop_dir, int(run_id))
 
-    if print_penalty:
+    if print_each_penalty:
         print(
-            f"H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}, S1: {s1}, S2+S3+S5: {s2_s3_s5}, S4: {s4}, ComC: {ComC:.4f}"
+            f"penalties -- H1: {h1}, H2: {h2}, H3: {h3} H4: {h4}, S1: {s1}, S2+S3+S5: {s2_s3_s5}, S4: {s4}, ComC: {ComC:.4f}"
         )
-    # print(f"Penalty: {h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4 + ComC}")
     return h1 + h2 + h3 + h4 + s1 + s2_s3_s5 + s4 + ComC
 
 
