@@ -6,7 +6,7 @@ import scheduler
 from history import create_next_history_data
 
 
-def run_scheduler_pipeline(instance, run_id="0"):
+def run_scheduler_pipeline(instance, run_id="0", use_ComC=False):
     """
     Performs a complete nurse scheduling process (using prepared instance dict).
     Includes weekly scheduling and results output with total execution time statistics.
@@ -20,20 +20,23 @@ def run_scheduler_pipeline(instance, run_id="0"):
 
     start = time.perf_counter()
 
-    print(
-        f"Run scenario: {instance['scenario_name']}"
-    )
+    print(f"Run scenario: {instance['scenario_name']}")
 
     for week_data_file in instance["week_data"]:
         print(f"\nProcessing: week {week_idx}")
         print("=" * 80)
 
         final_assignments = scheduler.base_scheduler(
-            instance["scenario"], week_data_file, his_filepath
+            instance["scenario"], week_data_file, his_filepath, run_id
         )
 
         utils.package_solution_2JSON(
-            final_assignments, output_dir, instance["scenario_name"], week_idx, run_id
+            final_assignments,
+            output_dir,
+            instance["scenario_name"],
+            week_idx,
+            run_id,
+            use_ComC,
         )
 
         his_filepath = create_next_history_data(final_assignments, his_filepath)
