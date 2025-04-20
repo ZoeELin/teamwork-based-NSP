@@ -8,8 +8,8 @@ from cli import cli_interface
 
 def main():
     run_id = sys.argv[1] if len(sys.argv) > 1 else "0"  # 預設 run_id 為 0
-
-    instance = instance_loader.select_instance_files("testdatasets_json", "n021w4")
+    scenario_name = "n021w4"
+    instance = instance_loader.select_instance_files("testdatasets_json", scenario_name)
 
     # args = cli_interface()  # Parse arguments using cli_interface
     # instance = instance_loader.select_instance_files(
@@ -19,7 +19,12 @@ def main():
     #     weeks_to_schedule=args.weeks_to_schedule,
     #     history_index=args.history_index,
     # )
-    pipeline.run_scheduler_pipeline(instance, run_id, use_ComC=True)
+    input_file = f"testdatasets_json/{scenario_name}"
+    output_path = f"Output/{scenario_name}/Solutions"
+    comc_weight = 0
+    pipeline.run_scheduler_pipeline(
+        instance, input_file, output_path, comc_weight, run_id
+    )
 
 
 def test_one_week():

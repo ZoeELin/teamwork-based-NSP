@@ -401,8 +401,8 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0
         nurseHistory,
     )
 
-    if his_filepath:
-        history.create_next_history_data(assignments, his_filepath)
+    # if his_filepath:
+    #     history.create_next_history_data(assignments, his_filepath)
 
     print("\nComplete simulated annealing ...")
     print("Final solution...")
