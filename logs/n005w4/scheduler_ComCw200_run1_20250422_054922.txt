@@ -1,0 +1,99 @@
+Run scenario: n005w4
+
+Processing: week 0
+================================================================================
+
+Finish initial solution ...
+penalties -- H1: 0, H2: 0, H3: 2000 H4: 0, S1: 240, S2+S3+S5: 1200, S4: 0, ComC: 0.0000
+Initial solution penalty: 3440
+
+Start simulated annealing...
+penalties -- H1: 0, H2: 0, H3: 2000 H4: 0, S1: 240, S2+S3+S5: 1200, S4: 0, ComC: 0.0000
+
+Complete simulated annealing ...
+Final solution...
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+Stefaan    Early(H)   -          Late(H)    -          Night(H)   Night(H)   -         
+Patrick    Early(N)   Night(N)   -          Night(N)   Late(N)    Late(N)    -         
+Andrea     Late(H)    Night(H)   Early(N)   -          Night(N)   Early(H)   Late(N)   
+Nguyen     Late(N)    Late(N)    Night(N)   -          Early(N)   Early(N)   -         
+Sara       -          Early(N)   -          -          -          -          Night(N)  
+
+penalties -- H1: 0, H2: 0, H3: 2000 H4: 0, S1: 240, S2+S3+S5: 1200, S4: 0, ComC: 0.0000
+Best solution penalty: 3440
+create next history data......output_dir: ./Output/n005w4/Solutions-ComC200-1
+
+Processing: week 1
+================================================================================
+
+Finish initial solution ...
+penalties -- H1: 0, H2: 0, H3: 3500 H4: 0, S1: 150, S2+S3+S5: 1200, S4: 50, ComC: 0.0000
+Initial solution penalty: 4900
+
+Start simulated annealing...
+penalties -- H1: 0, H2: 0, H3: 3500 H4: 0, S1: 150, S2+S3+S5: 1200, S4: 50, ComC: 0.0000
+
+Complete simulated annealing ...
+Final solution...
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+Nguyen     Early(N)   Night(N)   Late(N)    Night(N)   Late(N)    Early(N)   -         
+Andrea     Late(H)    Late(N)    Early(H)   -          -          -          Early(N)  
+Patrick    Night(H)   -          -          Night(H)   -          Late(H)    Night(N)  
+Stefaan    Night(N)   Early(N)   Night(H)   Early(N)   Early(H)   Night(N)   Late(H)   
+Sara       -          -          -          Late(N)    -          Late(N)    Late(N)   
+
+penalties -- H1: 0, H2: 0, H3: 3500 H4: 0, S1: 150, S2+S3+S5: 1200, S4: 50, ComC: 0.0000
+Best solution penalty: 4900
+create next history data......output_dir: ./Output/n005w4/Solutions-ComC200-1
+
+Processing: week 2
+================================================================================
+
+Finish initial solution ...
+penalties -- H1: 0, H2: 0, H3: 3000 H4: 0, S1: 120, S2+S3+S5: 1170, S4: 10, ComC: 0.0000
+Initial solution penalty: 4300
+
+Start simulated annealing...
+penalties -- H1: 0, H2: 0, H3: 3000 H4: 0, S1: 120, S2+S3+S5: 1170, S4: 10, ComC: 0.0000
+
+Complete simulated annealing ...
+Final solution...
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+Stefaan    Early(H)   Early(N)   Late(N)    Late(H)    Night(H)   Night(N)   Early(H)  
+Patrick    Late(N)    -          Night(H)   -          Night(N)   -          Late(N)   
+Andrea     Night(H)   -          -          Early(N)   Late(N)    Early(N)   Late(H)   
+Sara       Night(N)   -          -          Late(N)    Early(N)   -          Night(N)  
+Nguyen     -          Late(N)    Early(N)   Night(N)   -          -          Early(N)  
+
+penalties -- H1: 0, H2: 0, H3: 3000 H4: 0, S1: 120, S2+S3+S5: 1170, S4: 10, ComC: 0.0000
+Best solution penalty: 4300
+create next history data......output_dir: ./Output/n005w4/Solutions-ComC200-1
+
+Processing: week 3
+================================================================================
+
+Finish initial solution ...
+penalties -- H1: 0, H2: 0, H3: 2500 H4: 0, S1: 120, S2+S3+S5: 1275, S4: 0, ComC: 0.0000
+Initial solution penalty: 3895
+
+Start simulated annealing...
+penalties -- H1: 0, H2: 0, H3: 2500 H4: 0, S1: 120, S2+S3+S5: 1275, S4: 0, ComC: 0.0000
+
+Complete simulated annealing ...
+Final solution...
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+Patrick    Early(N)   Night(H)   Late(H)    Night(N)   -          Night(H)   Night(H)  
+Stefaan    Night(H)   Early(N)   Early(N)   -          Late(N)    Early(N)   Late(N)   
+Andrea     -          Late(H)    Late(N)    -          Early(N)   -          Early(N)  
+Sara       -          Late(N)    Night(N)   Early(N)   -          -          -         
+Nguyen     -          Night(N)   -          Late(N)    -          Night(N)   Night(N)  
+
+penalties -- H1: 0, H2: 0, H3: 2500 H4: 0, S1: 120, S2+S3+S5: 1275, S4: 0, ComC: 0.0000
+Best solution penalty: 3895
+create next history data......output_dir: ./Output/n005w4/Solutions-ComC200-1
+
+Execution time: 0.0051 seconds

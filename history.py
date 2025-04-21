@@ -11,6 +11,7 @@ def create_next_history_data(assignments, prev_history_filepath, output_dir):
     Input: assignments (list of dicts), history filepath (str)
     Output: new history data (dict)
     """
+    print(f"create next history data......output_dir: {output_dir}")
 
     # Create nurses list
     nurses_list = defaultdict(list)

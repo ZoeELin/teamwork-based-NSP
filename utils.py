@@ -40,7 +40,7 @@ def package_solution_2JSON(
         "assignments": assignments,
     }
 
-    output_dir = f"Output/{scenario_id}/Solutions-{run_id}"
+    # output_dir = f"Output/{scenario_id}/Solutions-{run_id}"
     if comc_w != 0:
         output_dir = f"Output/{scenario_id}/Solutions-ComC200-{run_id}"
     os.makedirs(output_dir, exist_ok=True)
