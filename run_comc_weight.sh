@@ -10,10 +10,10 @@ logs="logs-0423"
 mkdir -p "${logs}/${scenario}"
 
 
-for comc_weight in $(seq 50 50 1000)
+for comc_weight in $(seq 50 50 150)
 do
   echo ">ComC weight: ${comc_weight}"
-  for i in {1..12}
+  for i in {1..3}
 
   do
     timestamp=$(date +"%Y%m%d_%H%M%S")

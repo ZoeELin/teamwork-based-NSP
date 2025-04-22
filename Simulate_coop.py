@@ -15,7 +15,7 @@ def read_solution(dir_path):
     Read all JSON file in directory and return the parsed data(a schedule).
     """
     # Read all files start with "Sol-" in the directory
-    print(f"\nReading solution files from {dir_path}...📂")
+    print(f"\nReading solution files from {dir_path}... 📂")
     json_files = [f for f in os.listdir(dir_path) if f.startswith("Sol-")]
     final_schedule = []
 
@@ -36,7 +36,7 @@ def cal_coop_graph(final_schedule):
     Given a list of assignment dictionaries, calculate cooperation intensity w_{ij}
     and return it as a list of dicts.
     """
-    print("Calculating cooperation intensity...")
+    print("\nCalculating cooperation intensity... 🧮")
     # Flatten if it's a list of lists (e.g., multi-week schedule)
     if isinstance(final_schedule, list) and all(isinstance(x, list) for x in final_schedule):
         final_schedule = [item for sublist in final_schedule for item in sublist]
@@ -69,23 +69,24 @@ def cal_coop_graph(final_schedule):
         for (i, j, w) in nurses_coop_pairs
     ]
 
-    print(f"They are {len(cooperation_list)} pairs of nurses👥 in cooperations.")
+    print(f"👥 They are {len(cooperation_list)} pairs of nurses in cooperations.")
 
     return cooperation_list
 
 
 def load_previous_coopdata(output_dir, prev_filename):
-    print(f"Loading previous cooperation data from {prev_filename}...📂")
+    print(f"\nLoading previous cooperation data from {prev_filename}... 📂")
     
     path = os.path.join(output_dir, prev_filename)
     if not os.path.exists(path):
+        print(f"⚠️ Previous cooperation data file {prev_filename} not found.")
         return []
     with open(path, "r") as f:
         return json.load(f)
 
 
 def accumulate_coopdata(current, previous):
-    print("Accumulating history cooperation data into current coopration data...")
+    print("\nAccumulating past cooperation data into current cooperation data... 🔄")
     coop_dict = defaultdict(float)
 
     # Add previous data
@@ -132,7 +133,7 @@ def visual_cooperation_graph(data, output_dir, run_id, comcw=0):
     """
     Visualize the cooperation graph using NetworkX and Matplotlib.
     """
-    print("\nVisualizing cooperation graph...📊")
+    print("\nVisualizing cooperation graph... 📊")
     G = nx.Graph()
     for entry in data:
         n1, n2 = entry["nurse1"], entry["nurse2"]
@@ -164,10 +165,10 @@ def visual_cooperation_graph(data, output_dir, run_id, comcw=0):
 
 def simulate_one_run(output_dir, solution_dir, run_id, comc_w):
     """
-    Main callable function to simulate and accumulate cooperation graphㄡ
+    Main callable function to simulate and accumulate cooperation graph
     """
     # Read the solution
-    print(f"Calculate {run_id}th execution of schedule(solutions) in {solution_dir} directory...")
+    print(f"Calculate {run_id}th execution of schedule(solutions) in {solution_dir} directory... ")
     schedule = read_solution(solution_dir)
 
     # Calculate cooperation intensity from the solution
