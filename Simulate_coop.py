@@ -1,6 +1,7 @@
 import os
 import json
 import itertools
+import argparse
 
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -11,10 +12,11 @@ from collections import defaultdict
 # Read and get solution in a scenario
 def read_solution(dir_path):
     """
-    Read a JSON file and return the parsed data.
+    Read all JSON file in directory and return the parsed data(a schedule).
     """
     # Read all files start with "Sol-" in the directory
     json_files = [f for f in os.listdir(dir_path) if f.startswith("Sol-")]
+    final_schedule = []
 
     for json_file in json_files:
         file_path = os.path.join(dir_path, json_file)
@@ -23,7 +25,6 @@ def read_solution(dir_path):
         with open(file_path, "r") as f:
             data = json.load(f)
 
-        final_schedule = []
         final_schedule.append(data["assignments"])
 
     return final_schedule
@@ -101,14 +102,11 @@ def accumulate_coopdata(current, previous):
     ]
 
 
-def write_coopdata_2json(data, output_dir, run_id, use_ComC=False):
+def write_coopdata_2json(data, output_dir, run_id):
     """
     Write data to a JSON file.
     """
-    if use_ComC:
-        output_path = os.path.join(output_dir, f"coop-intensity-ComC-{run_id}.json")
-    else:
-        output_path = os.path.join(output_dir, f"coop-intensity-{run_id}.json")
+    output_path = os.path.join(output_dir, f"coop-intensity-{run_id}.json")
 
     with open(output_path, "w") as f:
         json.dump(data, f, indent=4)
@@ -116,7 +114,7 @@ def write_coopdata_2json(data, output_dir, run_id, use_ComC=False):
     print(f"Cooperation data saved to {output_path}")
 
 
-def visual_cooperation_graph(data, output_dir, use_ComC=False):
+def visual_cooperation_graph(data, output_dir, run_id):
     """
     Visualize the cooperation graph using NetworkX and Matplotlib.
     """
@@ -139,39 +137,36 @@ def visual_cooperation_graph(data, output_dir, use_ComC=False):
     plt.axis("off")
     # plt.tight_layout()
 
-    output_img_path = output_dir + "/coop-graph.png"
-    if use_ComC:
-        output_img_path = output_dir + "/coop-graph-ComC.png"
+    output_img_path = output_dir + f"/coop-graph-{run_id}.png"
+
     plt.savefig(output_img_path)
     plt.close()
     print(f"Cooperation graph saved to {output_img_path}")
 
 
-def simulate_one_run(sol_dir, run_id=0, use_ComC=False):
+def simulate_one_run(output_dir, run_id):
     """
     Main callable function to simulate and accumulate cooperation graphㄡ
     """
     # Read the solution
-    if use_ComC:
-        schedule = read_solution(f"{sol_dir}/Solutions-ComC200-{run_id}")
-    else:
-        schedule = read_solution(f"{sol_dir}/Solutions-{run_id}")
+    schedule = read_solution(output_dir)
 
     # Calculate cooperation intensity from the solution
     coop_intensity = cal_coop_graph(schedule)
 
     # Merge with previous cooperation data
     if int(run_id) > 1:
-        prev_coop = load_previous_coopdata(sol_dir, str(int(run_id) - 1))
+        prev_coop = load_previous_coopdata(output_dir, str(int(run_id) - 1))
         coop_intensity = accumulate_coopdata(coop_intensity, prev_coop)
 
-    write_coopdata_2json(coop_intensity, sol_dir, run_id, use_ComC)
-    visual_cooperation_graph(coop_intensity, sol_dir, use_ComC)
+    write_coopdata_2json(coop_intensity, output_dir, run_id)
+    visual_cooperation_graph(coop_intensity, output_dir, run_id)
 
 
 if __name__ == "__main__":
     import sys
 
-    run_id = sys.argv[1] if len(sys.argv) > 1 else "0"
-    use_ComC = "--comc" in [arg.lower() for arg in sys.argv[2:]]
-    simulate_one_run("Output/n021w4", run_id, use_ComC)
+    dir = sys.argv[1]
+    run_id = sys.argv[2] if len(sys.argv) > 2 else "0"
+
+    simulate_one_run(dir, run_id)

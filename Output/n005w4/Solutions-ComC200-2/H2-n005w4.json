@@ -1,11 +1,11 @@
 {
-    "week": 4,
+    "week": 2,
     "scenario": "n005w4",
     "nurseHistory": [
         {
             "nurse": "Patrick",
-            "numberOfAssignments": 20,
-            "numberOfWorkingWeekends": 5,
+            "numberOfAssignments": 9,
+            "numberOfWorkingWeekends": 3,
             "lastAssignedShiftType": "Late",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
@@ -13,35 +13,35 @@
         },
         {
             "nurse": "Andrea",
-            "numberOfAssignments": 18,
-            "numberOfWorkingWeekends": 6,
-            "lastAssignedShiftType": "Early",
+            "numberOfAssignments": 9,
+            "numberOfWorkingWeekends": 3,
+            "lastAssignedShiftType": "Late",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
         },
         {
             "nurse": "Stefaan",
-            "numberOfAssignments": 21,
-            "numberOfWorkingWeekends": 7,
-            "lastAssignedShiftType": "Night",
+            "numberOfAssignments": 12,
+            "numberOfWorkingWeekends": 4,
+            "lastAssignedShiftType": "Early",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
         },
         {
             "nurse": "Sara",
-            "numberOfAssignments": 17,
-            "numberOfWorkingWeekends": 4,
+            "numberOfAssignments": 9,
+            "numberOfWorkingWeekends": 1,
             "lastAssignedShiftType": "None",
             "numberOfConsecutiveAssignments": 0,
             "numberOfConsecutiveWorkingDays": 0,
-            "numberOfConsecutiveDaysOff": 4
+            "numberOfConsecutiveDaysOff": 1
         },
         {
             "nurse": "Nguyen",
-            "numberOfAssignments": 17,
-            "numberOfWorkingWeekends": 6,
+            "numberOfAssignments": 6,
+            "numberOfWorkingWeekends": 2,
             "lastAssignedShiftType": "Night",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,

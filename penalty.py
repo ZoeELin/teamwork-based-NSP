@@ -1,12 +1,13 @@
 import json
 from collections import defaultdict
 import itertools
+import os
 
 import utils
 from constants import DAYS_WEEK_ABB, DAYS_WEEK, WEEKEND_DAYS
 
 
-def calculate_h1_penalty(assignments, nurses):
+def calculate_h1_penalty(assignments):
     """
     H1: Only one assignment per day
     Check if a nurse has more than one shift on the same day
@@ -323,17 +324,14 @@ def calculate_s4_penalty(assignments, week_data):
     return penalty
 
 
-def calculate_ComC_penalty(assignments, coop_dir, id=0, epsilon=0.01):
+def calculate_ComC_penalty(assignments, coop_filepath, weight, epsilon=0.01):
     """
     Calculate the ComC (Communication Cost) penalty score for the overall schedule.
     The fewer records of cooperation, the higher the ComC.
     Input: assignments (current schedule), epsilon (default 0.01), coop_dir (directory of cooperation matrix), id (iteration number)
     Output: penalty score (float)
     """
-    weight = 100
-    cooperation_matrix = []
-    if id > 1:
-        cooperation_matrix = utils.load_data(f"{coop_dir}/coop-intensity-{id-1}.json")
+    cooperation_matrix = utils.load_data(coop_filepath)
 
     # Convert cooperation matrix to a dictionary for quick lookup
     coop_dict = {}
@@ -380,13 +378,15 @@ def calculate_total_penalty(
     scenario,
     nurses_lastshift_from_lastweek,
     nurseHistory,
+    output_dir,
+    comc_weight=0,
     print_each_penalty=False,
     run_id=0,
 ):
     # Load week data
     week_data = utils.load_data(weekdata_filepath)
 
-    h1 = calculate_h1_penalty(assignments, nurses)
+    h1 = calculate_h1_penalty(assignments)
     h2 = calculate_h2_penalty(assignments, nurses, week_data)
     h3 = calculate_h3_penalty(
         assignments, forbidden_successions, nurses_lastshift_from_lastweek
@@ -397,9 +397,9 @@ def calculate_total_penalty(
     s4 = calculate_s4_penalty(assignments, week_data)
 
     ComC = 0
-    if int(run_id) > 1:
-        coop_dir = f"Output/{scenario['id']}"
-        ComC = calculate_ComC_penalty(assignments, coop_dir, int(run_id))
+    if run_id > 1:
+        coop_filepath = os.path.join(output_dir, f"coop-intensity-{run_id-1}.json")
+        ComC = calculate_ComC_penalty(assignments, coop_filepath, comc_weight)
 
     if print_each_penalty:
         print(

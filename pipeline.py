@@ -6,7 +6,7 @@ import scheduler
 from history import create_next_history_data
 
 
-def run_scheduler_pipeline(instance, output_file, comc_w, run_id):
+def run_scheduler_pipeline(instance, output_dir, comc_w, run_id_str):
     """
     Performs a complete nurse scheduling process (using prepared instance dict).
     Includes weekly scheduling and results output with total execution time statistics.
@@ -14,6 +14,17 @@ def run_scheduler_pipeline(instance, output_file, comc_w, run_id):
     Parameters:
         instance (dict): scenario, scenario_name, week_data, history
     """
+    scenario_dir = os.path.join(output_dir, instance["scenario_name"])
+    solution_dir = os.path.join(
+        output_dir, instance["scenario_name"], f"Solutions-{run_id_str}"
+    )
+    if comc_w != 0:
+        solution_dir = os.path.join(
+            output_dir,
+            instance["scenario_name"],
+            f"Solutions-ComC{comc_w}-{run_id_str}",
+        )
+
     week_idx = 0
     history_filepath = instance["history"]
 
@@ -25,23 +36,24 @@ def run_scheduler_pipeline(instance, output_file, comc_w, run_id):
         print(f"\nProcessing: week {week_idx}")
         print("=" * 80)
 
-        # sol_dir = f"{output_file}-{int(run_id)}"
-
         final_assignments = scheduler.base_scheduler(
-            instance["scenario"], week_data_file, history_filepath, run_id
+            instance["scenario"],
+            week_data_file,
+            scenario_dir,
+            history_filepath,
+            int(run_id_str),
+            comc_w,
         )
 
         utils.package_solution_2JSON(
             final_assignments,
-            output_file,
+            solution_dir,
             instance["scenario_name"],
             week_idx,
-            run_id,
-            comc_w,
         )
 
         history_filepath = create_next_history_data(
-            final_assignments, history_filepath, output_file
+            final_assignments, history_filepath, solution_dir
         )
         week_idx += 1
 

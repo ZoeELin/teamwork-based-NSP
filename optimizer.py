@@ -469,6 +469,7 @@ def simulated_annealing_author_style(
 
 def simulated_annealing_with_ComC(
     run_id,
+    output_dir,
     assignments,
     forbidden_successions,
     nurses,
@@ -508,6 +509,7 @@ def simulated_annealing_with_ComC(
             scenario,
             lastday_of_lastweek,
             nurseHistory,
+            output_dir,
             print_each_penalty=True,
             run_id=run_id,
         )

@@ -14,13 +14,11 @@ def main():
     run_id = args.run_id
     comc_weight = int(args.comc)
     dataset_dir = args.input_folder
-    output_path = os.path.join(
-        args.output_dir, scenario_name, f"Solutions-ComC{comc_weight}-{args.run_id}"
-    )
+    output_dir = args.output_dir
 
     instance = instance_loader.select_instance_files(dataset_dir, scenario_name)
 
-    pipeline.run_scheduler_pipeline(instance, output_path, comc_weight, run_id)
+    pipeline.run_scheduler_pipeline(instance, output_dir, comc_weight, run_id)
 
 
 def test_one_week():

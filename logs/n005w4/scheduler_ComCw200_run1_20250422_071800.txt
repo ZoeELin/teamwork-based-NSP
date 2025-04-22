@@ -1,0 +1,27 @@
+Run scenario: n005w4
+
+Processing: week 0
+================================================================================
+
+Finish initial solution ...
+output_dir: ./Output
+penalties -- H1: 0, H2: 0, H3: 3000 H4: 0, S1: 240, S2+S3+S5: 1080, S4: 0, ComC: 0.0000
+Initial solution penalty: 4320
+
+Start simulated annealing...
+output_dir: ./Output
+penalties -- H1: 0, H2: 0, H3: 3000 H4: 0, S1: 240, S2+S3+S5: 1080, S4: 0, ComC: 0.0000
+
+Complete simulated annealing ...
+Final solution...
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+Andrea     Early(H)   Late(N)    Early(N)   -          Night(H)   Early(H)   -         
+Sara       Early(N)   Night(N)   -          -          Late(N)    Early(N)   -         
+Patrick    Late(H)    Night(H)   -          -          -          Late(N)    -         
+Nguyen     Late(N)    -          Night(N)   Night(N)   Early(N)   -          Late(N)   
+Stefaan    -          Early(N)   Late(H)    -          Night(N)   Night(H)   Night(N)  
+
+output_dir: ./Output
+penalties -- H1: 0, H2: 0, H3: 3000 H4: 0, S1: 240, S2+S3+S5: 1080, S4: 0, ComC: 0.0000
+Best solution penalty: 4320
