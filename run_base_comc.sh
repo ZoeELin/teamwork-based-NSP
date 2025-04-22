@@ -1,13 +1,18 @@
 dataset_folder="./testdatasets_json"
 scenario="n005w4"
-comc_weight=200
 output_dir="./Output"
+comc_weight=200
+
+# command example
+# python3 main.py --input_folder ./testdatasets_json --sce n021w4 --comc 200 --run_id 0 --output_dir ./Output
+
 
 mkdir -p "logs/${scenario}"
 
 
 for i in {1..2}
 
+# e.g.
 # python3 main.py --input_folder ./testdatasets_json --sce n021w4 --comc 200 --run_id 0 --output_dir ./Output
 
 do
