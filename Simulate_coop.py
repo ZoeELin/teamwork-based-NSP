@@ -15,7 +15,7 @@ def read_solution(dir_path):
     Read all JSON file in directory and return the parsed data(a schedule).
     """
     # Read all files start with "Sol-" in the directory
-    print(f"Reading solution files from {dir_path}...")
+    print(f"\nReading solution files from {dir_path}...📂")
     json_files = [f for f in os.listdir(dir_path) if f.startswith("Sol-")]
     final_schedule = []
 
@@ -69,13 +69,15 @@ def cal_coop_graph(final_schedule):
         for (i, j, w) in nurses_coop_pairs
     ]
 
-    print(f"Debug: Cooperation intensity calculated: {len(cooperation_list)} pairs")
+    print(f"They are {len(cooperation_list)} pairs of nurses👥 in cooperations.")
 
     return cooperation_list
 
 
-def load_previous_coopdata(output_dir, prev_run_id):
-    path = os.path.join(output_dir, f"coop-intensity-{prev_run_id}.json")
+def load_previous_coopdata(output_dir, prev_filename):
+    print(f"Loading previous cooperation data from {prev_filename}...📂")
+    
+    path = os.path.join(output_dir, prev_filename)
     if not os.path.exists(path):
         return []
     with open(path, "r") as f:
@@ -83,6 +85,7 @@ def load_previous_coopdata(output_dir, prev_run_id):
 
 
 def accumulate_coopdata(current, previous):
+    print("Accumulating history cooperation data into current coopration data...")
     coop_dict = defaultdict(float)
 
     # Add previous data
@@ -106,7 +109,7 @@ def write_coopdata_2json(data, output_dir, run_id, comcw=0):
     """
     Write data to a JSON file.
     """
-    print(f"Writing cooperation data to JSON file...")
+    print(f"\nWriting cooperation data to JSON file...💾")
 
     if comcw == 0:
         output_path = os.path.join(output_dir, f"coop-intensity-{run_id}.json")
@@ -129,7 +132,7 @@ def visual_cooperation_graph(data, output_dir, run_id, comcw=0):
     """
     Visualize the cooperation graph using NetworkX and Matplotlib.
     """
-    print("Visualizing cooperation graph...")
+    print("\nVisualizing cooperation graph...📊")
     G = nx.Graph()
     for entry in data:
         n1, n2 = entry["nurse1"], entry["nurse2"]
@@ -164,16 +167,20 @@ def simulate_one_run(output_dir, solution_dir, run_id, comc_w):
     Main callable function to simulate and accumulate cooperation graphㄡ
     """
     # Read the solution
-    print(f"Read {run_id}th schedule(solutions) in {solution_dir} directory...")
+    print(f"Calculate {run_id}th execution of schedule(solutions) in {solution_dir} directory...")
     schedule = read_solution(solution_dir)
-    print(f"There are {len(schedule)} weeks of schedule data.")
 
     # Calculate cooperation intensity from the solution
     coop_intensity = cal_coop_graph(schedule)
 
     # Merge with previous cooperation data
+    if comc_w == 0:
+        prev_filename = f"coop-intensity-{run_id}.json"
+    else:
+        prev_filename = f"coop-intensity-comc{comc_w}-{int(run_id)-1}.json"
+    
     if int(run_id) > 1:
-        prev_coop = load_previous_coopdata(output_dir, str(int(run_id) - 1))
+        prev_coop = load_previous_coopdata(output_dir, prev_filename)
         coop_intensity = accumulate_coopdata(coop_intensity, prev_coop)
 
     write_coopdata_2json(coop_intensity, output_dir, run_id, comc_w)
@@ -195,6 +202,6 @@ if __name__ == "__main__":
     run_id = args.run_id
     comc_weight = args.comc
     
-    print(f"Simulating intensity from {sol_dir}, and saving to {dir}")
+    print(f"Start simulating intensity from {sol_dir}, and saving to {dir}\n")
 
     simulate_one_run(dir, sol_dir, run_id, comc_weight)
