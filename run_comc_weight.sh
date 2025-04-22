@@ -10,14 +10,14 @@ logs="logs-0423"
 mkdir -p "${logs}/${scenario}"
 
 
-for comc_weight in $(seq 50 50 150)
+for comc_weight in $(seq 50 50 1000)
 do
   echo ">ComC weight: ${comc_weight}"
-  for i in {1..3}
+  for i in {1..12}
 
   do
     timestamp=$(date +"%Y%m%d_%H%M%S")
-    sol_dir="${output_dir}/${scenario}-Solutions-ComC${comc_weight}-${i}"
+    sol_dir="${output_dir}/${scenario}/Solutions-ComC${comc_weight}-${i}"
     
     echo ">>> 第 $i 次執行 NSP 排班"
     python3 main.py \
