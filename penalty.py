@@ -398,7 +398,7 @@ def calculate_total_penalty(
 
     ComC = 0
     if run_id > 1:
-        coop_filepath = os.path.join(output_dir, f"coop-intensity-comcw{comc_weight}-{run_id-1}.json")
+        coop_filepath = os.path.join(output_dir, f"coop-intensity-comc{comc_weight}-{run_id-1}.json")
         ComC = calculate_ComC_penalty(assignments, coop_filepath, comc_weight)
 
     if print_each_penalty:

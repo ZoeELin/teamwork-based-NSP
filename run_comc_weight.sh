@@ -2,9 +2,9 @@
 
 dataset_folder="./testdatasets_json"
 scenario="n021w4"
-output_dir="./Output4-22"
+output_dir="./Output0423"
 
-logs="logs-0422"
+logs="logs-0423"
 
 
 mkdir -p "${logs}/${scenario}"

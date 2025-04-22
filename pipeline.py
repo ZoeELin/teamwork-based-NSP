@@ -15,10 +15,12 @@ def run_scheduler_pipeline(instance, output_dir, comc_w, run_id_str):
         instance (dict): scenario, scenario_name, week_data, history
     """
     scenario_dir = os.path.join(output_dir, instance["scenario_name"])
-    solution_dir = os.path.join(
+
+    if comc_w == 0:
+        solution_dir = os.path.join(
         output_dir, instance["scenario_name"], f"Solutions-{run_id_str}"
     )
-    if comc_w != 0:
+    else:
         solution_dir = os.path.join(
             output_dir,
             instance["scenario_name"],

@@ -106,5 +106,7 @@ def create_next_history_data(assignments, prev_history_filepath, output_dir):
     # Write JSON file
     with open(output_path, "w") as f:
         json.dump(history_json, f, indent=4)
+    
+    print(f"✅ New history data created for week {prev_week + 1} and saved to {output_path}")
 
     return output_path

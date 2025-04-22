@@ -395,7 +395,7 @@ def base_scheduler(
         print_each_penalty=True,
         run_id=run_id,
     )
-    print(f"Initial solution penalty: {init_sol_penalty}")
+    print(f"🟥 Initial solution penalty: {init_sol_penalty}")
 
     # Step 2: Simulated Annealing
     assignments = optimizer.simulated_annealing_with_ComC(
@@ -409,10 +409,11 @@ def base_scheduler(
         scenario,
         nurses_lastday_from_lastweek,
         nurseHistory,
+        comc_w=comc_weight,
     )
 
-    print("\nComplete simulated annealing ...")
-    print("Final solution...")
+    print("\nComplete simulated annealing ...❄️")
+    print("Final schedule(solutions)...🗓️")
     utils.display_schedule(assignments)
 
     # Show the final solution penalty
@@ -425,9 +426,10 @@ def base_scheduler(
         nurses_lastday_from_lastweek,
         nurseHistory,
         sce_dir,
+        comc_weight,
         print_each_penalty=True,
         run_id=run_id,
     )
-    print(f"Best solution penalty: {best_sol_penalty}")
+    print(f"\n🎯 Best solution penalty: {best_sol_penalty}")
 
     return assignments

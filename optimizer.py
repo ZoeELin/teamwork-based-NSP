@@ -479,6 +479,7 @@ def simulated_annealing_with_ComC(
     scenario,
     lastday_of_lastweek,
     nurseHistory,
+    comc_w=0,
     initial_temp=110.0,
     min_temp=2.13,
     cooling_rate=0.95,
@@ -509,6 +510,7 @@ def simulated_annealing_with_ComC(
             lastday_of_lastweek,
             nurseHistory,
             output_dir,
+            comc_w, 
             print_each_penalty=True,
             run_id=run_id,
         )
@@ -580,7 +582,7 @@ def simulated_annealing_with_ComC(
     def double_change(assignments, nurses, shift_types, k, poff, pchange, pstay):
         return multi_change(assignments, nurses, shift_types, 2, poff, pchange, pstay)
 
-    print("\nStart simulated annealing...")
+    print("\nStart simulated annealing...🧊")
     current_penalty = penalty(current_assignments, run_id)
     best_assignments = current_assignments
     best_penalty = current_penalty
@@ -589,7 +591,7 @@ def simulated_annealing_with_ComC(
     ns_per_temp = max_iter // total_temp_levels
 
     for temp_idx in range(total_temp_levels):
-        print(f"\n--- Temperature Level {temp_idx + 1} ---")
+        print(f"\n--- Temperature Level ({temp_idx + 1}/{total_temp_levels}) ---")
         print(f"> Current temperature: {temperature:.4f}")
         accepted = 0
         for inner_idx in range(ns_per_temp):
@@ -632,7 +634,7 @@ def simulated_annealing_with_ComC(
                     best_penalty = current_penalty
 
             if (inner_idx + 1) % 10000 == 0:  # 每 10000 次印一次
-                print(f"  Step {inner_idx+1}: Best penalty = {best_penalty:.2f}")
+                print(f"📉  Step {inner_idx+1}: Best penalty = {best_penalty:.2f}")
 
             # Early cutoff: reduce temperature sooner if enough solutions accepted
             if accepted >= ns_per_temp:

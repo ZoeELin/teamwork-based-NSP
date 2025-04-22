@@ -46,6 +46,8 @@ def package_solution_2JSON(assignments, sol_dir, scenario_id, week_id):
     # Write JSON file
     with open(output_path, "w") as f:
         json.dump(solution, f, indent=4)
+    
+    print(f"✅ Solution saved to {output_path}")
 
     return solution
 
