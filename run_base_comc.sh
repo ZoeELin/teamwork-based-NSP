@@ -3,8 +3,6 @@ scenario="n005w4"
 output_dir="./Output"
 comc_weight=200
 
-# command example
-# python3 main.py --input_folder ./testdatasets_json --sce n021w4 --comc 200 --run_id 0 --output_dir ./Output
 
 
 mkdir -p "logs/${scenario}"
@@ -12,11 +10,11 @@ mkdir -p "logs/${scenario}"
 
 for i in {1..2}
 
-# e.g.
-# python3 main.py --input_folder ./testdatasets_json --sce n021w4 --comc 200 --run_id 0 --output_dir ./Output
 
 do
   timestamp=$(date +"%Y%m%d_%H%M%S")
+  sol_dir="${output_dir}/${scenario}-Solutions-ComC${comc_weight}-${i}"
+
   echo ">>> 第 $i 次執行 NSP 排班"
   python3 main.py \
     --input_folder "$dataset_folder" \
@@ -27,6 +25,6 @@ do
 
   
   echo ">>> 模擬合作圖（模擬第 $i 次後的結果）"
-  python3 Simulate_coop.py "${output_dir}/${scenario}" "${i}" > "logs/${scenario}/simulator-${i}th-coop.txt"
+  python3 Simulate_coop.py "${output_dir}/${scenario}" "$sol_dir" "${i}" --comc "$comc_weight" > "${logs}/${scenario}/simulator-${i}th-coop_${i}_${timestamp}.txt"
 
 done
