@@ -1,0 +1,19 @@
+Start simulating intensity from ./Output_basic/n040w4/Solutions-9, and saving to ./Output_basic/n040w4
+
+Calculate 9th execution of schedule(solutions) in ./Output_basic/n040w4/Solutions-9 directory... 
+
+Reading solution files from ./Output_basic/n040w4/Solutions-9... 📂
+
+Calculating cooperation intensity... 🧮
+👥 They are 773 pairs of nurses in cooperations.
+
+Loading previous cooperation data from coop-intensity-9.json... 📂
+⚠️ Previous cooperation data file coop-intensity-9.json not found.
+
+Accumulating past cooperation data into current cooperation data... 🔄
+
+Writing cooperation data to JSON file...💾
+✅ Cooperation data saved to ./Output_basic/n040w4/coop-intensity-9.json
+
+Visualizing cooperation graph... 📊
+✅ Cooperation graph saved to ./Output_basic/n040w4/coop-graph-9.png

@@ -1,0 +1,244 @@
+Run scenario: n040w4
+
+Processing: week 0
+================================================================================
+
+Finish initial solution ...
+penalties -- H1: 0, H2: 0, H3: 11500 H4: 0, S1: 1290, S2+S3+S5: 7245, S4: 10, ComC: 0.0000
+🟥 Initial solution penalty: 20045
+
+Start simulated annealing...🧊
+penalties -- H1: 0, H2: 0, H3: 11500 H4: 0, S1: 1290, S2+S3+S5: 7245, S4: 10, ComC: 0.0000
+
+Complete simulated annealing ...❄️
+Final schedule(solutions)...🗓️
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+NU_13      Early(N)   Night(C)   Early(N)   -          -          -          Late(N)   
+HN_1       Early(C)   -          Day(C)     Early(C)   Late(H)    -          Late(H)   
+HN_4       Early(C)   Early(C)   Night(N)   Night(H)   Early(N)   Night(N)   Early(H)  
+HN_2       Early(C)   Late(C)    Early(C)   Day(N)     Late(N)    -          Day(N)    
+CT_22      Early(C)   -          Early(C)   -          Late(C)    -          -         
+HN_3       Day(N)     Night(C)   -          Early(N)   -          -          -         
+NU_17      Day(N)     -          -          -          -          Night(C)   Day(C)    
+HN_5       Day(C)     -          Early(H)   Late(H)    Late(C)    Late(C)    -         
+NU_6       Day(C)     Day(C)     -          -          Early(C)   Early(N)   -         
+TR_34      Day(T)     -          -          -          -          -          -         
+HN_0       Late(H)    Day(N)     -          Early(H)   Day(C)     -          -         
+NU_9       Late(N)    Late(N)    Day(N)     Early(C)   -          Late(N)    -         
+NU_7       Late(C)    Day(C)     Late(C)    Late(C)    -          Early(C)   -         
+NU_10      Late(C)    -          -          -          -          -          Early(N)  
+CT_20      Late(C)    Day(C)     -          -          -          -          -         
+NU_16      Late(C)    Early(N)   -          Late(C)    Day(N)     -          -         
+TR_33      Late(T)    -          -          -          -          -          -         
+NU_12      Night(N)   -          Late(N)    Late(N)    -          -          -         
+NU_15      Night(N)   Night(N)   -          -          -          Day(N)     -         
+CT_18      Night(C)   Early(C)   -          Night(C)   Night(C)   -          -         
+TR_38      Night(T)   Early(T)   -          Early(T)   -          -          -         
+NU_11      -          Early(N)   -          -          Early(C)   -          -         
+CT_21      -          Early(C)   -          -          -          -          Late(C)   
+CT_30      -          Day(C)     Night(C)   -          -          -          -         
+NU_14      -          Late(C)    Day(N)     Day(C)     -          -          Night(N)  
+TR_37      -          Late(T)    -          -          Late(T)    Day(T)     -         
+CT_29      -          Night(C)   Late(C)    Day(C)     -          -          -         
+TR_39      -          Night(T)   Early(T)   -          Night(T)   -          -         
+CT_24      -          -          Early(C)   Day(C)     Day(C)     Day(C)     -         
+NU_8       -          -          Day(C)     Night(N)   Night(N)   -          -         
+TR_35      -          -          Day(T)     -          -          Late(T)    Early(T)  
+CT_26      -          -          Night(C)   -          -          -          -         
+TR_36      -          -          -          Day(T)     -          -          -         
+CT_31      -          -          -          Late(C)    -          -          -         
+CT_25      -          -          -          Night(C)   -          Early(C)   -         
+CT_27      -          -          -          -          Night(C)   -          -         
+CT_19      -          -          -          -          Night(C)   -          -         
+CT_23      -          -          -          -          -          -          Day(C)    
+TR_32      -          -          -          -          -          -          Night(T)  
+
+penalties -- H1: 0, H2: 0, H3: 11500 H4: 0, S1: 1290, S2+S3+S5: 7245, S4: 10, ComC: 0.0000
+
+🎯 Best solution penalty: 20045
+✅ Solution saved to ./Output_basic/n040w4/Solutions-11/Sol-n040w4-0.json
+✅ New history data created for week 1 and saved to ./Output_basic/n040w4/Solutions-11/H1-n040w4.json
+
+Processing: week 1
+================================================================================
+
+Finish initial solution ...
+penalties -- H1: 0, H2: 0, H3: 7500 H4: 0, S1: 1110, S2+S3+S5: 9345, S4: 20, ComC: 0.0000
+🟥 Initial solution penalty: 17975
+
+Start simulated annealing...🧊
+penalties -- H1: 0, H2: 0, H3: 7500 H4: 0, S1: 1110, S2+S3+S5: 9345, S4: 20, ComC: 0.0000
+
+Complete simulated annealing ...❄️
+Final schedule(solutions)...🗓️
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+HN_2       Early(N)   Night(H)   Early(C)   -          -          Late(H)    Night(C)  
+NU_17      Early(N)   -          -          -          -          Late(C)    Early(C)  
+CT_18      Early(C)   -          Night(C)   Late(C)    -          Early(C)   -         
+CT_27      Early(C)   -          -          -          -          -          -         
+NU_7       Day(N)     Early(N)   Early(C)   Early(C)   Night(N)   -          -         
+CT_19      Day(C)     -          -          -          Day(C)     -          -         
+CT_29      Day(C)     Early(C)   -          -          -          -          -         
+TR_35      Day(T)     Late(T)    Late(T)    -          Late(T)    -          Day(T)    
+HN_5       Late(N)    Night(N)   Early(H)   Early(N)   Early(C)   Late(N)    Night(H)  
+NU_12      Late(C)    Late(C)    Early(N)   Early(N)   -          -          -         
+CT_31      Late(C)    Night(C)   Night(C)   -          Night(C)   -          -         
+TR_34      Late(T)    Early(T)   -          -          -          -          -         
+HN_4       Night(N)   Day(H)     Night(N)   Night(N)   -          -          Day(C)    
+NU_6       Night(C)   -          Early(C)   Night(C)   Night(C)   -          -         
+TR_37      Night(T)   -          -          -          -          -          -         
+HN_0       -          Early(H)   -          -          Day(C)     Night(H)   Late(C)   
+NU_11      -          Early(N)   Day(N)     Late(N)    -          Early(N)   -         
+CT_21      -          Early(C)   -          Early(C)   Early(C)   -          -         
+HN_3       -          Early(C)   -          Late(N)    -          Day(C)     Late(N)   
+NU_9       -          Day(N)     Day(N)     -          Early(C)   -          Night(C)  
+NU_15      -          Day(C)     Early(C)   -          Early(N)   Night(N)   Early(N)  
+NU_13      -          Day(C)     Day(C)     Early(C)   Late(N)    -          -         
+NU_10      -          Day(C)     Night(C)   Day(C)     -          Day(N)     -         
+NU_14      -          Late(N)    Late(N)    -          Day(N)     -          Day(N)    
+CT_22      -          Late(C)    -          -          -          -          Late(C)   
+CT_23      -          Night(C)   -          Day(C)     -          Day(C)     Day(C)    
+TR_32      -          Night(T)   Day(T)     -          -          Day(T)     -         
+CT_20      -          -          Day(C)     -          -          -          -         
+CT_24      -          -          Day(C)     -          -          -          -         
+HN_1       -          -          Late(H)    -          -          -          -         
+NU_8       -          -          Late(N)    Day(N)     Night(C)   -          Night(N)  
+NU_16      -          -          Late(C)    Day(N)     -          -          -         
+CT_26      -          -          Late(C)    -          Late(C)    -          -         
+CT_30      -          -          -          Night(C)   Late(C)    -          -         
+CT_25      -          -          -          -          Late(C)    -          -         
+TR_33      -          -          -          -          Night(T)   -          -         
+TR_39      -          -          -          -          -          Early(T)   -         
+CT_28      -          -          -          -          -          Late(C)    -         
+TR_36      -          -          -          -          -          Late(T)    -         
+TR_38      -          -          -          -          -          Night(T)   Late(T)   
+
+penalties -- H1: 0, H2: 0, H3: 7500 H4: 0, S1: 1110, S2+S3+S5: 9345, S4: 20, ComC: 0.0000
+
+🎯 Best solution penalty: 17975
+✅ Solution saved to ./Output_basic/n040w4/Solutions-11/Sol-n040w4-1.json
+✅ New history data created for week 2 and saved to ./Output_basic/n040w4/Solutions-11/H2-n040w4.json
+
+Processing: week 2
+================================================================================
+
+Finish initial solution ...
+penalties -- H1: 0, H2: 0, H3: 6500 H4: 0, S1: 1140, S2+S3+S5: 9495, S4: 70, ComC: 0.0000
+🟥 Initial solution penalty: 17205
+
+Start simulated annealing...🧊
+penalties -- H1: 0, H2: 0, H3: 6500 H4: 0, S1: 1140, S2+S3+S5: 9495, S4: 70, ComC: 0.0000
+
+Complete simulated annealing ...❄️
+Final schedule(solutions)...🗓️
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+NU_6       Early(N)   Day(N)     Late(C)    Early(N)   Early(C)   -          -         
+HN_3       Early(C)   Day(N)     -          -          Day(C)     Early(N)   Early(N)  
+NU_9       Early(C)   Late(N)    -          Day(N)     Night(N)   Early(C)   Night(N)  
+CT_24      Early(C)   Night(C)   -          -          -          -          -         
+TR_35      Early(T)   Early(T)   -          -          Late(T)    -          -         
+HN_5       Day(H)     Night(C)   Night(C)   -          Early(H)   Night(N)   -         
+NU_10      Day(N)     -          Late(N)    -          Late(C)    Day(N)     -         
+HN_0       Day(C)     Late(C)    Night(N)   Day(C)     Day(H)     Late(C)    -         
+NU_7       Day(C)     Night(N)   Early(N)   Late(N)    Day(N)     -          Night(C)  
+CT_21      Day(C)     Early(C)   -          -          -          -          Night(C)  
+HN_1       Late(H)    -          Day(N)     Early(C)   Late(H)    -          Day(H)    
+NU_15      Late(N)    -          Early(C)   -          Late(C)    -          Late(C)   
+NU_13      Late(C)    -          Day(N)     Late(C)    Late(N)    -          -         
+HN_4       Late(C)    -          Late(C)    Night(H)   Early(N)   -          Early(C)  
+NU_11      Late(C)    -          -          Late(C)    -          Day(C)     -         
+TR_37      Late(T)    -          Day(T)     Early(T)   -          -          -         
+NU_14      Night(N)   -          Early(C)   Night(N)   -          -          Early(C)  
+NU_8       Night(C)   -          Early(C)   -          -          -          -         
+HN_2       Night(C)   -          -          -          Night(C)   -          Early(H)  
+NU_16      -          Early(N)   -          -          Early(C)   -          Day(N)    
+CT_29      -          Early(C)   -          Late(C)    -          -          -         
+CT_20      -          Day(C)     -          -          -          -          -         
+TR_34      -          Day(T)     -          Day(T)     -          -          -         
+CT_18      -          Late(C)    -          Day(C)     -          -          -         
+CT_22      -          Late(C)    -          -          Day(C)     -          -         
+CT_31      -          Night(C)   -          -          -          -          -         
+TR_36      -          -          Early(T)   -          Early(T)   Day(T)     Day(T)    
+CT_26      -          -          Day(C)     Night(C)   Day(C)     -          -         
+CT_27      -          -          Day(C)     -          Night(C)   -          Day(C)    
+CT_30      -          -          Day(C)     -          -          -          -         
+CT_25      -          -          Late(C)    -          -          Late(C)    -         
+NU_17      -          -          Night(C)   -          -          Late(N)    -         
+NU_12      -          -          Night(C)   -          -          -          Late(N)   
+TR_39      -          -          Night(T)   -          -          -          Late(T)   
+CT_23      -          -          -          Early(C)   Day(C)     -          -         
+CT_28      -          -          -          Night(C)   Early(C)   Early(C)   -         
+TR_38      -          -          -          Night(T)   -          -          -         
+CT_19      -          -          -          -          Night(C)   -          -         
+TR_33      -          -          -          -          -          Late(T)    -         
+TR_32      -          -          -          -          -          -          Night(T)  
+
+penalties -- H1: 0, H2: 0, H3: 6500 H4: 0, S1: 1140, S2+S3+S5: 9495, S4: 70, ComC: 0.0000
+
+🎯 Best solution penalty: 17205
+✅ Solution saved to ./Output_basic/n040w4/Solutions-11/Sol-n040w4-2.json
+✅ New history data created for week 3 and saved to ./Output_basic/n040w4/Solutions-11/H3-n040w4.json
+
+Processing: week 3
+================================================================================
+
+Finish initial solution ...
+penalties -- H1: 0, H2: 0, H3: 10000 H4: 0, S1: 1140, S2+S3+S5: 9105, S4: 80, ComC: 0.0000
+🟥 Initial solution penalty: 20325
+
+Start simulated annealing...🧊
+penalties -- H1: 0, H2: 0, H3: 10000 H4: 0, S1: 1140, S2+S3+S5: 9105, S4: 80, ComC: 0.0000
+
+Complete simulated annealing ...❄️
+Final schedule(solutions)...🗓️
+Name       Mon        Tue        Wed        Thu        Fri        Sat        Sun       
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+NU_7       Early(N)   Early(C)   Day(N)     Night(N)   -          Late(C)    -         
+NU_8       Early(N)   Night(C)   -          Late(C)    Early(C)   Early(C)   -         
+CT_30      Early(C)   -          -          -          Day(C)     -          Night(C)  
+HN_3       Early(C)   Late(C)    Late(N)    Day(C)     Day(N)     Late(N)    -         
+NU_12      Early(C)   Day(N)     Night(N)   Late(N)    Late(C)    Day(C)     -         
+TR_32      Early(T)   -          Early(T)   -          Early(T)   Night(T)   -         
+NU_15      Day(N)     -          Early(C)   Early(N)   -          Early(N)   Early(C)  
+CT_21      Day(C)     -          -          -          -          -          -         
+NU_6       Day(C)     -          Late(C)    Day(N)     Day(C)     -          -         
+TR_37      Day(T)     -          -          Day(T)     Late(T)    -          Night(T)  
+NU_9       Late(N)    Late(C)    -          Early(C)   Late(C)    -          -         
+HN_5       Late(N)    -          Early(N)   Early(H)   Early(N)   -          Day(H)    
+CT_18      Late(C)    Early(C)   Night(C)   -          Night(C)   -          -         
+NU_10      Late(C)    Night(N)   Day(C)     -          -          Day(C)     Late(N)   
+CT_24      Late(C)    -          Night(C)   -          -          Night(C)   -         
+HN_0       Night(H)   -          Late(H)    Night(N)   -          -          -         
+NU_16      Night(N)   Late(N)    Late(N)    -          -          Night(N)   -         
+HN_2       Night(C)   Early(N)   Early(H)   Late(C)    Early(C)   Day(N)     -         
+HN_4       Night(C)   -          Night(H)   Day(C)     Day(N)     Day(H)     Day(N)    
+CT_28      Night(C)   -          Early(C)   -          -          -          -         
+HN_1       Night(C)   Day(H)     Day(C)     Late(C)    Late(N)    -          Night(N)  
+TR_39      Night(T)   -          -          -          -          -          -         
+NU_14      -          Early(C)   -          -          Night(N)   Night(C)   Early(N)  
+CT_20      -          Day(C)     -          Late(C)    Early(C)   -          -         
+NU_11      -          Day(C)     Early(C)   Late(N)    -          -          Day(C)    
+CT_27      -          Late(C)    -          -          -          -          -         
+TR_34      -          Late(T)    -          -          Day(T)     Early(T)   -         
+NU_17      -          Night(N)   -          Day(N)     Night(C)   -          -         
+CT_23      -          Night(C)   -          Day(C)     Night(C)   -          -         
+NU_13      -          -          Early(C)   -          -          -          -         
+CT_26      -          -          Day(C)     -          -          -          -         
+TR_33      -          -          Day(T)     -          -          -          -         
+TR_38      -          -          Late(T)    -          -          -          Day(T)    
+CT_22      -          -          -          Early(C)   -          -          -         
+CT_29      -          -          -          Night(C)   -          -          -         
+CT_25      -          -          -          -          Early(C)   -          Night(C)  
+CT_19      -          -          -          -          Day(C)     -          -         
+TR_36      -          -          -          -          -          Day(T)     -         
+
+penalties -- H1: 0, H2: 0, H3: 10000 H4: 0, S1: 1140, S2+S3+S5: 9105, S4: 80, ComC: 0.0000
+
+🎯 Best solution penalty: 20325
+✅ Solution saved to ./Output_basic/n040w4/Solutions-11/Sol-n040w4-3.json
+✅ New history data created for week 4 and saved to ./Output_basic/n040w4/Solutions-11/H4-n040w4.json
+
+Execution time: 0.0128 seconds

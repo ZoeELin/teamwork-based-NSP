@@ -1,0 +1,19 @@
+Start simulating intensity from ./Output_basic/n050w4/Solutions-6, and saving to ./Output_basic/n050w4
+
+Calculate 6th execution of schedule(solutions) in ./Output_basic/n050w4/Solutions-6 directory... 
+
+Reading solution files from ./Output_basic/n050w4/Solutions-6... 📂
+
+Calculating cooperation intensity... 🧮
+👥 They are 1221 pairs of nurses in cooperations.
+
+Loading previous cooperation data from coop-intensity-6.json... 📂
+⚠️ Previous cooperation data file coop-intensity-6.json not found.
+
+Accumulating past cooperation data into current cooperation data... 🔄
+
+Writing cooperation data to JSON file...💾
+✅ Cooperation data saved to ./Output_basic/n050w4/coop-intensity-6.json
+
+Visualizing cooperation graph... 📊
+✅ Cooperation graph saved to ./Output_basic/n050w4/coop-graph-6.png
