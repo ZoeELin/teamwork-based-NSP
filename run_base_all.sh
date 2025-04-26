@@ -14,6 +14,9 @@ do
   echo "=== 開始處理 Scenario: $SCENARIO ==="
   scenario=$SCENARIO
   mkdir -p "${logs}/${scenario}"
+  
+  python3 Init_nurse_pairs.py "$dataset_folder/$scenario/Sc-$scenario.json" "${output_dir}/${scenario}"
+
   for i in {1..12}
 
   do
