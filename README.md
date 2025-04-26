@@ -22,7 +22,7 @@ python3 main.py \
     --input_folder <dataset_folder> \
     --sce <scenario_name> \
     --comc <communication cost weight> \
-    --run_id <i-th time of run, 0> \
+    --run_id <i-th time of run d> \
     --output_dir <output_directory>
 ```
 
@@ -34,7 +34,7 @@ python3 main.py --input_folder ./testdatasets_json --sce n021w4 --comc 200 --run
 ```
 Arguments:
 - <dataset_folder>: Path to the dataset folder.
-- <scenario>: Scenario name (e.g., n005w4).
+- <scenario_name>: Scenario name (e.g., n005w4).
 - <comc_weight>: Cooperation cost weight (e.g., 200).
 - <run_id>: Run ID (integer, e.g., 0).
 - <output_dir>: Path to the output directory for storing results.
