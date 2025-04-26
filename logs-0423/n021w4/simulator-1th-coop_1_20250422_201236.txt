@@ -1,0 +1,14 @@
+Start simulating intensity from ./Output0423/n021w4/Solutions-ComC800-1, and saving to ./Output0423/n021w4
+
+Calculate 1th execution of schedule(solutions) in ./Output0423/n021w4/Solutions-ComC800-1 directory... 
+
+Reading solution files from ./Output0423/n021w4/Solutions-ComC800-1... 📂
+
+Calculating cooperation intensity... 🧮
+👥 They are 203 pairs of nurses in cooperations.
+
+Writing cooperation data to JSON file...💾
+✅ Cooperation data saved to ./Output0423/n021w4/coop-intensity-comc800-1.json
+
+Visualizing cooperation graph... 📊
+✅ Cooperation graph saved to ./Output0423/n021w4/coop-graph-comc800-1.png

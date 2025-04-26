@@ -1,0 +1,18 @@
+Start simulating intensity from ./Output0423/n021w4/Solutions-ComC550-12, and saving to ./Output0423/n021w4
+
+Calculate 12th execution of schedule(solutions) in ./Output0423/n021w4/Solutions-ComC550-12 directory... 
+
+Reading solution files from ./Output0423/n021w4/Solutions-ComC550-12... 📂
+
+Calculating cooperation intensity... 🧮
+👥 They are 210 pairs of nurses in cooperations.
+
+Loading previous cooperation data from coop-intensity-comc550-11.json... 📂
+
+Accumulating past cooperation data into current cooperation data... 🔄
+
+Writing cooperation data to JSON file...💾
+✅ Cooperation data saved to ./Output0423/n021w4/coop-intensity-comc550-12.json
+
+Visualizing cooperation graph... 📊
+✅ Cooperation graph saved to ./Output0423/n021w4/coop-graph-comc550-12.png
