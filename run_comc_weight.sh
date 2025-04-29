@@ -2,9 +2,9 @@
 
 dataset_folder="./testdatasets_json"
 scenario="n021w4"
-output_dir="./Output0423"
+output_dir="./Output0429"
 
-logs="logs-0423"
+logs="logs-0429"
 
 
 mkdir -p "${logs}/${scenario}"
@@ -12,7 +12,10 @@ mkdir -p "${logs}/${scenario}"
 
 for comc_weight in $(seq 50 50 1000)
 do
+  
   echo ">ComC weight: ${comc_weight}"
+  python3 Init_nurse_pairs.py "$dataset_folder/$scenario/Sc-$scenario.json" "${output_dir}/${scenario}"
+  
   for i in {1..12}
 
   do

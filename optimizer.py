@@ -307,7 +307,7 @@ def simulated_annealing_author_style(
     initial_temp=110.0,
     min_temp=2.13,
     cooling_rate=0.95,
-    max_iter=2 * 10**6,
+    max_iter=2 * 10**4,
     kmaxMS=20,
     kmaxMC=2,
     pMS=0.45,
