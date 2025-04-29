@@ -17,8 +17,7 @@ do
   
   python3 Init_nurse_pairs.py "$dataset_folder/$scenario/Sc-$scenario.json" "${output_dir}/${scenario}"
 
-  for i in {1..12}
-
+  for i in $(seq 1 12)
   do
     timestamp=$(date +"%Y%m%d_%H%M%S")
     sol_dir="${output_dir}/${scenario}/Solutions-${i}"
