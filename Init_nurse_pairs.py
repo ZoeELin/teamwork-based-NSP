@@ -38,6 +38,8 @@ def save_pairs(pairs, output_dir):
     """
     Save pairs to JSON.
     """
+    os.makedirs(output_dir, exist_ok=True)
+
     with open(os.path.join(output_dir, "nurse_pairs.json"), "w") as f:
         json.dump(pairs, f, indent=4)
     print(f"✅ Nurse pairs saved to {output_dir}")
