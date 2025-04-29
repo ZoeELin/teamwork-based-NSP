@@ -509,7 +509,7 @@ def simulated_annealing_with_ComC(
             lastday_of_lastweek,
             nurseHistory,
             output_dir,
-            comc_w, 
+            comc_w,
             print_each_penalty=True,
             run_id=run_id,
         )
