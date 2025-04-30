@@ -1,0 +1,580 @@
+ComC weight: 50
+                              Initial score   Best score     
+week0   
+         Hard constraints     6000            0              
+         Soft constraints     4440            890            
+         ComC constraints     4728.2          4866.32        
+         Total constraints    15168.2         5756.32        
+
+week1   
+         Hard constraints     6500            0              
+         Soft constraints     4585            1075           
+         ComC constraints     4571.82         4345.67        
+         Total constraints    15656.82        5420.67        
+
+week2   
+         Hard constraints     6000            0              
+         Soft constraints     4390            1000           
+         ComC constraints     4940.56         4665.03        
+         Total constraints    15330.56        5665.03        
+
+week3   
+         Hard constraints     5500            0              
+         Soft constraints     4650            1120           
+         ComC constraints     4815.87         4846.1         
+         Total constraints    14965.87        5966.1         
+
+         Execution time 48.80 seconds
+============================================================
+
+ComC weight: 100
+                              Initial score   Best score     
+week0   
+         Hard constraints     7500            0              
+         Soft constraints     4220            1300           
+         ComC constraints     9474.37         9295.49        
+         Total constraints    21194.37        11017.73       
+
+week1   
+         Hard constraints     5500            0              
+         Soft constraints     4855            1085           
+         ComC constraints     9018.33         8492.45        
+         Total constraints    19373.33        9577.45        
+
+week2   
+         Hard constraints     5500            0              
+         Soft constraints     5145            1095           
+         ComC constraints     9515.0          8981.31        
+         Total constraints    20160.0         10076.31       
+
+week3   
+         Hard constraints     4000            0              
+         Soft constraints     4350            1305           
+         ComC constraints     9271.86         8910.12        
+         Total constraints    17621.86        10215.12       
+
+         Execution time 48.79 seconds
+============================================================
+
+ComC weight: 150
+                              Initial score   Best score     
+week0   
+         Hard constraints     5500            0              
+         Soft constraints     4700            1370           
+         ComC constraints     14151.43        10067.52       
+         Total constraints    24351.43        14437.52       
+
+week1   
+         Hard constraints     5000            0              
+         Soft constraints     4300            1120           
+         ComC constraints     13551.82        10874.86       
+         Total constraints    22851.82        14494.86       
+
+week2   
+         Hard constraints     3000            0              
+         Soft constraints     4495            1335           
+         ComC constraints     14138.78        10596.56       
+         Total constraints    21633.78        14431.56       
+
+week3   
+         Hard constraints     3500            0              
+         Soft constraints     4780            1385           
+         ComC constraints     13908.25        10975.8        
+         Total constraints    22188.25        14360.8        
+
+         Execution time 47.31 seconds
+============================================================
+
+ComC weight: 200
+                              Initial score   Best score     
+week0   
+         Hard constraints     6000            0              
+         Soft constraints     4675            1610           
+         ComC constraints     17705.78        9532.71        
+         Total constraints    28380.78        17142.71       
+
+week1   
+         Hard constraints     6500            0              
+         Soft constraints     4660            1915           
+         ComC constraints     17568.15        10436.49       
+         Total constraints    28728.15        16851.49       
+
+week2   
+         Hard constraints     6000            0              
+         Soft constraints     5535            1735           
+         ComC constraints     18472.01        9588.61        
+         Total constraints    30007.01        17323.61       
+
+week3   
+         Hard constraints     4500            0              
+         Soft constraints     4580            2045           
+         ComC constraints     18584.84        8961.61        
+         Total constraints    27664.84        17006.61       
+
+         Execution time 45.51 seconds
+============================================================
+
+ComC weight: 250
+                              Initial score   Best score     
+week0   
+         Hard constraints     7000            0              
+         Soft constraints     4645            2445           
+         ComC constraints     21610.46        8823.52        
+         Total constraints    33255.46        20268.52       
+
+week1   
+         Hard constraints     4500            0              
+         Soft constraints     5685            2545           
+         ComC constraints     20833.65        10746.47       
+         Total constraints    31018.65        20291.47       
+
+week2   
+         Hard constraints     5500            0              
+         Soft constraints     4725            1890           
+         ComC constraints     22405.07        12552.47       
+         Total constraints    32630.07        19942.47       
+
+week3   
+         Hard constraints     3500            0              
+         Soft constraints     4545            2150           
+         ComC constraints     21896.35        7175.16        
+         Total constraints    29941.35        18325.16       
+
+         Execution time 43.90 seconds
+============================================================
+
+ComC weight: 300
+                              Initial score   Best score     
+week0   
+         Hard constraints     7500            0              
+         Soft constraints     4720            2110           
+         ComC constraints     25970.42        10506.8        
+         Total constraints    38190.42        21616.8        
+
+week1   
+         Hard constraints     3000            0              
+         Soft constraints     5510            2590           
+         ComC constraints     25173.08        12584.3        
+         Total constraints    33683.08        21174.3        
+
+week2   
+         Hard constraints     7500            0              
+         Soft constraints     5055            2145           
+         ComC constraints     26483.18        14415.58       
+         Total constraints    39038.18        22560.58       
+
+week3   
+         Hard constraints     2500            0              
+         Soft constraints     4405            2015           
+         ComC constraints     26460.15        11566.83       
+         Total constraints    33365.15        20581.83       
+
+         Execution time 44.53 seconds
+============================================================
+
+ComC weight: 350
+                              Initial score   Best score     
+week0   
+         Hard constraints     4000            0              
+         Soft constraints     4595            1925           
+         ComC constraints     30700.1         13244.74       
+         Total constraints    39295.1         22669.74       
+
+week1   
+         Hard constraints     5000            0              
+         Soft constraints     5395            2345           
+         ComC constraints     28883.9         14353.88       
+         Total constraints    39278.9         22698.88       
+
+week2   
+         Hard constraints     6500            0              
+         Soft constraints     5155            2770           
+         ComC constraints     30538.31        13091.2        
+         Total constraints    42193.31        24361.2        
+
+week3   
+         Hard constraints     4000            0              
+         Soft constraints     4760            2395           
+         ComC constraints     30224.32        9636.79        
+         Total constraints    38984.32        21531.79       
+
+         Execution time 43.35 seconds
+============================================================
+
+ComC weight: 400
+                              Initial score   Best score     
+week0   
+         Hard constraints     5500            0              
+         Soft constraints     4515            2130           
+         ComC constraints     34119.86        12195.94       
+         Total constraints    44134.86        23325.94       
+
+week1   
+         Hard constraints     4500            0              
+         Soft constraints     5065            1960           
+         ComC constraints     32952.23        16239.04       
+         Total constraints    42517.23        25199.04       
+
+week2   
+         Hard constraints     5000            0              
+         Soft constraints     4885            2085           
+         ComC constraints     33989.13        14902.35       
+         Total constraints    43874.13        25487.35       
+
+week3   
+         Hard constraints     6000            0              
+         Soft constraints     4680            2080           
+         ComC constraints     34148.75        13685.94       
+         Total constraints    44828.75        24265.94       
+
+         Execution time 44.89 seconds
+============================================================
+
+ComC weight: 450
+                              Initial score   Best score     
+week0   
+         Hard constraints     6000            0              
+         Soft constraints     5175            2290           
+         ComC constraints     37847.94        15006.34       
+         Total constraints    49022.94        25796.34       
+
+week1   
+         Hard constraints     5000            0              
+         Soft constraints     5145            2745           
+         ComC constraints     36259.42        18057.43       
+         Total constraints    46404.42        26802.43       
+
+week2   
+         Hard constraints     5000            0              
+         Soft constraints     4645            2155           
+         ComC constraints     38180.54        18186.19       
+         Total constraints    47825.54        27341.19       
+
+week3   
+         Hard constraints     4500            0              
+         Soft constraints     4110            2215           
+         ComC constraints     38098.89        13727.88       
+         Total constraints    46708.89        24942.88       
+
+         Execution time 43.70 seconds
+============================================================
+
+ComC weight: 500
+                              Initial score   Best score     
+week0   
+         Hard constraints     8500            0              
+         Soft constraints     5225            1775           
+         ComC constraints     41776.39        20239.67       
+         Total constraints    55501.39        28514.67       
+
+week1   
+         Hard constraints     6000            0              
+         Soft constraints     5115            2130           
+         ComC constraints     39765.78        21489.99       
+         Total constraints    50880.78        29619.99       
+
+week2   
+         Hard constraints     8000            0              
+         Soft constraints     4645            1905           
+         ComC constraints     42059.38        21752.21       
+         Total constraints    54704.38        29657.21       
+
+week3   
+         Hard constraints     3500            0              
+         Soft constraints     4920            2460           
+         ComC constraints     41801.36        11858.02       
+         Total constraints    50221.36        24318.02       
+
+         Execution time 44.69 seconds
+============================================================
+
+ComC weight: 550
+                              Initial score   Best score     
+week0   
+         Hard constraints     6000            0              
+         Soft constraints     4200            2535           
+         ComC constraints     45583.87        14478.77       
+         Total constraints    55783.87        25861.9        
+
+week1   
+         Hard constraints     3500            0              
+         Soft constraints     5500            2085           
+         ComC constraints     42957.16        25083.41       
+         Total constraints    51957.16        32168.41       
+
+week2   
+         Hard constraints     4500            0              
+         Soft constraints     4545            2370           
+         ComC constraints     45259.53        19793.87       
+         Total constraints    54304.53        30163.87       
+
+week3   
+         Hard constraints     3500            0              
+         Soft constraints     4395            2235           
+         ComC constraints     45160.65        16395.53       
+         Total constraints    53055.65        26630.53       
+
+         Execution time 44.22 seconds
+============================================================
+
+ComC weight: 600
+                              Initial score   Best score     
+week0   
+         Hard constraints     6000            0              
+         Soft constraints     4220            2280           
+         ComC constraints     49153.42        17617.41       
+         Total constraints    59373.42        29397.41       
+
+week1   
+         Hard constraints     4000            0              
+         Soft constraints     4885            2185           
+         ComC constraints     45157.84        25321.33       
+         Total constraints    54042.84        32506.33       
+
+week2   
+         Hard constraints     5500            0              
+         Soft constraints     4575            1935           
+         ComC constraints     49271.81        21138.44       
+         Total constraints    59346.81        31573.44       
+
+week3   
+         Hard constraints     5000            0              
+         Soft constraints     4670            2295           
+         ComC constraints     49259.88        15669.93       
+         Total constraints    58929.88        26964.94       
+
+         Execution time 43.79 seconds
+============================================================
+
+ComC weight: 650
+                              Initial score   Best score     
+week0   
+         Hard constraints     5500            0              
+         Soft constraints     4735            2645           
+         ComC constraints     51519.36        18451.51       
+         Total constraints    61754.36        30096.51       
+
+week1   
+         Hard constraints     3000            0              
+         Soft constraints     4345            2470           
+         ComC constraints     49166.16        22737.9        
+         Total constraints    56511.16        32207.9        
+
+week2   
+         Hard constraints     7500            0              
+         Soft constraints     4515            2725           
+         ComC constraints     52493.9         20751.04       
+         Total constraints    64508.9         33476.04       
+
+week3   
+         Hard constraints     3500            0              
+         Soft constraints     4710            2340           
+         ComC constraints     52798.33        21132.58       
+         Total constraints    61008.33        30828.35       
+
+         Execution time 43.55 seconds
+============================================================
+
+ComC weight: 700
+                              Initial score   Best score     
+week0   
+         Hard constraints     4500            0              
+         Soft constraints     5020            2725           
+         ComC constraints     55479.3         19701.89       
+         Total constraints    64999.3         30926.89       
+
+week1   
+         Hard constraints     4500            0              
+         Soft constraints     4390            2190           
+         ComC constraints     53871.51        28487.32       
+         Total constraints    62761.51        36177.32       
+
+week2   
+         Hard constraints     7500            0              
+         Soft constraints     4825            2905           
+         ComC constraints     54918.77        26127.03       
+         Total constraints    67243.77        36532.03       
+
+week3   
+         Hard constraints     4500            0              
+         Soft constraints     5095            2485           
+         ComC constraints     54540.57        17736.44       
+         Total constraints    64135.57        29221.44       
+
+         Execution time 43.71 seconds
+============================================================
+
+ComC weight: 750
+                              Initial score   Best score     
+week0   
+         Hard constraints     4500            0              
+         Soft constraints     4950            2415           
+         ComC constraints     60525.96        30534.65       
+         Total constraints    69975.96        38949.65       
+
+week1   
+         Hard constraints     4000            0              
+         Soft constraints     4515            2580           
+         ComC constraints     57068.0         31131.07       
+         Total constraints    65583.0         38711.07       
+
+week2   
+         Hard constraints     4000            0              
+         Soft constraints     4555            1930           
+         ComC constraints     61183.87        28788.61       
+         Total constraints    69738.87        38218.61       
+
+week3   
+         Hard constraints     6500            0              
+         Soft constraints     4625            2395           
+         ComC constraints     60741.82        23831.55       
+         Total constraints    71866.82        33726.55       
+
+         Execution time 44.22 seconds
+============================================================
+
+ComC weight: 800
+                              Initial score   Best score     
+week0   
+         Hard constraints     8000            0              
+         Soft constraints     4215            2870           
+         ComC constraints     62619.6         22851.14       
+         Total constraints    74834.6         33721.14       
+
+week1   
+         Hard constraints     4500            0              
+         Soft constraints     5575            2055           
+         ComC constraints     61024.25        30581.2        
+         Total constraints    71099.25        39136.2        
+
+week2   
+         Hard constraints     5500            0              
+         Soft constraints     4825            2250           
+         ComC constraints     64896.78        33098.73       
+         Total constraints    75221.78        41348.73       
+
+week3   
+         Hard constraints     4500            0              
+         Soft constraints     4910            2555           
+         ComC constraints     63156.89        27943.69       
+         Total constraints    72566.89        36998.69       
+
+         Execution time 43.09 seconds
+============================================================
+
+ComC weight: 850
+                              Initial score   Best score     
+week0   
+         Hard constraints     6000            0              
+         Soft constraints     4715            3060           
+         ComC constraints     63206.47        20395.12       
+         Total constraints    73921.47        32955.12       
+
+week1   
+         Hard constraints     2000            0              
+         Soft constraints     4880            2625           
+         ComC constraints     62494.96        30672.91       
+         Total constraints    69374.96        39297.91       
+
+week2   
+         Hard constraints     5000            0              
+         Soft constraints     4470            2455           
+         ComC constraints     66775.9         28475.67       
+         Total constraints    76245.9         39430.67       
+
+week3   
+         Hard constraints     5500            0              
+         Soft constraints     5170            2525           
+         ComC constraints     65144.54        25633.02       
+         Total constraints    75814.54        35658.02       
+
+         Execution time 43.48 seconds
+============================================================
+
+ComC weight: 900
+                              Initial score   Best score     
+week0   
+         Hard constraints     5500            0              
+         Soft constraints     4970            2545           
+         ComC constraints     67408.68        27009.53       
+         Total constraints    77878.68        37054.53       
+
+week1   
+         Hard constraints     3000            0              
+         Soft constraints     4930            2490           
+         ComC constraints     66402.31        26882.11       
+         Total constraints    74332.31        36872.11       
+
+week2   
+         Hard constraints     5500            0              
+         Soft constraints     4780            2530           
+         ComC constraints     69638.28        27315.34       
+         Total constraints    79918.28        38845.34       
+
+week3   
+         Hard constraints     4000            0              
+         Soft constraints     4885            3220           
+         ComC constraints     69784.62        18764.43       
+         Total constraints    78669.62        31484.43       
+
+         Execution time 41.50 seconds
+============================================================
+
+ComC weight: 950
+                              Initial score   Best score     
+week0   
+         Hard constraints     4000            0              
+         Soft constraints     4330            2735           
+         ComC constraints     71365.71        28596.77       
+         Total constraints    79695.71        38831.77       
+
+week1   
+         Hard constraints     5500            0              
+         Soft constraints     5035            2755           
+         ComC constraints     70514.01        28573.03       
+         Total constraints    81049.01        39328.03       
+
+week2   
+         Hard constraints     5500            0              
+         Soft constraints     5125            3385           
+         ComC constraints     71631.84        28668.76       
+         Total constraints    82256.84        41553.76       
+
+week3   
+         Hard constraints     6000            0              
+         Soft constraints     4520            2715           
+         ComC constraints     75579.84        22946.18       
+         Total constraints    86099.84        34661.18       
+
+         Execution time 44.13 seconds
+============================================================
+
+ComC weight: 1000
+                              Initial score   Best score     
+week0   
+         Hard constraints     6000            0              
+         Soft constraints     4570            2445           
+         ComC constraints     77013.45        30597.79       
+         Total constraints    87583.45        40542.79       
+
+week1   
+         Hard constraints     2500            0              
+         Soft constraints     4660            2745           
+         ComC constraints     74071.99        24578.47       
+         Total constraints    81231.99        37323.47       
+
+week2   
+         Hard constraints     4000            0              
+         Soft constraints     5500            2715           
+         ComC constraints     77076.05        33770.11       
+         Total constraints    86576.05        44985.11       
+
+week3   
+         Hard constraints     4000            0              
+         Soft constraints     4865            2630           
+         ComC constraints     76364.19        27618.74       
+         Total constraints    85229.19        38248.74       
+
+         Execution time 43.01 seconds
+============================================================
+
