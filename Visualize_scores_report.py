@@ -129,7 +129,7 @@ def plot_score_trend_line(df, output_filename='score_trend.png'):
 
 
 def main():
-    filename = 'observations_SA_processed.txt'
+    filename = 'procession_with_each_weight50_1000.txt'
     df = parse_observation_file(filename)
 
     # print(df.head())

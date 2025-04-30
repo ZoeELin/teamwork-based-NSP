@@ -102,4 +102,4 @@ def summarize_all_logs_to_file(input_dir, output_path="summary_output.txt"):
 
 
 if __name__ == "__main__":
-    summarize_all_logs_to_file("logs-0423/n021w4", "observations_SA_processed.txt")
+    summarize_all_logs_to_file("logs-0429/n021w4", "observations_SA_processed.txt")
