@@ -347,7 +347,7 @@ def plot_total_minus_comc_penalty_by_weight(
 
 
 def main():
-    filename = 'extracted/procession_with_n021w4_weight50_1000.txt'
+    filename = 'extracted/procession_with_n040w4_weight50_1000.txt'
     df = parse_observation_file(filename)
 
     # print(df.head())

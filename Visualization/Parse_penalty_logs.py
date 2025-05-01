@@ -1,5 +1,4 @@
 import re
-import os
 from glob import glob
 
 def parse_log_file(file_path):
@@ -102,4 +101,4 @@ def summarize_all_logs_to_file(input_dir, output_path="summary_output.txt"):
 
 
 if __name__ == "__main__":
-    summarize_all_logs_to_file("logs-weight0-5-250/n021w4", "procession_with_each_weight0_50.txt")
+    summarize_all_logs_to_file("logs-weight50-50-1000/n030w4", "procession_with_n030w4_weight50_1000.txt")
