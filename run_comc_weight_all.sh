@@ -37,7 +37,7 @@ do
 
       
       echo ">>> 模擬合作圖（模擬第 $i 次後的結果）"
-      python3 Simulate_coop.py "${output_dir}/${scenario}" "$sol_dir" "${i}" --comc "$comc_weight" > "${logs}/${scenario}/simulator-${i}th-coop_${i}_${timestamp}.txt"
+      python3 Simulate_coop.py "${output_dir}/${scenario}" "$sol_dir" "${i}" --comc "$comc_weight" > "${logs}/${scenario}/simulator-${i}th-coop_${comc_weight}_${timestamp}.txt"
     done
 
   done
