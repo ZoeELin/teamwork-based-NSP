@@ -6,7 +6,7 @@ import scheduler
 from history import create_next_history_data
 
 
-def run_scheduler_pipeline(instance, run_id="0", use_ComC=False):
+def run_scheduler_pipeline(instance, output_dir, comc_w, run_id_str):
     """
     Performs a complete nurse scheduling process (using prepared instance dict).
     Includes weekly scheduling and results output with total execution time statistics.
@@ -14,9 +14,21 @@ def run_scheduler_pipeline(instance, run_id="0", use_ComC=False):
     Parameters:
         instance (dict): scenario, scenario_name, week_data, history
     """
-    output_dir = os.path.dirname(instance["scenario"])
+    scenario_dir = os.path.join(output_dir, instance["scenario_name"])
+
+    if comc_w == 0:
+        solution_dir = os.path.join(
+        output_dir, instance["scenario_name"], f"Solutions-{run_id_str}"
+    )
+    else:
+        solution_dir = os.path.join(
+            output_dir,
+            instance["scenario_name"],
+            f"Solutions-ComC{comc_w}-{run_id_str}",
+        )
+
     week_idx = 0
-    his_filepath = instance["history"]
+    history_filepath = instance["history"]
 
     start = time.perf_counter()
 
@@ -27,20 +39,24 @@ def run_scheduler_pipeline(instance, run_id="0", use_ComC=False):
         print("=" * 80)
 
         final_assignments = scheduler.base_scheduler(
-            instance["scenario"], week_data_file, his_filepath, run_id
+            instance["scenario"],
+            week_data_file,
+            scenario_dir,
+            history_filepath,
+            int(run_id_str),
+            comc_w,
         )
 
         utils.package_solution_2JSON(
             final_assignments,
-            output_dir,
+            solution_dir,
             instance["scenario_name"],
             week_idx,
-            run_id,
-            use_ComC,
         )
 
-        his_filepath = create_next_history_data(final_assignments, his_filepath)
-
+        history_filepath = create_next_history_data(
+            final_assignments, history_filepath, solution_dir
+        )
         week_idx += 1
 
     end = time.perf_counter()

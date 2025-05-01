@@ -1,0 +1,18 @@
+Start simulating intensity from ./Output_baseline/n021w4/Solutions-5, and saving to ./Output_baseline/n021w4
+
+Calculate 5th execution of schedule(solutions) in ./Output_baseline/n021w4/Solutions-5 directory... 
+
+Reading solution files from ./Output_baseline/n021w4/Solutions-5... 📂
+
+Calculating cooperation intensity... 🧮
+👥 They are 209 pairs of nurses in cooperations.
+
+Loading previous cooperation data from coop-intensity-5.json... 📂
+
+Accumulating past cooperation data into current cooperation data... 🔄
+
+Writing cooperation data to JSON file...💾
+✅ Cooperation data saved to ./Output_baseline/n021w4/coop-intensity-5.json
+
+Visualizing cooperation graph... 📊
+✅ Cooperation graph saved to ./Output_baseline/n021w4/coop-graph-5.png

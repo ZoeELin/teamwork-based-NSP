@@ -1,6 +1,9 @@
+# Simulate_coop.py
+
 import os
 import json
 import itertools
+import argparse
 
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -11,10 +14,12 @@ from collections import defaultdict
 # Read and get solution in a scenario
 def read_solution(dir_path):
     """
-    Read a JSON file and return the parsed data.
+    Read all JSON file in directory and return the parsed data(a schedule).
     """
     # Read all files start with "Sol-" in the directory
+    print(f"\nReading solution files from {dir_path}... 📂")
     json_files = [f for f in os.listdir(dir_path) if f.startswith("Sol-")]
+    final_schedule = []
 
     for json_file in json_files:
         file_path = os.path.join(dir_path, json_file)
@@ -23,7 +28,6 @@ def read_solution(dir_path):
         with open(file_path, "r") as f:
             data = json.load(f)
 
-        final_schedule = []
         final_schedule.append(data["assignments"])
 
     return final_schedule
@@ -34,13 +38,12 @@ def cal_coop_graph(final_schedule):
     Given a list of assignment dictionaries, calculate cooperation intensity w_{ij}
     and return it as a list of dicts.
     """
-    # Flatten if needed
-    if (
-        isinstance(final_schedule, list)
-        and len(final_schedule) == 1
-        and isinstance(final_schedule[0], list)
+    print("\nCalculating cooperation intensity... 🧮")
+    # Flatten if it's a list of lists (e.g., multi-week schedule)
+    if isinstance(final_schedule, list) and all(
+        isinstance(x, list) for x in final_schedule
     ):
-        final_schedule = final_schedule[0]
+        final_schedule = [item for sublist in final_schedule for item in sublist]
 
     # Group by (day, shiftType)
     shift_assignments = defaultdict(list)
@@ -70,28 +73,40 @@ def cal_coop_graph(final_schedule):
         for (i, j, w) in nurses_coop_pairs
     ]
 
+    print(f"👥 They are {len(cooperation_list)} pairs of nurses in cooperations.")
+
     return cooperation_list
 
 
-def load_previous_coopdata(output_dir, prev_run_id):
-    path = os.path.join(output_dir, f"coop-intensity-{prev_run_id}.json")
+def load_previous_coopdata(output_dir, prev_filename):
+    print(f"\nLoading previous cooperation data from {prev_filename}... 📂")
+
+    path = os.path.join(output_dir, prev_filename)
     if not os.path.exists(path):
+        print(f"⚠️ Previous cooperation data file {prev_filename} not found.")
         return []
     with open(path, "r") as f:
+        print(f"✅ Successfully load previous cooperation data: {path}")
         return json.load(f)
 
 
 def accumulate_coopdata(current, previous):
+    print("\nAccumulating past cooperation data into current cooperation data... 🔄")
+    print(
+        f"There are {len(current)} pairs of nurses in current file, {len(previous)} pairs of nurses in previous file."
+    )
     coop_dict = defaultdict(float)
 
     # Add previous data
     for entry in previous:
         key = tuple(sorted((entry["nurse1"], entry["nurse2"])))
-        coop_dict[key] += entry["cooperation_score"]
+        coop_dict[key] = entry["cooperation_score"]
 
-    # Add previous data to current data
+    # Add current data from previous data
     for entry in current:
         key = tuple(sorted((entry["nurse1"], entry["nurse2"])))
+        if key not in coop_dict.keys():
+            print(f"❗nurse pair {key[0]}-{key[1]} not in the previous data")
         coop_dict[key] += entry["cooperation_score"]
 
     # Convert to list of dicts
@@ -101,26 +116,34 @@ def accumulate_coopdata(current, previous):
     ]
 
 
-def write_coopdata_2json(data, output_dir, run_id, use_ComC=False):
+def save_coopdata(data, output_dir, run_id, comcw=0):
     """
-    Write data to a JSON file.
+    Write and save data to a JSON file.
     """
-    if use_ComC:
-        output_path = os.path.join(output_dir, f"coop-intensity-ComC-{run_id}.json")
-    else:
+    print(f"\nProcessing cooperation data to JSON file... 💾")
+
+    if comcw == 0:
         output_path = os.path.join(output_dir, f"coop-intensity-{run_id}.json")
+    else:
+        output_path = os.path.join(
+            output_dir, f"coop-intensity-comc{comcw}-{run_id}.json"
+        )
 
-    with open(output_path, "w") as f:
-        json.dump(data, f, indent=4)
+    try:
+        with open(output_path, "w") as f:
+            json.dump(data, f, indent=4)
+    except Exception as e:
+        print(f"Error writing to JSON file: {e}")
+        return
 
-    print(f"Cooperation data saved to {output_path}")
+    print(f"✅ Cooperation data saved to {output_path}")
 
 
-def visual_cooperation_graph(data, output_dir, use_ComC=False):
+def save_coop_graph(data, output_dir, run_id, comcw=0):
     """
-    Visualize the cooperation graph using NetworkX and Matplotlib.
+    Visualize and save the cooperation graph using NetworkX and Matplotlib.
     """
-
+    print("\nSaveing cooperation graph... 📊")
     G = nx.Graph()
     for entry in data:
         n1, n2 = entry["nurse1"], entry["nurse2"]
@@ -139,39 +162,66 @@ def visual_cooperation_graph(data, output_dir, use_ComC=False):
     plt.axis("off")
     # plt.tight_layout()
 
-    output_img_path = output_dir + "/coop-graph.png"
-    if use_ComC:
-        output_img_path = output_dir + "/coop-graph-ComC.png"
+    # Save the graph as an image
+    if comcw == 0:
+        output_img_path = output_dir + f"/coop-graph-{run_id}.png"
+    else:
+        output_img_path = output_dir + f"/coop-graph-comc{comcw}-{run_id}.png"
+
     plt.savefig(output_img_path)
     plt.close()
-    print(f"Cooperation graph saved to {output_img_path}")
+    print(f"✅ Cooperation graph saved to {output_img_path}")
 
 
-def simulate_one_run(sol_dir, run_id=0, use_ComC=False):
+def simulate_one_run(output_dir, solution_dir, run_id=0, comc_w=0):
     """
-    Main callable function to simulate and accumulate cooperation graphㄡ
+    Main callable function to simulate and accumulate cooperation graph
     """
     # Read the solution
-    if use_ComC:
-        schedule = read_solution(f"{sol_dir}/Solutions-ComC200-{run_id}")
-    else:
-        schedule = read_solution(f"{sol_dir}/Solutions-{run_id}")
+    print(
+        f"Calculate {run_id}th execution of schedule(solutions) in {solution_dir} directory... "
+    )
+    schedule = read_solution(solution_dir)
 
     # Calculate cooperation intensity from the solution
     coop_intensity = cal_coop_graph(schedule)
 
     # Merge with previous cooperation data
+    if comc_w == 0:
+        prev_filename = f"coop-intensity-{int(run_id)-1}.json"
+    else:
+        prev_filename = f"coop-intensity-comc{comc_w}-{int(run_id)-1}.json"
+
     if int(run_id) > 1:
-        prev_coop = load_previous_coopdata(sol_dir, str(int(run_id) - 1))
+        prev_coop = load_previous_coopdata(output_dir, prev_filename)
+        coop_intensity = accumulate_coopdata(coop_intensity, prev_coop)
+    elif int(run_id) == 1:
+        prev_coop = load_previous_coopdata(output_dir, "nurse_pairs.json")
         coop_intensity = accumulate_coopdata(coop_intensity, prev_coop)
 
-    write_coopdata_2json(coop_intensity, sol_dir, run_id, use_ComC)
-    visual_cooperation_graph(coop_intensity, sol_dir, use_ComC)
+    print(
+        f"\n\nFinal cooperation: there are {len(coop_intensity)} pairs of nurses in the JSON file."
+    )
+
+    save_coopdata(coop_intensity, output_dir, run_id, comc_w)
+    save_coop_graph(coop_intensity, output_dir, run_id, comc_w)
 
 
 if __name__ == "__main__":
-    import sys
 
-    run_id = sys.argv[1] if len(sys.argv) > 1 else "0"
-    use_ComC = "--comc" in [arg.lower() for arg in sys.argv[2:]]
-    simulate_one_run("Output/n021w4", run_id, use_ComC)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("output_dir", help="Output folder to store results")
+    parser.add_argument("sol_dir", help="Path to the solution folder")
+    parser.add_argument("run_id", nargs="?", default="0", help="Run ID (default: 0)")
+    parser.add_argument("--comc", type=int, default=0, help="Cooperation cost weight")
+
+    args = parser.parse_args()
+
+    dir = args.output_dir
+    sol_dir = args.sol_dir
+    run_id = args.run_id
+    comc_weight = args.comc
+
+    print(f"Start simulating intensity from {sol_dir}, and saving to {dir}\n")
+
+    simulate_one_run(dir, sol_dir, run_id, comc_weight)

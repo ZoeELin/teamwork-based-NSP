@@ -3,33 +3,34 @@ from instance_loader import select_instance_files
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="INRC-II Instance Selector CLI")
-    parser.add_argument(
-        "--dataset-folder", required=True, help="Folder path, e.g., ./datasets"
+    parser = argparse.ArgumentParser(
+        description="NSP Solver Command-Line Interface", add_help=False
     )
     parser.add_argument(
-        "--dataset-name", required=True, help="Dataset name, e.g., n005w4"
+        "--input_folder", required=True, help="Folder path, e.g., ./datasets"
     )
+    parser.add_argument("--sce", required=True, help="Scenario name, e.g., n005w4")
     parser.add_argument(
-        "--weeks-to-schedule",
-        type=int,
-        choices=[4, 8],
-        required=True,
-        help="Number of weeks to schedule (4 or 8)",
+        "--comc", type=int, default=0, help="Communication cost's weight (default: 0)"
     )
+    parser.add_argument("--run_id", type=str, default="0", help="Run ID (default: 0)")
     parser.add_argument(
-        "--start-week",
-        type=int,
-        required=True,
-        help="Start week (0~6 for 4 weeks, 0~2 for 8 weeks)",
+        "--output_dir", type=str, default="Output", help="Output folder (optional)"
     )
-    parser.add_argument(
-        "--history-index",
-        type=int,
-        choices=[0, 1, 2],
-        required=True,
-        help="Initial history index (0, 1, 2)",
-    )
+
+    # parser.add_argument(
+    #     "--start-week",
+    #     type=int,
+    #     required=True,
+    #     help="Start week (0~6 for 4 weeks, 0~2 for 8 weeks)",
+    # )
+    # parser.add_argument(
+    #     "--history-index",
+    #     type=int,
+    #     choices=[0, 1, 2],
+    #     required=True,
+    #     help="Initial history index (0, 1, 2)",
+    # )
     return parser.parse_args()
 
 

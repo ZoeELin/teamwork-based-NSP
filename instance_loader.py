@@ -19,7 +19,7 @@ def select_instance_files(
     Returns:
         dict: including scenario, history, week_data list
     """
-    scenario_folder = f"{dataset_folder}/{dataset_name}"
+    scenario_folder = os.path.join(dataset_folder, dataset_name)
     scenario_file = f"Sc-{dataset_name}.json"
     history_file = f"H0-{dataset_name}-{history_index}.json"
     weeks_to_schedule = int(dataset_name[-1])

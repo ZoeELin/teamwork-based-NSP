@@ -304,7 +304,14 @@ def supreme_scheduler(sce_filepath, weekdata_filepath, his_filepath=None):
     return assignments
 
 
-def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0"):
+def base_scheduler(
+    sce_filepath,
+    weekdata_filepath,
+    sce_dir,
+    his_filepath=None,
+    run_id=0,
+    comc_weight=0,
+):
     """
     Initial solution that randomly assigns nurses to meet shift requirements (H2 only).
     Input: scenario file path, week data file path
@@ -373,7 +380,9 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0
                 assigned_today.add(nurse["id"])
                 eligible_nurses.remove(nurse)
 
-    penalty.calculate_total_penalty(
+    # Show penalty
+    print("\nFinish initial solution ...")
+    init_sol_penalty = penalty.calculate_total_penalty(
         nurses,
         forbidden_successions,
         assignments,
@@ -381,13 +390,17 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0
         scenario,
         nurses_lastday_from_lastweek,
         nurseHistory,
-        print_penalty=True,
-        run_id=int(run_id),
+        sce_dir,
+        comc_weight,
+        print_each_penalty=True,
+        run_id=run_id,
     )
+    print(f"🟥 Initial solution penalty: {init_sol_penalty}")
 
     # Step 2: Simulated Annealing
     assignments = optimizer.simulated_annealing_with_ComC(
         run_id,
+        sce_dir,
         assignments,
         forbidden_successions,
         nurses,
@@ -396,11 +409,27 @@ def base_scheduler(sce_filepath, weekdata_filepath, his_filepath=None, run_id="0
         scenario,
         nurses_lastday_from_lastweek,
         nurseHistory,
+        comc_w=comc_weight,
     )
 
-    if his_filepath:
-        history.create_next_history_data(assignments, his_filepath)
-
+    print("\nComplete simulated annealing ...❄️")
+    print("Final schedule(solutions)...🗓️")
     utils.display_schedule(assignments)
+
+    # Show the final solution penalty
+    best_sol_penalty = penalty.calculate_total_penalty(
+        nurses,
+        forbidden_successions,
+        assignments,
+        weekdata_filepath,
+        scenario,
+        nurses_lastday_from_lastweek,
+        nurseHistory,
+        sce_dir,
+        comc_weight,
+        print_each_penalty=True,
+        run_id=run_id,
+    )
+    print(f"\n🎯 Best solution penalty: {best_sol_penalty}")
 
     return assignments

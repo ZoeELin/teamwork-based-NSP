@@ -25,9 +25,7 @@ def get_consecutive_sequences(binary_list):
     return sequences
 
 
-def package_solution_2JSON(
-    assignments, output_dir, scenario_id, week_id, run_id, use_ComC=False
-):
+def package_solution_2JSON(assignments, sol_dir, scenario_id, week_id):
     """
     Package the solution into a JSON format and write to a file.
     - Extracts scenario from filename (-<scenario_id>-)
@@ -40,17 +38,16 @@ def package_solution_2JSON(
         "assignments": assignments,
     }
 
-    output_dir = f"Output/{scenario_id}/Solutions-{run_id}"
-    if use_ComC:
-        output_dir = f"Output/{scenario_id}/Solutions-ComC200-{run_id}"
-    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(sol_dir, exist_ok=True)
 
     # Output directory and file path
-    output_path = os.path.join(output_dir, f"Sol-{scenario_id}-{week_id}.json")
+    output_path = os.path.join(sol_dir, f"Sol-{scenario_id}-{week_id}.json")
 
     # Write JSON file
     with open(output_path, "w") as f:
         json.dump(solution, f, indent=4)
+    
+    print(f"✅ Solution saved to {output_path}")
 
     return solution
 
@@ -92,6 +89,7 @@ def display_schedule(assignments):
                 skill_abbr = skill[0]  # e.g., HeadNurse → H, Nurse → N
                 row.append(f"{shift}({skill_abbr})")
         print(f"{name:<10} " + " ".join(f"{cell:<10}" for cell in row))
+    print()
 
 
 def build_cooperation_lookup(cooperation_data):

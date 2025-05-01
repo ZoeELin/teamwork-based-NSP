@@ -5,7 +5,7 @@ from collections import defaultdict
 from constants import DAYS_WEEK_ABB
 
 
-def create_next_history_data(assignments, prev_history_filepath):
+def create_next_history_data(assignments, prev_history_filepath, output_dir):
     """
     Create a new history record based on the current week's assignments and the previous history data.
     Input: assignments (list of dicts), history filepath (str)
@@ -101,11 +101,12 @@ def create_next_history_data(assignments, prev_history_filepath):
     }
 
     # Output directory and file path
-    output_dir = os.path.dirname(prev_history_filepath)
     output_path = os.path.join(output_dir, f"H{prev_week+1}-{scenario}.json")
 
     # Write JSON file
     with open(output_path, "w") as f:
         json.dump(history_json, f, indent=4)
+    
+    print(f"✅ New history data created for week {prev_week + 1} and saved to {output_path}")
 
     return output_path

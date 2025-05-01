@@ -3,23 +3,22 @@ import instance_loader
 import pipeline
 import scheduler
 import sys
-from cli import cli_interface
+import cli
+import os
 
 
 def main():
-    run_id = sys.argv[1] if len(sys.argv) > 1 else "0"  # 預設 run_id 為 0
+    args = cli.parse_args()
 
-    instance = instance_loader.select_instance_files("testdatasets_json", "n021w4")
+    scenario_name = args.sce
+    run_id = args.run_id
+    comc_weight = int(args.comc)
+    dataset_dir = args.input_folder
+    output_dir = args.output_dir
 
-    # args = cli_interface()  # Parse arguments using cli_interface
-    # instance = instance_loader.select_instance_files(
-    #     dataset_folder=args.dataset_folder,
-    #     dataset_name=args.dataset_name,
-    #     start_week=args.start_week,
-    #     weeks_to_schedule=args.weeks_to_schedule,
-    #     history_index=args.history_index,
-    # )
-    pipeline.run_scheduler_pipeline(instance, run_id, use_ComC=True)
+    instance = instance_loader.select_instance_files(dataset_dir, scenario_name)
+
+    pipeline.run_scheduler_pipeline(instance, output_dir, comc_weight, run_id)
 
 
 def test_one_week():
