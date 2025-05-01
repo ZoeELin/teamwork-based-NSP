@@ -66,7 +66,6 @@ def plot_grouped_bar_chart(df, output_filename="extracted/grouped_bar_chart.png"
     total_group_width = n_bars_per_group * bar_width
 
     for i, cat in enumerate(categories):
-        print(f"Processing category: {cat}, index: {i}")
 
         # 計算位移，讓每組的 Initial/Best 條狀圖分開
         x_offset = i * 2 * bar_width
@@ -115,19 +114,20 @@ def plot_score_trend_line(df, output_filename="extracted/score_trend.png"):
     categories = ["Soft", "ComC", "Total"]
     colors = {"Soft": "tab:blue", "ComC": "tab:orange", "Total": "tab:green"}
 
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(30, 6))
+
     for cat in categories:
         ax.plot(
-            df["Label"],
-            df[f"Initial_{cat}"],
+            df["Label"].to_numpy(),
+            df[f"Initial_{cat}"].to_numpy(),
             marker="o",
             linestyle="--",
             label=f"Initial {cat}",
             color=colors[cat],
         )
         ax.plot(
-            df["Label"],
-            df[f"Best_{cat}"],
+            df["Label"].to_numpy(),
+            df[f"Best_{cat}"].to_numpy(),
             marker="x",
             linestyle="-",
             label=f"Best {cat}",
@@ -159,7 +159,7 @@ def plot_comc_per_weight(df, output_filename="extracted/comc_per_weight.png"):
     """
     畫出 ComC constraints penalty 每單位 weight 的結果。
     """
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(30, 6))
 
     # 計算每單位 weight 的 ComC 分數
     df["ComC_per_weight_Initial"] = df["Initial_ComC"] / df["ComC_weight"]
@@ -167,16 +167,16 @@ def plot_comc_per_weight(df, output_filename="extracted/comc_per_weight.png"):
 
     # 畫線圖
     ax.plot(
-        df["Label"],
-        df["ComC_per_weight_Initial"],
+        df["Label"].to_numpy(),
+        df["ComC_per_weight_Initial"].to_numpy(),
         marker="o",
         linestyle="--",
         label="Initial ComC per Weight",
         color="tab:purple",
     )
     ax.plot(
-        df["Label"],
-        df["ComC_per_weight_Best"],
+        df["Label"].to_numpy(),
+        df["ComC_per_weight_Best"].to_numpy(),
         marker="x",
         linestyle="-",
         label="Best ComC per Weight",
@@ -217,19 +217,20 @@ def plot_avg_score_by_weight(df, output_filename="extracted/avg_score_trend.png"
     grouped = df.groupby("WeightInt").mean(numeric_only=True).sort_index()
 
     # 繪圖
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(20, 6))
+
     for cat in categories:
         ax.plot(
-            grouped.index,
-            grouped[f"Initial_{cat}"],
+            grouped.index.to_numpy(),
+            grouped[f"Initial_{cat}"].to_numpy(),
             marker="o",
             linestyle="--",
             label=f"Initial {cat}",
             color=colors[cat],
         )
         ax.plot(
-            grouped.index,
-            grouped[f"Best_{cat}"],
+            grouped.index.to_numpy(),
+            grouped[f"Best_{cat}"].to_numpy(),
             marker="x",
             linestyle="-",
             label=f"Best {cat}",
@@ -261,20 +262,20 @@ def plot_comc_per_weight_by_weight(df, output_filename="extracted/comc_per_weigh
     numeric_cols = df.select_dtypes(include="number").columns
     grouped = df.groupby("ComC_weight")[numeric_cols].mean()
 
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(20, 6))
 
     # 畫線圖
     ax.plot(
-        grouped.index,
-        grouped["ComC_per_weight_Initial"],
+        grouped.index.to_numpy(),
+        grouped["ComC_per_weight_Initial"].to_numpy(),
         marker="o",
         linestyle="--",
         label="Initial ComC per Weight",
         color="tab:purple",
     )
     ax.plot(
-        grouped.index,
-        grouped["ComC_per_weight_Best"],
+        grouped.index.to_numpy(),
+        grouped["ComC_per_weight_Best"].to_numpy(),
         marker="x",
         linestyle="-",
         label="Best ComC per Weight",
@@ -312,7 +313,7 @@ def plot_total_minus_comc_penalty_by_weight(
         ["Total_minus_ComC_Initial", "Total_minus_ComC_Best"]
     ].mean()
 
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(20, 6))
 
     x = np.arange(len(grouped))
     bar_width = 0.35
@@ -346,15 +347,15 @@ def plot_total_minus_comc_penalty_by_weight(
 
 
 def main():
-    filename = 'extracted/procession_with_each_weight50_1000.txt'
+    filename = 'extracted/procession_with_n021w4_weight50_1000.txt'
     df = parse_observation_file(filename)
 
     # print(df.head())
-    # plot_grouped_bar_chart(df)
-    # plot_score_trend_line(df)
-    # plot_comc_per_weight(df)
-    # plot_comc_per_weight_by_weight(df)
-    # plot_total_minus_comc_penalty_by_weight(df)
+    plot_grouped_bar_chart(df)
+    plot_score_trend_line(df)
+    plot_comc_per_weight(df)
+    plot_comc_per_weight_by_weight(df)
+    plot_total_minus_comc_penalty_by_weight(df)
     plot_avg_score_by_weight(df)
 
 
