@@ -1,0 +1,23 @@
+Start simulating intensity from ./Output_dataset0501/n040w4/Solutions-ComC950-7, and saving to ./Output_dataset0501/n040w4
+
+Calculate 7th execution of schedule(solutions) in ./Output_dataset0501/n040w4/Solutions-ComC950-7 directory... 
+
+Reading solution files from ./Output_dataset0501/n040w4/Solutions-ComC950-7... 📂
+
+Calculating cooperation intensity... 🧮
+👥 They are 769 pairs of nurses in cooperations.
+
+Loading previous cooperation data from coop-intensity-comc950-6.json... 📂
+✅ Successfully load previous cooperation data: ./Output_dataset0501/n040w4/coop-intensity-comc950-6.json
+
+Accumulating past cooperation data into current cooperation data... 🔄
+There are 769 pairs of nurses in current file, 780 pairs of nurses in previous file.
+
+
+Final cooperation: there are 780 pairs of nurses in the JSON file.
+
+Processing cooperation data to JSON file... 💾
+✅ Cooperation data saved to ./Output_dataset0501/n040w4/coop-intensity-comc950-7.json
+
+Saveing cooperation graph... 📊
+✅ Cooperation graph saved to ./Output_dataset0501/n040w4/coop-graph-comc950-7.png
