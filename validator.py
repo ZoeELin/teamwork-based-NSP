@@ -12,7 +12,7 @@ def run_validator(sce, his, weeks, sols, verbose=False, timeout=300):
         + ["--sols"]
         + sols
         + ["--out"]
-        + ["results.txt"]
+        + ["results1.txt"]
     )
     if verbose:
         cmd.append("--verbose")
@@ -43,7 +43,7 @@ sce_file = "testdatasets_json/n021w4/Sc-n021w4.json"
 his_file = instance["history"]
 week_files = instance["week_data"]
 
-solutions_dir = "Output_testdatasets/n021w4/Solutions-1"
+solutions_dir = "Output_testdatasets/n021w4/Solutions-12"
 sol_files = sorted(
     [
         os.path.join(solutions_dir, f)
