@@ -8,16 +8,20 @@ def select_instance_files(
     history_index: int = 0,
 ):
     """
-    A set of instance required files is automatically organized,
+    Automatically selects and verifies the required files for a scheduling instance,
     based on the starting week and the number of scheduled weeks
     Args:
-        dataset_folder (str): dataset file path
-        dataset_name (str): scenario
-        start_week (int): e.g., 0~6(w4) or 0~2(w8)
-        history_index (int): 0~2
+        dataset_folder (str): Root directory containing the dataset.
+        dataset_name (str): Name of the dataset, e.g., n005w4
+        start_week (int): Starting week index for scheduling (e.g., 0–6 if scheduling 4 weeks).
+        history_index (int): Index of the historical file to use (e.g., 0–2).
 
     Returns:
-        dict: including scenario, history, week_data list
+        dict: A dictionary containing:
+            - 'scenario_name': The name of the dataset.
+            - 'scenario': Full path to the scenario file.
+            - 'history': Full path to the history file.
+            - 'week_data': A list of full paths to the weekly data files.
     """
     scenario_folder = os.path.join(dataset_folder, dataset_name)
     scenario_file = f"Sc-{dataset_name}.json"
@@ -33,8 +37,11 @@ def select_instance_files(
     missing = [
         f for f in all_files if not os.path.exists(os.path.join(scenario_folder, f))
     ]
+    if not os.path.exists(scenario_folder):
+        raise FileNotFoundError(f"❌ Cannot find the dataset folder: {dataset_folder}")
+
     if missing:
-        raise FileNotFoundError(f"❌ 找不到下列檔案：{missing}")
+        raise FileNotFoundError(f"❌ Cannot find these files: {missing}")
 
     return {
         "scenario_name": dataset_name,
