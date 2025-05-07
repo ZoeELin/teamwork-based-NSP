@@ -1,0 +1,42 @@
+WEEK_DATA
+n120w32
+
+REQUIREMENTS
+Early HeadNurse (1,1) (2,2) (1,1) (1,1) (1,1) (1,1) (0,0)
+Early Nurse (2,4) (3,4) (3,5) (4,4) (3,4) (2,2) (2,2)
+Early Caretaker (5,9) (5,7) (7,10) (8,10) (8,9) (3,4) (4,4)
+Early Trainee (4,5) (4,4) (4,5) (4,4) (6,6) (1,2) (2,2)
+Day HeadNurse (2,2) (2,3) (1,2) (1,2) (2,2) (1,1) (0,1)
+Day Nurse (4,4) (2,3) (2,3) (3,4) (4,5) (2,2) (1,2)
+Day Caretaker (6,8) (5,7) (6,9) (8,9) (5,9) (2,4) (3,3)
+Day Trainee (2,4) (3,5) (3,4) (5,6) (4,5) (2,3) (2,2)
+Late HeadNurse (1,1) (1,1) (1,2) (1,1) (2,3) (1,1) (1,2)
+Late Nurse (5,5) (2,4) (4,5) (3,4) (4,5) (3,3) (2,3)
+Late Caretaker (7,10) (4,6) (7,8) (8,10) (8,10) (4,5) (3,3)
+Late Trainee (4,6) (4,5) (2,4) (4,5) (4,5) (1,2) (1,2)
+Night HeadNurse (1,2) (1,2) (1,1) (1,1) (1,1) (1,1) (1,2)
+Night Nurse (2,4) (4,5) (3,5) (3,4) (2,4) (1,1) (2,2)
+Night Caretaker (6,8) (8,11) (9,10) (9,11) (3,8) (2,4) (4,4)
+Night Trainee (3,4) (4,5) (5,6) (4,5) (5,6) (1,3) (2,2)
+
+SHIFT_OFF_REQUESTS = 20
+TR_105 Any Mon 
+CT_78 Late Tue 
+CT_88 Any Tue 
+HN_2 Any Tue 
+NU_28 Any Tue 
+NU_33 Any Tue 
+NU_37 Late Tue 
+NU_49 Night Wed 
+TR_113 Late Wed 
+NU_21 Night Thu 
+NU_25 Any Fri 
+NU_37 Night Fri 
+NU_48 Any Fri 
+TR_96 Any Fri 
+CT_67 Early Sat 
+HN_14 Early Sat 
+TR_112 Late Sat 
+TR_98 Any Sat 
+HN_11 Day Sun 
+TR_118 Day Sun 
