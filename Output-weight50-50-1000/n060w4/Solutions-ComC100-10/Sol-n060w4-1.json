@@ -1,0 +1,1590 @@
+{
+    "scenario": "n060w4",
+    "week": 1,
+    "assignments": [
+        {
+            "nurse": "HN_3",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "HN_1",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_33",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_1",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_30",
+            "day": "Mon",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_53",
+            "day": "Sat",
+            "shiftType": "Night",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "TR_55",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_24",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_25",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_37",
+            "day": "Fri",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_2",
+            "day": "Tue",
+            "shiftType": "Night",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_14",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_28",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_23",
+            "day": "Fri",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_8",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_2",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_8",
+            "day": "Mon",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_50",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_30",
+            "day": "Tue",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_10",
+            "day": "Tue",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_35",
+            "day": "Wed",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_3",
+            "day": "Mon",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_59",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_26",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_1",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_24",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_42",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_59",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_42",
+            "day": "Mon",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_12",
+            "day": "Wed",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_56",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_29",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_2",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_13",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_54",
+            "day": "Mon",
+            "shiftType": "Night",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_12",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_58",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "TR_54",
+            "day": "Tue",
+            "shiftType": "Night",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_27",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_49",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_34",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_30",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_53",
+            "day": "Fri",
+            "shiftType": "Night",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "HN_4",
+            "day": "Mon",
+            "shiftType": "Day",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "CT_42",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_56",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_47",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_35",
+            "day": "Fri",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_25",
+            "day": "Sat",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_15",
+            "day": "Fri",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_55",
+            "day": "Fri",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "HN_5",
+            "day": "Fri",
+            "shiftType": "Late",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_25",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_44",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_49",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_45",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_7",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_17",
+            "day": "Mon",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_53",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "HN_6",
+            "day": "Thu",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_26",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_24",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_0",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "CT_44",
+            "day": "Mon",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_18",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_21",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_4",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_42",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_45",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_9",
+            "day": "Sat",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_3",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_32",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_0",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_32",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_1",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_50",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_25",
+            "day": "Fri",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_12",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_28",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_16",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_41",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_54",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_34",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_37",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_26",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_15",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_13",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_43",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_11",
+            "day": "Mon",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_24",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_28",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_37",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_20",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_45",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_55",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_9",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_19",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_5",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "CT_41",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_23",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_18",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_57",
+            "day": "Wed",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_20",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_35",
+            "day": "Thu",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_42",
+            "day": "Fri",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_26",
+            "day": "Thu",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_2",
+            "day": "Mon",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_11",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_40",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_50",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_36",
+            "day": "Sun",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_58",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_15",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_47",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_7",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_44",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_43",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_41",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_19",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_44",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_3",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_46",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_55",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "TR_55",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_9",
+            "day": "Sun",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_44",
+            "day": "Sun",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_47",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_21",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_31",
+            "day": "Fri",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_59",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_51",
+            "day": "Fri",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_16",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_18",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_0",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_13",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_59",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_43",
+            "day": "Mon",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_51",
+            "day": "Thu",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_22",
+            "day": "Fri",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_37",
+            "day": "Wed",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_38",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_17",
+            "day": "Thu",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_6",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_50",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_47",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_58",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "HN_6",
+            "day": "Tue",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_34",
+            "day": "Sun",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_39",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_39",
+            "day": "Sat",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_1",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_32",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_18",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_52",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_21",
+            "day": "Sun",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_21",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_7",
+            "day": "Sun",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_27",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_29",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_7",
+            "day": "Sat",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_58",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_45",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_50",
+            "day": "Sun",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_48",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_17",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_23",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_15",
+            "day": "Sun",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_25",
+            "day": "Thu",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_48",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_14",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_19",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_37",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_31",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_42",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_29",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_39",
+            "day": "Fri",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_57",
+            "day": "Thu",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_42",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_46",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_14",
+            "day": "Sat",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_57",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_47",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_48",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_47",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_52",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_10",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_47",
+            "day": "Sun",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_52",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "TR_52",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "HN_4",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_43",
+            "day": "Wed",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_39",
+            "day": "Sun",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_46",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_31",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_36",
+            "day": "Sat",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_8",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_22",
+            "day": "Sat",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_22",
+            "day": "Sun",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_4",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_14",
+            "day": "Sun",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_35",
+            "day": "Sat",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_37",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_37",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_10",
+            "day": "Mon",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_2",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_33",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_28",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_40",
+            "day": "Tue",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_40",
+            "day": "Wed",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_25",
+            "day": "Sun",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_21",
+            "day": "Sat",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_17",
+            "day": "Tue",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_28",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_2",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "CT_48",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_36",
+            "day": "Fri",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_58",
+            "day": "Tue",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "TR_59",
+            "day": "Mon",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_11",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_51",
+            "day": "Sun",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_59",
+            "day": "Sun",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_25",
+            "day": "Wed",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_16",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_51",
+            "day": "Sat",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_19",
+            "day": "Fri",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_18",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_5",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "TR_58",
+            "day": "Sun",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "TR_58",
+            "day": "Thu",
+            "shiftType": "Early",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_41",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_34",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_5",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_19",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_33",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_33",
+            "day": "Mon",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_23",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_19",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_7",
+            "day": "Thu",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_7",
+            "day": "Tue",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_39",
+            "day": "Thu",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_29",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_29",
+            "day": "Sun",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_27",
+            "day": "Fri",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "HN_5",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_15",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_41",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_51",
+            "day": "Tue",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_51",
+            "day": "Wed",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_38",
+            "day": "Tue",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "CT_49",
+            "day": "Sun",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_31",
+            "day": "Wed",
+            "shiftType": "Day",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_27",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "TR_59",
+            "day": "Sat",
+            "shiftType": "Day",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "NU_35",
+            "day": "Sun",
+            "shiftType": "Night",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_33",
+            "day": "Sun",
+            "shiftType": "Early",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "TR_53",
+            "day": "Sun",
+            "shiftType": "Night",
+            "skill": "Trainee"
+        },
+        {
+            "nurse": "CT_38",
+            "day": "Mon",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        },
+        {
+            "nurse": "NU_16",
+            "day": "Wed",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "HN_6",
+            "day": "Mon",
+            "shiftType": "Night",
+            "skill": "HeadNurse"
+        },
+        {
+            "nurse": "NU_27",
+            "day": "Sat",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_27",
+            "day": "Sun",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_16",
+            "day": "Sat",
+            "shiftType": "Early",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "NU_20",
+            "day": "Mon",
+            "shiftType": "Late",
+            "skill": "Nurse"
+        },
+        {
+            "nurse": "CT_51",
+            "day": "Mon",
+            "shiftType": "Night",
+            "skill": "Caretaker"
+        }
+    ]
+}

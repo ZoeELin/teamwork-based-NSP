@@ -1,0 +1,114 @@
+{
+    "week": 3,
+    "scenario": "n012w8",
+    "nurseHistory": [
+        {
+            "nurse": "Alice",
+            "numberOfAssignments": 3,
+            "numberOfWorkingWeekends": 0,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 6
+        },
+        {
+            "nurse": "Bob",
+            "numberOfAssignments": 5,
+            "numberOfWorkingWeekends": 1,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 3
+        },
+        {
+            "nurse": "John",
+            "numberOfAssignments": 6,
+            "numberOfWorkingWeekends": 4,
+            "lastAssignedShiftType": "Night",
+            "numberOfConsecutiveAssignments": 1,
+            "numberOfConsecutiveWorkingDays": 1,
+            "numberOfConsecutiveDaysOff": 0
+        },
+        {
+            "nurse": "Kate",
+            "numberOfAssignments": 9,
+            "numberOfWorkingWeekends": 5,
+            "lastAssignedShiftType": "Early",
+            "numberOfConsecutiveAssignments": 1,
+            "numberOfConsecutiveWorkingDays": 1,
+            "numberOfConsecutiveDaysOff": 0
+        },
+        {
+            "nurse": "Mary",
+            "numberOfAssignments": 5,
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "Day",
+            "numberOfConsecutiveAssignments": 1,
+            "numberOfConsecutiveWorkingDays": 1,
+            "numberOfConsecutiveDaysOff": 0
+        },
+        {
+            "nurse": "Paul",
+            "numberOfAssignments": 8,
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 1
+        },
+        {
+            "nurse": "Arthur",
+            "numberOfAssignments": 8,
+            "numberOfWorkingWeekends": 3,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 3
+        },
+        {
+            "nurse": "Pier",
+            "numberOfAssignments": 11,
+            "numberOfWorkingWeekends": 1,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 1
+        },
+        {
+            "nurse": "Lucy",
+            "numberOfAssignments": 8,
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "Late",
+            "numberOfConsecutiveAssignments": 1,
+            "numberOfConsecutiveWorkingDays": 1,
+            "numberOfConsecutiveDaysOff": 0
+        },
+        {
+            "nurse": "Maggie",
+            "numberOfAssignments": 7,
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 1
+        },
+        {
+            "nurse": "Patrick",
+            "numberOfAssignments": 9,
+            "numberOfWorkingWeekends": 1,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 2
+        },
+        {
+            "nurse": "Jane",
+            "numberOfAssignments": 11,
+            "numberOfWorkingWeekends": 1,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 5
+        }
+    ]
+}

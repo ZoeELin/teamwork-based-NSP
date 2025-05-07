@@ -1,0 +1,23 @@
+Start simulating intensity from ./Output_dataset/n050w4/Solutions-12, and saving to ./Output_dataset/n050w4
+
+Calculate 12th execution of schedule(solutions) in ./Output_dataset/n050w4/Solutions-12 directory... 
+
+Reading solution files from ./Output_dataset/n050w4/Solutions-12... 📂
+
+Calculating cooperation intensity... 🧮
+👥 They are 1222 pairs of nurses in cooperations.
+
+Loading previous cooperation data from coop-intensity-11.json... 📂
+✅ Successfully load previous cooperation data: ./Output_dataset/n050w4/coop-intensity-11.json
+
+Accumulating past cooperation data into current cooperation data... 🔄
+There are 1222 pairs of nurses in current file, 1225 pairs of nurses in previous file.
+
+
+Final cooperation: there are 1225 pairs of nurses in the JSON file.
+
+Processing cooperation data to JSON file... 💾
+✅ Cooperation data saved to ./Output_dataset/n050w4/coop-intensity-12.json
+
+Saveing cooperation graph... 📊
+✅ Cooperation graph saved to ./Output_dataset/n050w4/coop-graph-12.png

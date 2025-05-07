@@ -1,0 +1,35 @@
+WEEK_DATA
+n040w32
+
+REQUIREMENTS
+Early HeadNurse (0,0) (0,0) (0,0) (0,0) (0,0) (0,0) (0,0)
+Early Nurse (1,2) (1,1) (1,1) (1,1) (1,1) (1,1) (1,1)
+Early Caretaker (2,4) (2,4) (2,3) (2,3) (2,4) (2,2) (1,1)
+Early Trainee (1,2) (0,1) (1,1) (0,1) (1,1) (1,1) (1,1)
+Day HeadNurse (0,0) (0,0) (0,0) (0,0) (0,0) (1,1) (1,1)
+Day Nurse (1,2) (1,1) (1,1) (1,2) (1,1) (1,1) (1,2)
+Day Caretaker (3,3) (2,3) (3,4) (1,3) (2,4) (0,1) (0,1)
+Day Trainee (0,0) (1,1) (0,1) (1,1) (1,1) (1,1) (1,1)
+Late HeadNurse (0,0) (0,0) (0,0) (1,1) (1,1) (1,1) (0,0)
+Late Nurse (1,1) (1,2) (1,1) (1,1) (1,2) (1,1) (1,1)
+Late Caretaker (2,4) (2,3) (3,4) (2,4) (2,3) (2,3) (1,1)
+Late Trainee (0,0) (0,0) (0,0) (1,1) (0,0) (1,1) (1,1)
+Night HeadNurse (0,0) (1,1) (0,0) (0,0) (0,0) (0,0) (1,1)
+Night Nurse (1,1) (1,1) (1,1) (1,1) (1,1) (1,1) (1,1)
+Night Caretaker (2,4) (2,4) (1,3) (2,3) (3,3) (2,2) (1,2)
+Night Trainee (1,2) (0,0) (0,0) (1,2) (0,0) (1,1) (0,1)
+
+SHIFT_OFF_REQUESTS = 13
+TR_33 Any Mon 
+HN_2 Any Tue 
+NU_17 Any Tue 
+HN_3 Any Wed 
+HN_4 Any Thu 
+CT_21 Day Fri 
+HN_3 Any Fri 
+NU_15 Any Fri 
+CT_20 Any Sat 
+CT_29 Any Sat 
+HN_2 Day Sat 
+NU_6 Any Sat 
+HN_5 Any Sun 

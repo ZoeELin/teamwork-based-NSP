@@ -1,0 +1,121 @@
+WEEK_DATA
+n110w16
+
+REQUIREMENTS
+Early HeadNurse (1,1) (1,1) (1,1) (1,2) (1,2) (1,2) (0,0)
+Early Nurse (2,2) (2,2) (2,2) (2,3) (1,3) (1,1) (1,2)
+Early Caretaker (3,6) (3,7) (3,7) (6,8) (5,7) (2,3) (3,4)
+Early Trainee (2,5) (3,5) (1,5) (3,5) (2,3) (1,2) (1,1)
+Day HeadNurse (1,1) (0,2) (0,0) (1,1) (1,1) (0,0) (1,1)
+Day Nurse (2,4) (1,3) (2,2) (1,2) (1,4) (1,1) (1,2)
+Day Caretaker (4,6) (4,7) (5,7) (3,7) (5,8) (2,3) (1,2)
+Day Trainee (3,4) (2,4) (2,5) (3,4) (2,4) (1,3) (2,3)
+Late HeadNurse (1,1) (1,1) (1,1) (1,2) (0,0) (1,1) (0,1)
+Late Nurse (2,3) (3,3) (1,2) (2,3) (2,3) (1,1) (1,1)
+Late Caretaker (4,7) (4,7) (4,6) (5,7) (5,7) (2,4) (2,3)
+Late Trainee (3,5) (2,4) (3,4) (3,5) (3,5) (1,1) (1,2)
+Night HeadNurse (0,2) (0,0) (1,1) (1,2) (1,2) (1,2) (1,1)
+Night Nurse (2,3) (2,3) (2,2) (3,4) (2,4) (1,2) (1,2)
+Night Caretaker (5,7) (5,7) (5,8) (2,5) (3,6) (1,4) (1,3)
+Night Trainee (3,4) (4,4) (2,4) (3,5) (3,5) (1,1) (1,2)
+
+SHIFT_OFF_REQUESTS = 99
+CT_50 Any Mon 
+NU_24 Day Mon 
+NU_29 Night Mon 
+NU_33 Early Mon 
+TR_106 Any Mon 
+TR_84 Late Mon 
+TR_85 Any Mon 
+TR_87 Any Mon 
+CT_40 Night Tue 
+CT_47 Night Tue 
+CT_50 Any Tue 
+CT_66 Late Tue 
+CT_70 Any Tue 
+CT_75 Day Tue 
+HN_5 Any Tue 
+HN_6 Day Tue 
+NU_28 Any Tue 
+NU_29 Late Tue 
+NU_32 Any Tue 
+TR_106 Late Tue 
+TR_81 Any Tue 
+TR_88 Any Tue 
+TR_95 Day Tue 
+CT_48 Any Wed 
+CT_54 Any Wed 
+CT_73 Night Wed 
+CT_74 Any Wed 
+HN_14 Any Wed 
+HN_19 Any Wed 
+NU_22 Late Wed 
+NU_37 Day Wed 
+TR_81 Late Wed 
+TR_82 Day Wed 
+TR_83 Any Wed 
+TR_87 Late Wed 
+TR_88 Day Wed 
+CT_40 Late Thu 
+CT_51 Any Thu 
+CT_57 Early Thu 
+CT_66 Any Thu 
+CT_69 Late Thu 
+HN_11 Any Thu 
+HN_18 Any Thu 
+HN_19 Day Thu 
+HN_2 Late Thu 
+NU_21 Any Thu 
+NU_23 Day Thu 
+NU_23 Late Thu 
+NU_29 Day Thu 
+NU_34 Any Thu 
+NU_35 Late Thu 
+TR_103 Any Thu 
+TR_104 Night Thu 
+TR_105 Any Thu 
+TR_107 Day Thu 
+TR_109 Late Thu 
+TR_84 Any Thu 
+TR_86 Late Thu 
+TR_91 Any Thu 
+TR_94 Any Thu 
+TR_99 Day Thu 
+CT_40 Early Fri 
+CT_41 Any Fri 
+CT_45 Late Fri 
+CT_58 Day Fri 
+CT_61 Early Fri 
+CT_79 Day Fri 
+HN_1 Any Fri 
+HN_10 Day Fri 
+HN_5 Late Fri 
+NU_25 Any Fri 
+NU_36 Night Fri 
+NU_38 Any Fri 
+TR_105 Any Fri 
+TR_107 Any Fri 
+TR_85 Any Fri 
+TR_87 Late Fri 
+TR_88 Day Fri 
+TR_91 Any Fri 
+TR_97 Night Fri 
+CT_42 Any Sat 
+CT_48 Any Sat 
+CT_50 Any Sat 
+CT_53 Late Sat 
+HN_13 Any Sat 
+HN_16 Late Sat 
+NU_21 Early Sat 
+NU_24 Any Sat 
+NU_25 Day Sat 
+NU_25 Late Sat 
+NU_29 Any Sat 
+NU_35 Any Sat 
+TR_83 Any Sat 
+TR_92 Any Sat 
+CT_44 Any Sun 
+NU_22 Any Sun 
+NU_39 Night Sun 
+TR_100 Any Sun 
+TR_88 Any Sun 

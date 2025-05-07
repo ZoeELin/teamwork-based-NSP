@@ -1,0 +1,3902 @@
+[
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.9162931766562807
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.3294089968003011
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.8688961150648457
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.8065826257692592
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_31",
+        "cooperation_score": 1.000764772312087
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.9195469419305063
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.4933823456572144
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.9247727088200234
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.8548380682971475
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.5976018404726844
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.6726873687551438
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.5363793211619299
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.6074174333765125
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.47861833728706793
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.8970329363282654
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.9706554953997409
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.691667497038341
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5062093737016338
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.7745252969088613
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.6568754774637128
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.7085111639829637
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.4987108479755538
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.7776999000834645
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.7697009831600624
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "CT_31",
+        "cooperation_score": 1.0360743902304002
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.913384476944512
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.7404589833298273
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.42288725766986635
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "HN_3",
+        "cooperation_score": 1.1519957910353655
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.46747835497835494
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.7628679469152615
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.6670170300975253
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.48672331840995187
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.7818109779797087
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.6333997557833202
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.42248258987389425
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_17",
+        "cooperation_score": 1.1243905460388164
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "CT_31",
+        "cooperation_score": 0.4582463288345642
+    },
+    {
+        "nurse1": "CT_31",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.6720032274750272
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.6670337974046414
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.8097767703572658
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.9288362779142156
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.9739922474513267
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "NU_9",
+        "cooperation_score": 1.0778858252693895
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.0514693311355041
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.077855459402774
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.114413434675583
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.9590179243887684
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "TR_39",
+        "cooperation_score": 1.0904156932865372
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.7411851433590564
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.8668752702256539
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.0104159258877257
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.2312666835415522
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.8749662734253527
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.2493396196017679
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.6294188113228361
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.0044934567683255
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.7162934287934288
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.7893396492232135
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.7492086834733893
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.530552194847524
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "TR_38",
+        "cooperation_score": 1.1211707552180699
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.0453949389627137
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.9100670498419186
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.2237083064704548
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.8005120582742067
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.072712868075972
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.7792606647402045
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.9569365977869815
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.7395685869521513
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.6477606144472479
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.7974180903898901
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.8330161198114489
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_15",
+        "cooperation_score": 1.2933433212141652
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "NU_17",
+        "cooperation_score": 1.2186395720909111
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_15",
+        "cooperation_score": 0.8461641860554905
+    },
+    {
+        "nurse1": "NU_15",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.65398119125606
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_22",
+        "cooperation_score": 0.2773017902813299
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.9406888259509744
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_22",
+        "cooperation_score": 0.555709450732334
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.6556230605143649
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_22",
+        "cooperation_score": 0.5902739630361113
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.7534218690329877
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.6716286764341683
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6168284042425919
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.6718442647151087
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_22",
+        "cooperation_score": 0.7149006822061742
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.8538704542641817
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.6141486422597608
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.7208036386744827
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.8500072423127343
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.6711064791089021
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.4621346045259088
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.38339528828659264
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.561160578551883
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.618992906407094
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.4050976055771452
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.46731137220267654
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.5881260537371723
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_24",
+        "cooperation_score": 0.5024304198217242
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.3126058723884811
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_26",
+        "cooperation_score": 0.6948304746359666
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.9302593431530705
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.44089425067685933
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.7635109313817754
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_25",
+        "cooperation_score": 0.5836149357888488
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.5020454676565863
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_23",
+        "cooperation_score": 0.7077194576336454
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.671422421336609
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.4259976134976135
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.5940784346895533
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.27766809064763026
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.5521199846428679
+    },
+    {
+        "nurse1": "CT_22",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.39998365478914677
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.7205551442544982
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_21",
+        "cooperation_score": 0.5350460487225193
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.4535186004226252
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_21",
+        "cooperation_score": 0.7152120069995961
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.9368200916730329
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.7255249998203289
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.544064385271479
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9659636390441344
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_21",
+        "cooperation_score": 0.5226629650542693
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.5915145056705158
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.9300734456462012
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.8827111470064761
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.7266335532895636
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.9890845540768143
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.6649040847876492
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.8402610246650495
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.7144410399205796
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.6944418999136996
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_10",
+        "cooperation_score": 1.0223206877924875
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.8150356637350176
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.5847105508870214
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_24",
+        "cooperation_score": 0.913893983777548
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.9397294483981791
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_26",
+        "cooperation_score": 0.55001676622386
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.5213402956356248
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "HN_3",
+        "cooperation_score": 1.0167303416061662
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.7210896690692087
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_25",
+        "cooperation_score": 0.5801638250473895
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.863317440213725
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_23",
+        "cooperation_score": 0.5701839957951144
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.7909046476922368
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.7450188975111576
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.6331850012732365
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_17",
+        "cooperation_score": 1.134007523264489
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.7695467389507638
+    },
+    {
+        "nurse1": "CT_21",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.7193967111843003
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.8249883428591869
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.9013282325353265
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.9737556415406732
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_16",
+        "cooperation_score": 1.0227007611598402
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.8781679990490058
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6840820125717151
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "TR_39",
+        "cooperation_score": 1.1448253471002159
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.93547509254031
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.8713636321053201
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.7955912192905732
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.1308204048983428
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_16",
+        "cooperation_score": 1.0244009471630955
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.8300267541046918
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5457185644256582
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.664245387843786
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.603317441296981
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.599694660793059
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.7850050948886593
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.9994975324999555
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.6489602043310483
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.9129373821240157
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6925133616999952
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.8725819184629252
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "NU_16",
+        "cooperation_score": 1.0891796181488602
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_16",
+        "cooperation_score": 1.020699458593186
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_16",
+        "cooperation_score": 1.0795823599532037
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.8190104898914967
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.7626547113540653
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.9442713115768036
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "NU_7",
+        "cooperation_score": 1.003781728695916
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.8077166970120262
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.6979861783570224
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.8441274339023026
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_16",
+        "cooperation_score": 0.6221074533145471
+    },
+    {
+        "nurse1": "NU_16",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.570221750027242
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_9",
+        "cooperation_score": 1.083190754258529
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_20",
+        "cooperation_score": 0.4470197918024005
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_30",
+        "cooperation_score": 1.0324660835567419
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.9343512898537127
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.7267810822835052
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.738820549300089
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_19",
+        "cooperation_score": 0.7694563318705194
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.8148943578967809
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.4928885716966212
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.9154386534181931
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "HN_5",
+        "cooperation_score": 1.1171443883437422
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.7644041618183495
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5079560635442988
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.7113958824636574
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.5931725137607491
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.6271953178064364
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.37393493761140817
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.7508675219352968
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.7569831024855255
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_24",
+        "cooperation_score": 1.090452659020434
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.5978677439355189
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_26",
+        "cooperation_score": 0.919421774924198
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.6370232094373971
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "HN_3",
+        "cooperation_score": 1.097083453630768
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.535508658008658
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_25",
+        "cooperation_score": 0.576063378934223
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.7003272441352937
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_23",
+        "cooperation_score": 0.6027731457755687
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.6086786149866645
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.7870435681113432
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.6968999269228102
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_17",
+        "cooperation_score": 1.021859161015171
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.5762210888526678
+    },
+    {
+        "nurse1": "CT_18",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.5039141545252731
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.5032943220014159
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.8051211931007328
+    },
+    {
+        "nurse1": "NU_9",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.8394410399205796
+    },
+    {
+        "nurse1": "NU_9",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.5797063301858698
+    },
+    {
+        "nurse1": "NU_9",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.6705525754438799
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.8780561829474872
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.6089960763873807
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.6442292786333034
+    },
+    {
+        "nurse1": "NU_9",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.9134808603848852
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.9541110920906317
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.617329409720714
+    },
+    {
+        "nurse1": "NU_9",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.6598733567773816
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.7931502106424707
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.5760156510156511
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.7138494531447823
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.2640002970885324
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.7422507016547264
+    },
+    {
+        "nurse1": "NU_9",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.7929819434614831
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.9888254719137073
+    },
+    {
+        "nurse1": "NU_9",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.5972493865447157
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.7306803561598958
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.6639563938476982
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.9720777444613089
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.5760642135642136
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.5342517847313244
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.45970546910949384
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.7694591212544504
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.813388305880566
+    },
+    {
+        "nurse1": "NU_9",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.8255479599519847
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.5081585081585082
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.8551867851790453
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.6466325341325342
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "NU_9",
+        "cooperation_score": 0.4112825755779047
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.8122858982449774
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.7341343856036278
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.5788439173336197
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9219104841853529
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_20",
+        "cooperation_score": 0.5826792772444946
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.7742424199841079
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.8059046476922369
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.8179055419834798
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.6436429469933307
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "HN_2",
+        "cooperation_score": 1.0478979025640758
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.4098018340971632
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.5781162392146374
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.399255816647121
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.5221036243784931
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.6073283272118917
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.5087115211257088
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.776831352790432
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_24",
+        "cooperation_score": 0.5549034715901051
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6221702244450932
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_26",
+        "cooperation_score": 0.7197247756057824
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.7287647552339974
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.7558325118144744
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.5423817827526267
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_25",
+        "cooperation_score": 0.8790385010959785
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.6654144516138055
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_23",
+        "cooperation_score": 0.6314754962809883
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.7210139246045828
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.30931163801873185
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.7617957021665462
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.6744985823616864
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.5074208817162108
+    },
+    {
+        "nurse1": "CT_20",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.6302497612317237
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.7876309350451227
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6911718385860263
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "TR_39",
+        "cooperation_score": 1.1567710628388377
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.7496150620292497
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.9523826865615802
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.9244245194090396
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.9640497645293041
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "HN_5",
+        "cooperation_score": 1.138374547073901
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "HN_2",
+        "cooperation_score": 1.0097356277380507
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5936703492585845
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.7428501308296704
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.5653947359829713
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.6764950376943917
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.8002187844834903
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.9433278393956144
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.8505288541195123
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.9188256748934498
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.730103971759982
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.7945268169410045
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.9383070563094793
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "HN_3",
+        "cooperation_score": 1.0250596441069586
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.8332210763093115
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.6945157598866039
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.7465574028654524
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.8392810822835053
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.8279246467326963
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.8414086474764224
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.8771520277631464
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.9570715793158248
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "CT_30",
+        "cooperation_score": 0.6147131523447313
+    },
+    {
+        "nurse1": "CT_30",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.4492456204449743
+    },
+    {
+        "nurse1": "TR_32",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.9334192826287995
+    },
+    {
+        "nurse1": "TR_32",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.8392774309640645
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.0871487843455807
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.8581011652979615
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.928984405911314
+    },
+    {
+        "nurse1": "TR_32",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.7359213711835195
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.0292937727757354
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.1122251989347156
+    },
+    {
+        "nurse1": "TR_32",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.7689251669047066
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.6819452748161188
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.6338101512014555
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.8776665856690086
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.5249117242070532
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.6059300920284902
+    },
+    {
+        "nurse1": "TR_32",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.8151305106329336
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.0710054251920587
+    },
+    {
+        "nurse1": "TR_32",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6216097769806209
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.2435642101650313
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.0462666547792407
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.1038627710289441
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.6809608507434596
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.0006960102534876
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.8267942268093702
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.7954290865503679
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.122076239482687
+    },
+    {
+        "nurse1": "TR_32",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.506313758705063
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.000942623356811
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.027197375656455
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "TR_32",
+        "cooperation_score": 1.0379310148579228
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "TR_32",
+        "cooperation_score": 0.9425282292377459
+    },
+    {
+        "nurse1": "TR_37",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.6895550057620996
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6006330054384974
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.799152263957756
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.4016826156299841
+    },
+    {
+        "nurse1": "TR_33",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6699919503627944
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6753741558765789
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.9874722487022258
+    },
+    {
+        "nurse1": "TR_34",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.4604679378592422
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6251733631529028
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.7006447055360099
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6192093566235443
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.474100035895365
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.46163549773389595
+    },
+    {
+        "nurse1": "TR_37",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.7020408225432455
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.8352425769292103
+    },
+    {
+        "nurse1": "TR_36",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.410776240667545
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "TR_37",
+        "cooperation_score": 1.0528151645246813
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.8067261228474043
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.7999509965289344
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6275799924712968
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.8124329590108967
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.4844130714486751
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.7362715773928588
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.5991034535303617
+    },
+    {
+        "nurse1": "TR_35",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.5289203188116232
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.7546380221609054
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.5609581339376736
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.6647653662127346
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "TR_37",
+        "cooperation_score": 0.5467560204859976
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.7023064495890583
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.7476699586290381
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "TR_39",
+        "cooperation_score": 1.0515234294952291
+    },
+    {
+        "nurse1": "TR_33",
+        "nurse2": "TR_39",
+        "cooperation_score": 1.108921559401099
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9553900163490958
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "TR_39",
+        "cooperation_score": 1.2451608449357137
+    },
+    {
+        "nurse1": "TR_34",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.4592131398013751
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9187668611581654
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.6077232408114761
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.32795114093068056
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "TR_39",
+        "cooperation_score": 1.1204337604260206
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.8738649207689455
+    },
+    {
+        "nurse1": "TR_38",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.5940045319840715
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.849362756266781
+    },
+    {
+        "nurse1": "TR_36",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9265011274602067
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.8780549116533097
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9075494367360702
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.7954776778612422
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "TR_39",
+        "cooperation_score": 1.0614395969191366
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.7541403458269793
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9764224193942191
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.6645550057620997
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.8679023446976739
+    },
+    {
+        "nurse1": "TR_35",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.7425284356166708
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9951697556492952
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.9284553426113529
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.8108785351738643
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "TR_39",
+        "cooperation_score": 0.5660090326956662
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.8840102562070526
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.8184203509432342
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.7290819687558818
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.8736308409363329
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.7534107832162751
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.6429371353284397
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.6751058723884811
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.42883179622310064
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.706938294352482
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.43555979045109483
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.5723280946107033
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.67497581239
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_24",
+        "cooperation_score": 0.7659608507434594
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.5197126544952632
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_26",
+        "cooperation_score": 0.7458428680396645
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.9945261292229256
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.7320581592320723
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.7508995231821318
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_25",
+        "cooperation_score": 0.4917701863354037
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.5692320392549225
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_23",
+        "cooperation_score": 0.8579742752797672
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.9083271832413709
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.6693260242173287
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.6559642683784561
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.8056433904259991
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.8857002932231766
+    },
+    {
+        "nurse1": "CT_19",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.6313328611383532
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.6954068121944015
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.7593215820837305
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "HN_5",
+        "cooperation_score": 1.0026939836759463
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.9607535711472984
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5475891499804544
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.560441370223979
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.6914126793922191
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.628032886035309
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.48635577551178577
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.5049486603195043
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.851142129732788
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.7194287553878347
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.5931317190907983
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.7348383170351134
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.9351842129692445
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.6376905660409496
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.6318839472547912
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.7300653552188079
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.655926717126071
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.673142162947655
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.6062380142404371
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.4480793460588857
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.6694398124422354
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.7224802790275937
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "HN_4",
+        "cooperation_score": 0.6722967523196355
+    },
+    {
+        "nurse1": "HN_4",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.6515849619786893
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.6636815654768946
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.7572935365811257
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.9118339093490528
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.7847375122297724
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.70913611093144
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.3056850012732366
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.7740839397960142
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.920923956504452
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.6687796250876746
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.7302695240775736
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.6865051889974491
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6961225721826072
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.6642084955471683
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.854399268826177
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.7998213448058649
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.6215045319840716
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.5754019202854846
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_14",
+        "cooperation_score": 1.026362610781779
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.7492668726182659
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "NU_7",
+        "cooperation_score": 1.05491600183517
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.7430528080450682
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_14",
+        "cooperation_score": 0.9491883247994435
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.9423486989969693
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_14",
+        "cooperation_score": 1.0486633380902461
+    },
+    {
+        "nurse1": "NU_14",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.769501138920307
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.0708036386744826
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.0200099878808317
+    },
+    {
+        "nurse1": "TR_33",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.31931163801873186
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.2564022505888839
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.7615393664306707
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.42742852113561497
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.0282068492746244
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.8019313130297112
+    },
+    {
+        "nurse1": "TR_33",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.8753985464663213
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.0626867555575994
+    },
+    {
+        "nurse1": "TR_33",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.8489236926307864
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.9456130683752167
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.7107104709726193
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.7585181902048237
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.032342100212944
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.7688273540895023
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.9492908091743735
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.5241354977338959
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.8415212982079318
+    },
+    {
+        "nurse1": "TR_33",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.7433195745266683
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.9007459186167627
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "TR_33",
+        "cooperation_score": 1.099286164061033
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.6726324400237443
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "TR_33",
+        "cooperation_score": 0.4399849260833243
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.811106479108902
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.500243848223388
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.7585066964862361
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.628317441296981
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.6759256795163378
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.683577997734008
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.8539307169102566
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.8616140853134393
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "HN_5",
+        "cooperation_score": 1.0081867223427325
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.7870742961216108
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.9033762262699534
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.9340548613603534
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "HN_5",
+        "cooperation_score": 1.0092619613975113
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.8738540686366774
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.8681410795796984
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.841914748702338
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.7082172931314807
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.9580120571909507
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.7099401905284258
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.5502549052777886
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.981656716400962
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "HN_5",
+        "cooperation_score": 0.8346736727847914
+    },
+    {
+        "nurse1": "HN_5",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.5937418247237873
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.4712677518559872
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "HN_2",
+        "cooperation_score": 1.0098461321287409
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.9068056943056944
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.6800091706202892
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.7296477490517739
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.6543044230115169
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "TR_38",
+        "cooperation_score": 1.00898526698769
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.8724609886680824
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.902002994873839
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "HN_2",
+        "cooperation_score": 1.0616864403077217
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.9026708643803811
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.741808233494867
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.7235247340042736
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.8801277642057019
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.9311773436924871
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "HN_2",
+        "cooperation_score": 0.6406288143587915
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.7644173063442143
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.4336822235735279
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_12",
+        "cooperation_score": 1.2038012843037071
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.8966112950703743
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "HN_2",
+        "cooperation_score": 1.060537574964483
+    },
+    {
+        "nurse1": "HN_2",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.8514309207491332
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.3787711256751504
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5135415309328353
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.876677311560876
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.3136730660643704
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5583299726253018
+    },
+    {
+        "nurse1": "TR_34",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.33748751248751246
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.6318965092878136
+    },
+    {
+        "nurse1": "TR_34",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.3980924905847506
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5447752971666016
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.6035415309328354
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.843841813725378
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.4924609448522492
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.45478930276884244
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.4492256711296959
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.6445420938374229
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.6725231324066968
+    },
+    {
+        "nurse1": "TR_34",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.745327902231927
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5672061272061273
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.7646492671415273
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.763150868739104
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "TR_34",
+        "cooperation_score": 0.5111162059997705
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.6691017316017316
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.39164991355393836
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.7921929377811731
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.7367695885649177
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.7304944309739706
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.9099136228931626
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.7785805553758844
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.7601018404726845
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.4663757136583223
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.6435729159564804
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.697302214693519
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.6309351738060178
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.8522097040050332
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.4472313490266781
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.8009141857977502
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.6323503966457258
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.7536773009599096
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.9749480022228709
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "HN_0",
+        "cooperation_score": 0.7667466591379635
+    },
+    {
+        "nurse1": "HN_0",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.49840378769911686
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.6611605785518829
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.4245420500215897
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.5650418280213677
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.5496087246087247
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.8408174412969809
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.725760758848994
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.7351685150598194
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.424255816647121
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.5578628958424355
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.6330345379258423
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.6000494674407717
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.4626474832357186
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.3061822235735279
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.4129587803500847
+    },
+    {
+        "nurse1": "NU_8",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.5042655873538227
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.656589244089244
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.6237100317982671
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.6686743811743812
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "NU_8",
+        "cooperation_score": 0.41432963172093606
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.2477563357358754
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.5212087605040896
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.6426715082826269
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.6635988265783663
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.5527752332470329
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.7035167159309035
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.6251617375759253
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "HN_3",
+        "cooperation_score": 1.012095984959089
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.46295878035008475
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.5670910930501722
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.5173676169032206
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.6185432528614652
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.7518695599729386
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.6682066901107149
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.682469285100864
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.7465680346485299
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "CT_29",
+        "cooperation_score": 0.7853404335602477
+    },
+    {
+        "nurse1": "CT_29",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.633443058937742
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.6323503966457258
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.4324229691876751
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.8233307888025885
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6559587471352176
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.7040783908737199
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.5893958511911803
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.6288683068401065
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.8427166531961928
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.633735253618818
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.842035067615563
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.4412866074937013
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.7489120212955858
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.6123336304218657
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.724635217723453
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.8552724726254138
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_10",
+        "cooperation_score": 0.6676676539834434
+    },
+    {
+        "nurse1": "NU_10",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.47729267658800567
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.3305689479602523
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.9639474831341166
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6366025915948517
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.5568735929719911
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.7564948050932032
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.9424300085206667
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.6534710458623503
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.5092545453529436
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.5689027046225188
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.7748763203787432
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.8836291617402803
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.7296354645190289
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.4089960763873808
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.7546535020370664
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "HN_1",
+        "cooperation_score": 0.5824170712328607
+    },
+    {
+        "nurse1": "HN_1",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.40063854124965986
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.6194461655139405
+    },
+    {
+        "nurse1": "TR_36",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.5884489764285161
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.6851577056601286
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.5885307215331445
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.6377079761670554
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.3783040488922842
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.6803847438438231
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.8066584129664625
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.463040525454713
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.5639816452896949
+    },
+    {
+        "nurse1": "TR_35",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.3619181543094586
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.7093381749492935
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.7165453082013186
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.6014808291124081
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "TR_38",
+        "cooperation_score": 0.5722474878586065
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.7409154570919276
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "CT_26",
+        "cooperation_score": 1.1187923604789938
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.7361593072577055
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "HN_3",
+        "cooperation_score": 1.177095984959089
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.7265879289792334
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "CT_25",
+        "cooperation_score": 0.8770206517955205
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.6286480461403061
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "CT_24",
+        "cooperation_score": 0.6885402596386578
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.9374401598237242
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.7841543821339217
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.7541367690280734
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_17",
+        "cooperation_score": 1.1153115419675523
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.8309307797465693
+    },
+    {
+        "nurse1": "CT_24",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.5967371210324501
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6425661898487984
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.31477037455298323
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6953108838709188
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6667466591379635
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.672713248672328
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.7239120212955857
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.33512817442350357
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6872990427708425
+    },
+    {
+        "nurse1": "TR_35",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.613352230844491
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.5435323734236778
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "TR_36",
+        "cooperation_score": 1.0784458045058396
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6680124684920081
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "TR_36",
+        "cooperation_score": 0.6595291073922115
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.8295333880459739
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.9509250225029602
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.7684608507434594
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "CT_26",
+        "cooperation_score": 1.1372965012657434
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.6002939297208378
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "CT_26",
+        "cooperation_score": 0.6491503652716467
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.8785124503306627
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.586820751712056
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_12",
+        "cooperation_score": 1.108614118528306
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.9339818493526932
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.9235033673420401
+    },
+    {
+        "nurse1": "CT_26",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.7059269220482036
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.7262465147362172
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.8535109313817755
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.6290321349131418
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.5941792111061193
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_13",
+        "cooperation_score": 1.0428552714765529
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.9647466409766181
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.5632637531550575
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.8125134055158285
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.5913411567120008
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_13",
+        "cooperation_score": 0.8318727757114486
+    },
+    {
+        "nurse1": "NU_13",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.6319009480222295
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.6259566158479202
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.8721435098979182
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.7035952179915028
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.7862946966884239
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.9553017701775945
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.9835063158898805
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.6916367690280734
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_17",
+        "cooperation_score": 1.274100280748551
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "HN_3",
+        "cooperation_score": 0.7105876424916673
+    },
+    {
+        "nurse1": "HN_3",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.6493829085618021
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.5857227555053641
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.5940225695021092
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.6105165004078048
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.753064025346634
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.8313239538239539
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.7375939980735378
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.7722801452596848
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "CT_28",
+        "cooperation_score": 0.6980165004078047
+    },
+    {
+        "nurse1": "CT_28",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.3138612836438923
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.5538543012378657
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "CT_25",
+        "cooperation_score": 0.537934826424529
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.8373249226880267
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.30884456123586557
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.6360890558716645
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.7319860510333656
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.6050399293352584
+    },
+    {
+        "nurse1": "CT_25",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.6706917753579484
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.34310207336523124
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.8012512025821354
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.46627112567515044
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.8094047750158936
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.9457257467857818
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_11",
+        "cooperation_score": 0.7011416930686012
+    },
+    {
+        "nurse1": "NU_11",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.6674096356523332
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.9374853932280908
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.6709309827263119
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.46118564120852445
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.4657542150495442
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "CT_27",
+        "cooperation_score": 0.6346066360540045
+    },
+    {
+        "nurse1": "CT_23",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.591544462178464
+    },
+    {
+        "nurse1": "NU_7",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.5035366379406627
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.6148669598898432
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.9062416198016547
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.7953516497785579
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "NU_7",
+        "cooperation_score": 0.8539317807422532
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.6777298426211469
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "TR_35",
+        "cooperation_score": 1.0233872682708327
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.8001426351426351
+    },
+    {
+        "nurse1": "NU_6",
+        "nurse2": "TR_35",
+        "cooperation_score": 0.19907415597818073
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.9623909402617842
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_12",
+        "cooperation_score": 0.9867808793037625
+    },
+    {
+        "nurse1": "NU_12",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.5353864404093237
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_17",
+        "cooperation_score": 0.986950197429737
+    },
+    {
+        "nurse1": "NU_17",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.7036698941416939
+    },
+    {
+        "nurse1": "CT_27",
+        "nurse2": "NU_6",
+        "cooperation_score": 0.7103336122605204
+    }
+]

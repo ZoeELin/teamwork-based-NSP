@@ -1,0 +1,29 @@
+# Ignore the reference papers
+papers/
+
+# Ignore the txt version datasets
+testdatasets_txt/
+
+# Virtual environments
+venv*
+venv/
+.env
+
+# macOS
+**/.DS_Store
+
+# VSCode settings
+.vscode/
+
+# cache
+__pycache__/
+
+
+# logs
+logs-baseline-xx6/
+logs-datasets_w8/
+logs-weight50-50-1000/
+logs-weight0-50-1000/
+
+
+logs-baseline-xx6.tar.gz
