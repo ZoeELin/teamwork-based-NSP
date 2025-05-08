@@ -160,13 +160,47 @@ def plot_weekly_penalties(data):
     plt.savefig('weekly_penalties.png', bbox_inches='tight', dpi=150)
     plt.close()
 
+def plot_weekly_iterations_penalties(data):
+    """Plot penalties vs iterations for each week in a single plot"""
+    plt.figure(figsize=(12, 7))
+    
+    # Create color scheme
+    cmap = plt.cm.get_cmap('tab10')  # Get a colormap for different weeks
+    
+    for week in range(4):  # For 4 weeks
+        week_info = data['week_data'][week]
+        temp_iterations = week_info['temp_iterations']
+        inner_iterations = week_info['inner_iterations']
+        total_iterations = [t * 20000 + i for t, i in zip(temp_iterations, inner_iterations)]
+        
+        plt.plot(
+            total_iterations,
+            week_info['penalties'],
+            marker='o',
+            markersize=3,
+            linewidth=1,
+            alpha=0.5,
+            label=f'Week {week}',
+            color=cmap(week)
+        )
+    
+    plt.xlabel('Iterations')
+    plt.ylabel('Penalty')
+    plt.title('Penalties vs Iterations for Each Week')
+    plt.grid(True, alpha=0.3)
+    plt.legend(title='Week')
+    plt.tight_layout()
+    plt.savefig('weekly_iterations_penalties.png', dpi=300)
+    plt.close()
+
 def main():
     log_file = 'logs-comc100_0508/n030w4/scheduler_ComCw100_run2_20250508_073350.txt'
     data = parse_log_file(log_file)
     
-    # Generate two separate plots
+    # Generate three separate plots
     plot_temperature_penalty(data)
     plot_weekly_penalties(data)
+    plot_weekly_iterations_penalties(data)
     
     print(f"Total accepted moves: {data['accepted_count']}")
     print(f"Final temperature: {data['temperatures'][-1]}")
