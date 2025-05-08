@@ -122,12 +122,14 @@ def summarize_soft_penalty_and_time(input_dir, output_path="soft_penalty_and_tim
         print(f"✅ Soft penalty summary written to {output_path}")
 
 if __name__ == "__main__":
-    summarize_all_logs_to_file("logs-weight0-50-1000/n021w4", "procession_with_n021w4_weight0_1000.txt")
-    summarize_soft_penalty_and_time("logs-weight0-50-1000/n021w4", "soft_penalty_summary_n021w4.txt")
+    summarize_all_logs_to_file("logs-weight0-50-1000/n060w4", "procession_with_n060w4_weight0_1000.txt")
+    summarize_soft_penalty_and_time("logs-weight0-50-1000/n060w4", "soft_penalty_summary_n060w4.txt")
 
-    summarize_all_logs_to_file("logs-weight0-50-1000/n030w4", "procession_with_n030w4_weight0_1000.txt")
-    summarize_soft_penalty_and_time("logs-weight0-50-1000/n030w4", "soft_penalty_summary_n030w4.txt")
-    
-    summarize_all_logs_to_file("logs-weight0-50-1000/n040w4", "procession_with_n040w4_weight0_1000.txt")
-    summarize_soft_penalty_and_time("logs-weight0-50-1000/n040w4", "soft_penalty_summary_n040w4.txt")
-    
+    summarize_all_logs_to_file("logs-weight0-50-1000/n080w4", "procession_with_n080w4_weight0_1000.txt")
+    summarize_soft_penalty_and_time("logs-weight0-50-1000/n080w4", "soft_penalty_summary_n080w4.txt")
+
+    summarize_all_logs_to_file("logs-weight0-50-1000/n100w4", "procession_with_n100w4_weight0_1000.txt")
+    summarize_soft_penalty_and_time("logs-weight0-50-1000/n100w4", "soft_penalty_summary_n100w4.txt")
+
+    summarize_all_logs_to_file("logs-weight0-50-1000/n120w4", "procession_with_n120w4_weight0_1000.txt")
+    summarize_soft_penalty_and_time("logs-weight0-50-1000/n120w4", "soft_penalty_summary_n120w4.txt")

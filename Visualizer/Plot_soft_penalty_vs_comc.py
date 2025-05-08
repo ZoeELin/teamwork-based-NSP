@@ -3,8 +3,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-filepath = "processed/soft_penalty_summary_n030w4.txt"
-scenario = "n030w4"
+# filepath = "processed/soft_penalty_summary_n030w4.txt"
+filepath = "soft_penalty_summary_n050w4.txt"
+scenario = "n050w4"
 
 
 # 讀取文字檔案
