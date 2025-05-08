@@ -631,6 +631,7 @@ def simulated_annealing_with_ComC(
                 current_assignments = neighbor
                 current_penalty = neighbor_penalty
                 accepted += 1
+                print(f"Accepted: {accepted}, current penalty: {current_penalty:.4f}")
 
                 if current_penalty < best_penalty:
                     best_assignments = current_assignments
