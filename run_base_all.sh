@@ -1,13 +1,14 @@
 #!/bin/bash
 
-dataset_folder="./datasets_json"
+dataset_folder="./Data/datasets_json"
 
-output_dir="./Output_base0506"
-comc_weight=0
-logs="logs-base0506"
+output_dir="./Output_comc100_0508"
+comc_weight=100
+logs="logs-comc100_0508"
 
 # SCENARIOS=("n030w4" "n040w4" "n050w4" "n060w4" "n080w4" "n100w4" "n120w4")
-SCENARIOS=("n030w8" "n040w8" "n050w8" "n060w8" "n080w8" "n100w8" "n120w8")
+SCENARIOS=("n030w4" "n040w4")
+# SCENARIOS=("n030w8" "n040w8" "n050w8" "n060w8" "n080w8" "n100w8" "n120w8")
 
 for SCENARIO in "${SCENARIOS[@]}"
 
@@ -21,7 +22,12 @@ do
   for i in $(seq 1 2)
   do
     timestamp=$(date +"%Y%m%d_%H%M%S")
-    sol_dir="${output_dir}/${scenario}/Solutions-${i}"
+    
+    if [ "$comc_weight" -eq 0 ]; then
+        sol_dir="${output_dir}/${scenario}/Solutions-${i}"
+    else
+        sol_dir="${output_dir}/${scenario}/Solutions-ComC${comc_weight}-${i}"
+    fi
     
     echo ">>> 第 $i 次執行 NSP 排班"
     python3 main.py \
