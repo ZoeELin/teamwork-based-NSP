@@ -8,6 +8,7 @@ import history
 from collections import defaultdict
 
 from constants import DAYS_WEEK, DAYS_WEEK_ABB
+import MCTS 
 
 
 def basic_scheduler(sce_filepath, weekdata_filepath):
@@ -431,5 +432,47 @@ def base_scheduler(
         run_id=run_id,
     )
     print(f"\n🎯 Best solution penalty: {best_sol_penalty}")
+
+    return assignments
+
+
+def mcts_scheduler(sce_filepath, weekdata_filepath, sce_dir, his_filepath=None, run_id=0, comc_weight=0):
+    """
+    Generate a schedule using Monte Carlo Tree Search (MCTS) for each nurse.
+    The scheduler satisfies:
+    H1: Single assignment per day
+    H3: Shift type successions
+    S2: Consecutive assignments
+    S3: Consecutive days off
+    S4: Preferences
+    S5: Complete week-end
+    """
+    # Load scenario, week data, history data
+    scenario = utils.load_data(sce_filepath)
+    week_data = utils.load_data(weekdata_filepath)
+    history_data = utils.load_data(his_filepath) if his_filepath else None
+
+    # Create MCTS scheduler
+    scheduler = MCTS.NurseSchedulerMCTS(scenario, week_data, history_data)
+    
+    # Generate schedule
+    assignments = scheduler.schedule()
+
+    # Display and calculate final penalties
+    utils.display_schedule(assignments)
+    total_penalty = penalty.calculate_total_penalty(
+        scheduler.nurses,
+        scheduler.forbidden_successions,
+        assignments,
+        weekdata_filepath,
+        scenario,
+        scheduler.nurse_history[1],
+        scheduler.nurse_history[0],
+        sce_dir,
+        comc_weight,
+        True,  # print_each_penalty
+        run_id
+    )
+    print(f"\n🎯 Final solution penalty: {total_penalty}")
 
     return assignments
