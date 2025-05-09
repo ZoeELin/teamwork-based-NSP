@@ -31,6 +31,8 @@ e.g.
 python3 main.py --input_folder ./testdatasets_json --sce n005w4 --comc 200 --run_id 0 --output_dir ./Output_test
 
 python3 main.py --input_folder ./testdatasets_json --sce n021w4 --comc 200 --run_id 0 --output_dir ./Output
+
+python3 main.py --input_folder ./Data/datasets_json --sce n030w4 --comc 0 --run_id 0 --output_dir ./Output_test0509
 ```
 Arguments:
 - <dataset_folder>: Path to the dataset folder.

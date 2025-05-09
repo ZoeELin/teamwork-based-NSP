@@ -178,10 +178,10 @@ class NurseSchedulerMCTS:
             self.visits += 1
             self.value += value
 
-    def mcts_search(self, nurse_id, max_iterations=500):
-        """Perform MCTS search for a single nurse"""
-        print("Start MCTS search...")
-        print(f"Nurse ID: {nurse_id}")
+    def mcts_search(self, nurse_id, max_iterations=3):
+        """
+        Perform MCTS search for a single nurse
+        """
         root_state = {
             "current_nurse": nurse_id,
             "current_day": DAYS_WEEK_ABB[0],
@@ -191,6 +191,7 @@ class NurseSchedulerMCTS:
         root = self.MCTSNode(root_state, scheduler=self)
         
         for i in range(max_iterations):
+            print("-"*100)
             print(f"Iteration {i+1}/{max_iterations}")
             node = root
 
@@ -204,8 +205,6 @@ class NurseSchedulerMCTS:
             if node.untried_actions:
                 node = node.expand()
 
-            # 3. Simulation
-            print("Start simulation...")
             current_state = node.state.copy()
             # e.g., 
             # current_state =
@@ -217,11 +216,13 @@ class NurseSchedulerMCTS:
             #   }
             # }
             
-            # Into simulation loop
+            # 3. Simulation
             while True:
+                print(">> Simulating.......................................................................")
                 # Break if all nurses are scheduled
                 if current_state["current_nurse"] is None:
                     break
+                print(f"Current state: {current_state}")
                     
                 # Get current day and nurse
                 current_day = current_state["current_day"]
@@ -240,7 +241,7 @@ class NurseSchedulerMCTS:
                     prev_day = DAYS_WEEK_ABB[prev_day_idx]
                     prev_shift = current_state["schedule"].get(current_nurse, {}).get(prev_day)
                 
-                # 生成可用動作
+                # 生成可用動作: 
                 available_actions = []
                 for shift in self.shift_types:
                     # 檢查 H3: 禁止的班次連續
@@ -263,10 +264,11 @@ class NurseSchedulerMCTS:
                 
                 if not available_actions:
                     break
+                print(f"Available actions: {available_actions}")
                 
                 # 隨機選擇一個動作
                 action = random.choice(available_actions)
-                print(f"Action with {current_nurse} available actions: {action}")
+                print(f"Action: {action}")
                 
                 action_day = action[0]
                 action_shift = action[1]
@@ -289,14 +291,16 @@ class NurseSchedulerMCTS:
                 else:
                     current_state["current_day"] = DAYS_WEEK_ABB[DAYS_WEEK_ABB.index(action_day) + 1]
                 
-                print(f"Updated state: {current_state}")
+                print()
             
+            print(">> (Break the simulation loop)")
             print(f"Final state: {current_state}")
 
-            # Backpropagation
+            # 4. Backpropagation
             print("Start backpropagation...")
             value = -self.calculate_state_penalty(current_state)  # Negative because we want to minimize penalty
             current_node = node
+            # debug?
             while current_node is not None:
                 current_node.update(value)
                 current_node = current_node.parent
@@ -311,11 +315,11 @@ class NurseSchedulerMCTS:
         """Generate schedule for all nurses"""
         final_schedule = defaultdict(dict)
         for nurse in self.nurses:
-            print(f"\nScheduling nurse {nurse['id']}...")
+            print("-"*100)
+            print(f"\nScheduling nurse {nurse['id']}")
             nurse_schedule = self.mcts_search(nurse["id"])
-            if nurse_schedule:  # 只有當有排班結果時才更新
+            if nurse_schedule:  # 只有當有排班結果時才更新 debug: 這邊應該要改成 min nurse_schedule penalty
                 final_schedule[nurse["id"]].update(nurse_schedule)
-            print(f"Finished scheduling nurse {nurse['id']}")
 
         # Convert schedule to assignments format
         assignments = []
