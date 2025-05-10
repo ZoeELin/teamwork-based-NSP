@@ -31,7 +31,7 @@ def calculate_h1_penalty(assignments):
 
 def calculate_h2_penalty(assignments, nurses, week_data):
     """
-    H2: undersupply of required skills, 1 penalty point for each missing nurse.
+    H2: undersupply of required skills, 500 penalty point for each missing nurse.
     Check a nurse is assigned to a shift that requires a skill they do not have.
     Input: nurses (from scenario), assignments (current schedule), week_data (dict)
     Output: penalty score (int)

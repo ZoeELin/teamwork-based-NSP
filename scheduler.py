@@ -452,27 +452,76 @@ def mcts_scheduler(sce_filepath, weekdata_filepath, sce_dir, his_filepath=None, 
     week_data = utils.load_data(weekdata_filepath)
     history_data = utils.load_data(his_filepath) if his_filepath else None
 
+    nurses = scenario["nurses"]
+    shift_types = [s["id"] for s in scenario["shiftTypes"]]
+    forbidden_successions = scenario["forbiddenShiftTypeSuccessions"]
+    assignments = []
+
+    nurseHistory = []
+    nurses_lastday_from_lastweek = dict()
+    if his_filepath:
+        nurseHistory = history_data["nurseHistory"]
+        nurses_lastday_from_lastweek = {
+            data["nurse"]: data["lastAssignedShiftType"]
+            for data in history_data["nurseHistory"]
+        }  # e.g., {'Patrick': 'Night', 'Andrea': 'None', ...}
+
     # Create MCTS scheduler
-    scheduler = MCTS.NurseSchedulerMCTS(scenario, week_data, history_data)
+    scheduler = MCTS.NurseSchedulerMCTS(scenario, week_data, nurseHistory, nurses_lastday_from_lastweek)
     
     # Generate schedule
     assignments = scheduler.schedule()
 
-    # Display and calculate final penalties
-    utils.display_schedule(assignments)
-    total_penalty = penalty.calculate_total_penalty(
-        scheduler.nurses,
-        scheduler.forbidden_successions,
+
+    init_sol_penalty = penalty.calculate_total_penalty(
+        nurses,
+        forbidden_successions,
         assignments,
         weekdata_filepath,
         scenario,
-        scheduler.nurse_history[1],
-        scheduler.nurse_history[0],
+        nurses_lastday_from_lastweek,
+        nurseHistory,
         sce_dir,
         comc_weight,
-        True,  # print_each_penalty
-        run_id
+        print_each_penalty=True,
+        run_id=run_id,
     )
-    print(f"\n🎯 Final solution penalty: {total_penalty}")
+    print(f"🟥 Initial solution penalty: {init_sol_penalty}")
+
+    # Step 2: Simulated Annealing
+    assignments = optimizer.simulated_annealing_with_ComC_MCTS(
+        run_id,
+        sce_dir,
+        assignments,
+        forbidden_successions,
+        nurses,
+        shift_types,
+        weekdata_filepath, 
+        scenario,
+        nurses_lastday_from_lastweek,
+        nurseHistory,
+        comc_w=comc_weight,
+    )
+
+    print("\nComplete simulated annealing ...❄️")
+    print("Final schedule(solutions)...🗓️")
+    utils.display_schedule(assignments)
+
+    # Show the final solution penalty
+    best_sol_penalty = penalty.calculate_total_penalty(
+        nurses,
+        forbidden_successions,
+        assignments,
+        weekdata_filepath,
+        scenario,
+        nurses_lastday_from_lastweek,
+        nurseHistory,
+        sce_dir,
+        comc_weight,
+        print_each_penalty=True,
+        run_id=run_id,
+    )
+    print(f"\n🎯 Best solution penalty: {best_sol_penalty}")
+
 
     return assignments

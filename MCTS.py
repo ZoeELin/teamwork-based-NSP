@@ -7,10 +7,11 @@ import penalty
 
 
 class NurseSchedulerMCTS:
-    def __init__(self, scenario, week_data, history_data=None):
+    def __init__(self, scenario, week_data,  nurseHistory, nurses_lastday_from_lastweek):
         self.scenario = scenario
         self.week_data = week_data
-        self.history_data = history_data
+        self.nurseHistory = nurseHistory
+        self.nurses_lastday_from_lastweek = nurses_lastday_from_lastweek
         
         # 初始化基本參數
         self.nurses = scenario["nurses"]
@@ -19,7 +20,7 @@ class NurseSchedulerMCTS:
         
         # 初始化其他必要參數
         self.shift_requirements = self._build_shift_requirements()
-        self.nurse_history = self._build_nurse_history()
+        # self.nurse_history = self._build_nurse_history()
         self.off_requests = self._build_off_requests()
 
     def _build_shift_requirements(self):
@@ -37,18 +38,18 @@ class NurseSchedulerMCTS:
         print("Finish building shift_requirements")
         return shift_requirements
 
-    def _build_nurse_history(self):
-        """Build nurse history from history data"""
-        nurse_history = []
-        nurses_lastday_from_lastweek = dict()
-        if self.history_data:
-            nurse_history = self.history_data["nurseHistory"]
-            nurses_lastday_from_lastweek = {
-                data["nurse"]: data["lastAssignedShiftType"]
-                for data in self.history_data["nurseHistory"]
-            }
-        print("Finish building nurse_history")
-        return nurse_history, nurses_lastday_from_lastweek
+    # def _build_nurse_history(self):
+    #     """Build nurse history from history data"""
+    #     nurse_history = []
+    #     nurses_lastday_from_lastweek = dict()
+    #     if self.history_data:
+    #         nurse_history = self.history_data["nurseHistory"]
+    #         nurses_lastday_from_lastweek = {
+    #             data["nurse"]: data["lastAssignedShiftType"]
+    #             for data in self.history_data["nurseHistory"]
+    #         }
+    #     print("Finish building nurse_history")
+    #     return nurse_history, nurses_lastday_from_lastweek
 
     def _build_off_requests(self):
         """Build off requests for S4"""
@@ -80,11 +81,11 @@ class NurseSchedulerMCTS:
 
         # Calculate penalties
         h1 = penalty.calculate_h1_penalty(assignments)
-        h3 = penalty.calculate_h3_penalty(assignments, self.forbidden_successions, self.nurse_history[1])
-        s2_s3_s5 = penalty.calculate_s2_s3_s5_penalty(assignments, self.nurses, self.scenario, self.nurse_history[0])
+        h3 = penalty.calculate_h3_penalty(assignments, self.forbidden_successions, self.nurses_lastday_from_lastweek)
+        s2_s3_s5 = penalty.calculate_s2_s3_s5_penalty(assignments, self.nurses, self.scenario, self.nurseHistory)
         s4 = penalty.calculate_s4_penalty(assignments, self.week_data)
         
-        print(f"h1: {h1}, h3: {h3}, s2_s3_s5: {s2_s3_s5}, s4: {s4}")
+        # print(f"h1: {h1}, h3: {h3}, s2_s3_s5: {s2_s3_s5}, s4: {s4}")
         return h1 + h3 + s2_s3_s5 + s4
 
     class MCTSNode:
@@ -107,14 +108,18 @@ class NurseSchedulerMCTS:
             nurse_id = self.state["current_nurse"]
             current_day = self.state["current_day"]
             
+            # If current_nurse is None, return empty actions list
+            if nurse_id is None:
+                return actions
+            
             # Get nurse's skills
             nurse = next(n for n in self.scheduler.nurses if n["id"] == nurse_id)
             nurse_skills = nurse["skills"]
             
             # Get previous shift for H3 check
             prev_shift = None
-            if current_day == "Mon" and self.scheduler.history_data:
-                prev_shift = self.scheduler.nurse_history[1].get(nurse_id)
+            if current_day == "Mon" and self.scheduler.nurseHistory:
+                prev_shift = self.scheduler.nurses_lastday_from_lastweek.get(nurse_id)
             elif current_day != "Mon":
                 prev_day_idx = DAYS_WEEK_ABB.index(current_day) - 1
                 prev_day = DAYS_WEEK_ABB[prev_day_idx]
@@ -182,7 +187,7 @@ class NurseSchedulerMCTS:
             self.visits += 1
             self.value += value
 
-    def mcts_search(self, nurse_id, max_iterations=1000):
+    def mcts_search(self, nurse_id, max_iterations=10):
         """
         Perform MCTS search for a single nurse
         """
@@ -236,8 +241,8 @@ class NurseSchedulerMCTS:
                 
                 # Get previous shift
                 prev_shift = None
-                if current_day == "Mon" and self.history_data:
-                    prev_shift = self.nurse_history[1].get(current_nurse)
+                if current_day == "Mon" and self.nurseHistory:
+                    prev_shift = self.nurses_lastday_from_lastweek.get(current_nurse)
                 elif current_day != "Mon":
                     prev_day_idx = DAYS_WEEK_ABB.index(current_day) - 1
                     prev_day = DAYS_WEEK_ABB[prev_day_idx]
@@ -267,12 +272,12 @@ class NurseSchedulerMCTS:
                 # if not available_actions:
                 #     break
                 available_actions.append((current_day, "", ""))
-                print(f"Available actions: {available_actions}")
+                # print(f"Available actions: {available_actions}")
 
                 
                 # 隨機選擇一個動作
                 action = random.choice(available_actions)
-                print(f"Action: {action}")
+                # print(f"Action: {action}")
                 
                 action_day = action[0]
                 action_shift = action[1]
@@ -309,7 +314,7 @@ class NurseSchedulerMCTS:
         """Generate schedule for all nurses"""
         final_schedule = defaultdict(dict)
         for nurse in self.nurses:
-            print("="*100)
+            # print("="*100)
             print(f"\nScheduling nurse {nurse['id']}")
             nurse_schedule = self.mcts_search(nurse["id"])
             if nurse_schedule: 
