@@ -135,14 +135,17 @@ class NurseSchedulerMCTS:
                 # Check if shift is needed
                 for skill in nurse_skills:
                     if (shift, skill) in self.scheduler.shift_requirements.get(current_day, {}):
-                        # Check S4: Preferences
-                        if (nurse_id, current_day, shift) in self.scheduler.off_requests or (nurse_id, current_day, "Any") in self.scheduler.off_requests:
-                            continue
+                        # # Check S4: Preferences
+                        # if (nurse_id, current_day, shift) in self.scheduler.off_requests or (nurse_id, current_day, "Any") in self.scheduler.off_requests:
+                        #     continue
                         actions.append((current_day, shift, skill))
             
+            # Add "No shift" action
+            actions.append((current_day, "", ""))
+
             return actions
 
-        def select_child(self, exploration_weight=1.4):
+        def select_child(self, exploration_weight=1.2):
             """Select child using UCB1(Upper Confidence Bound for 1-ply) formula"""
             return max(self.children, key=lambda c: c.value/c.visits + 
                       exploration_weight * math.sqrt(2 * math.log(self.visits) / c.visits))
@@ -159,12 +162,13 @@ class NurseSchedulerMCTS:
             
             # Move to next day or next nurse
             if action[0] == DAYS_WEEK_ABB[-1]:  # Last day of week
-                nurse_idx = self.scheduler.nurses.index(next(n for n in self.scheduler.nurses if n["id"] == self.state["current_nurse"]))
-                if nurse_idx == len(self.scheduler.nurses) - 1:  # Last nurse
-                    new_state["current_nurse"] = None
-                else:
-                    new_state["current_nurse"] = self.scheduler.nurses[nurse_idx + 1]["id"]
-                new_state["current_day"] = DAYS_WEEK_ABB[0]
+                # nurse_idx = self.scheduler.nurses.index(next(n for n in self.scheduler.nurses if n["id"] == self.state["current_nurse"]))
+                # if nurse_idx == len(self.scheduler.nurses) - 1:  # Last nurse
+                #     new_state["current_nurse"] = None
+                # else:
+                #     new_state["current_nurse"] = self.scheduler.nurses[nurse_idx + 1]["id"]
+                # new_state["current_day"] = DAYS_WEEK_ABB[0]
+                new_state["current_nurse"] = None
             else:
                 new_state["current_day"] = DAYS_WEEK_ABB[DAYS_WEEK_ABB.index(action[0]) + 1]
             
@@ -178,7 +182,7 @@ class NurseSchedulerMCTS:
             self.visits += 1
             self.value += value
 
-    def mcts_search(self, nurse_id, max_iterations=3):
+    def mcts_search(self, nurse_id, max_iterations=1000):
         """
         Perform MCTS search for a single nurse
         """
@@ -191,15 +195,15 @@ class NurseSchedulerMCTS:
         root = self.MCTSNode(root_state, scheduler=self)
         
         for i in range(max_iterations):
-            print("-"*100)
-            print(f"Iteration {i+1}/{max_iterations}")
+            # print("-"*100)
+            # print(f"Iteration {i+1}/{max_iterations}")
             node = root
 
             # 1. Selection
-            while node.untried_actions == [] and node.children != []:
-                # Walk through the tree to find the node with untried actions
+            while node.untried_actions == [((node.state["current_day"], "", ""))] and node.children != []:
+                # Walk through the tree to find the child node without untried actions
                 node = node.select_child()
-
+            
             # 2. Expansion
             # If the node has untried actions, expand it
             if node.untried_actions:
@@ -218,11 +222,9 @@ class NurseSchedulerMCTS:
             
             # 3. Simulation
             while True:
-                print(">> Simulating.......................................................................")
                 # Break if all nurses are scheduled
                 if current_state["current_nurse"] is None:
                     break
-                print(f"Current state: {current_state}")
                     
                 # Get current day and nurse
                 current_day = current_state["current_day"]
@@ -258,13 +260,15 @@ class NurseSchedulerMCTS:
                     for skill in nurse_skills:
                         if (shift, skill) in self.shift_requirements.get(current_day, {}):
                             # 檢查 S4: 偏好
-                            if (current_nurse, current_day, shift) in self.off_requests or (current_nurse, current_day, "Any") in self.off_requests:
-                                continue
+                            # if (current_nurse, current_day, shift) in self.off_requests or (current_nurse, current_day, "Any") in self.off_requests:
+                            #     continue
                             available_actions.append((current_day, shift, skill))
                 
-                if not available_actions:
-                    break
+                # if not available_actions:
+                #     break
+                available_actions.append((current_day, "", ""))
                 print(f"Available actions: {available_actions}")
+
                 
                 # 隨機選擇一個動作
                 action = random.choice(available_actions)
@@ -278,32 +282,22 @@ class NurseSchedulerMCTS:
                     current_state["schedule"][current_nurse] = {}
                 current_state["schedule"][current_nurse][action_day] = action_shift
                 
-                # 更新下一天
-                if action_day == DAYS_WEEK_ABB[-1]:  # 如果是週末
-                    # 找到下一個護士
-                    current_nurse_idx = next(i for i, n in enumerate(self.nurses) 
-                                          if n["id"] == current_nurse)
-                    if current_nurse_idx == len(self.nurses) - 1:  # 最後一個護士
-                        current_state["current_nurse"] = None
-                    else:
-                        current_state["current_nurse"] = self.nurses[current_nurse_idx + 1]["id"]
-                    current_state["current_day"] = DAYS_WEEK_ABB[0]
+                # Update next day
+                if action_day == DAYS_WEEK_ABB[-1]:  # Sunday
+                    current_state["current_nurse"] = None
                 else:
                     current_state["current_day"] = DAYS_WEEK_ABB[DAYS_WEEK_ABB.index(action_day) + 1]
                 
-                print()
-            
-            print(">> (Break the simulation loop)")
-            print(f"Final state: {current_state}")
 
             # 4. Backpropagation
-            print("Start backpropagation...")
+            # print("Start backpropagation...")
             value = -self.calculate_state_penalty(current_state)  # Negative because we want to minimize penalty
             current_node = node
-            # debug?
+            
+            # Go back to root node
             while current_node is not None:
                 current_node.update(value)
-                current_node = current_node.parent
+                current_node = current_node.parent # Go back to parent node
         
         # Return best child's schedule
         if root.children:
@@ -315,10 +309,10 @@ class NurseSchedulerMCTS:
         """Generate schedule for all nurses"""
         final_schedule = defaultdict(dict)
         for nurse in self.nurses:
-            print("-"*100)
+            print("="*100)
             print(f"\nScheduling nurse {nurse['id']}")
             nurse_schedule = self.mcts_search(nurse["id"])
-            if nurse_schedule:  # 只有當有排班結果時才更新 debug: 這邊應該要改成 min nurse_schedule penalty
+            if nurse_schedule: 
                 final_schedule[nurse["id"]].update(nurse_schedule)
 
         # Convert schedule to assignments format
