@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 
 # filepath = "processed/soft_penalty_summary_n030w4.txt"
-filepath = "soft_penalty_summary_n050w4.txt"
-scenario = "n050w4"
+filepath = "processed/soft_penalty_summary_n021w4.txt"
+scenario = "n021w4"
 
 
 # 讀取文字檔案

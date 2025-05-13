@@ -37,6 +37,7 @@ def parse_log_file(file_path):
     with open(file_path, "r") as f:
         for line in f:
             # Check if switch to new week
+
             week_match = re.search(r'Processing: week (\d+)', line)
             if week_match:
                 current_week = int(week_match.group(1))
@@ -50,6 +51,12 @@ def parse_log_file(file_path):
                 current_temp = float(temp_match.group(1))
                 current_penalty = int(temp_match.group(2)) 
                 week_data[current_week].append((current_temp, current_penalty))
+            
+            # Get current temperature and penalty
+            # temp_match = re.search(r'> Current temperature: ([\d\.]+)', line)
+            # if temp_match:
+            #     current_temp = float(temp_match.group(1))
+            #     week_data[current_week].append((current_temp, 0))
 
             # Get neighbor penalty(2 * 10000 times)
             neighbor_penalty_match = re.search(r'penalties (\d+)', line)
@@ -149,8 +156,8 @@ def plot_penalty_vs_iterations(week_iterations, scenario):
     plt.show()
 
 def main():
-    log_file = 'logs-comc100_0508/n030w4/scheduler_ComCw100_run2_20250508_073350.txt'
-    scenario = "n030w4"
+    log_file = 'logs-comc100_0513/n030w4/scheduler_ComCw100_run1_20250513_155341.txt'
+    scenario = "n030w4-v3-test"
     temp_data, iter_data = parse_log_file(log_file)
     
     # 畫溫度vs懲罰值的圖

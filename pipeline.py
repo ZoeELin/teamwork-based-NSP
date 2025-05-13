@@ -38,7 +38,7 @@ def run_scheduler_pipeline(instance, output_dir, comc_w, run_id_str):
         print(f"\nProcessing: week {week_idx}")
         print("=" * 80)
 
-        final_assignments = scheduler.mcts_scheduler(
+        final_assignments = scheduler.base_scheduler(
             instance["scenario"],
             week_data_file,
             scenario_dir,

@@ -399,7 +399,7 @@ def base_scheduler(
     print(f"🟥 Initial solution penalty: {init_sol_penalty}")
 
     # Step 2: Simulated Annealing
-    assignments = optimizer.simulated_annealing_with_ComC(
+    assignments = optimizer.simulated_annealing_with_ComC_version3(
         run_id,
         sce_dir,
         assignments,
@@ -467,7 +467,7 @@ def mcts_scheduler(sce_filepath, weekdata_filepath, sce_dir, his_filepath=None, 
         }  # e.g., {'Patrick': 'Night', 'Andrea': 'None', ...}
 
     # Create MCTS scheduler
-    scheduler = MCTS.NurseSchedulerMCTS(scenario, week_data, nurseHistory, nurses_lastday_from_lastweek)
+    scheduler = MCTS.NurseSchedulerMCTS(scenario, nurses, week_data, nurseHistory, nurses_lastday_from_lastweek)
     
     # Generate schedule
     assignments = scheduler.schedule()

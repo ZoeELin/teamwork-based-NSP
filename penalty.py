@@ -74,7 +74,7 @@ def calculate_h3_penalty(
     Input: forbidden_successions (from scenario), assignments (current schedule)
     Output: penalty score (int)
     """
-    penalty_points = 500
+    penalty_points = 700
 
     # Step 1: Build nurse schedule per day
     nurse_schedule = {}
@@ -106,7 +106,7 @@ def calculate_h3_penalty(
                 if shift in forbidden_map.get(history_shift, set()):
                     penalty += penalty_points
 
-        # 3.2 Check current week (Tue - Sun)
+        # 3.2 Check current week (Tue ~ Sun)
         for i in range(len(DAYS_WEEK_ABB) - 1):
             day1 = DAYS_WEEK_ABB[i]
             day2 = DAYS_WEEK_ABB[i + 1]

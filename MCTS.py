@@ -7,14 +7,14 @@ import penalty
 
 
 class NurseSchedulerMCTS:
-    def __init__(self, scenario, week_data,  nurseHistory, nurses_lastday_from_lastweek):
+    def __init__(self, scenario, nurses, week_data,  nurseHistory, nurses_lastday_from_lastweek):
         self.scenario = scenario
+        self.nurses = nurses
         self.week_data = week_data
         self.nurseHistory = nurseHistory
         self.nurses_lastday_from_lastweek = nurses_lastday_from_lastweek
         
         # 初始化基本參數
-        self.nurses = scenario["nurses"]
         self.shift_types = [s["id"] for s in scenario["shiftTypes"]]
         self.forbidden_successions = scenario["forbiddenShiftTypeSuccessions"]
         
@@ -315,7 +315,7 @@ class NurseSchedulerMCTS:
         final_schedule = defaultdict(dict)
         for nurse in self.nurses:
             # print("="*100)
-            print(f"\nScheduling nurse {nurse['id']}")
+            print(f"Scheduling nurse {nurse['id']}")
             nurse_schedule = self.mcts_search(nurse["id"])
             if nurse_schedule: 
                 final_schedule[nurse["id"]].update(nurse_schedule)

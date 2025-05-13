@@ -5,7 +5,7 @@
         {
             "nurse": "HN_0",
             "numberOfAssignments": 14,
-            "numberOfWorkingWeekends": 4,
+            "numberOfWorkingWeekends": 6,
             "lastAssignedShiftType": "Night",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
@@ -13,18 +13,18 @@
         },
         {
             "nurse": "HN_1",
-            "numberOfAssignments": 14,
+            "numberOfAssignments": 16,
             "numberOfWorkingWeekends": 6,
-            "lastAssignedShiftType": "Early",
+            "lastAssignedShiftType": "Late",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
         },
         {
             "nurse": "HN_2",
-            "numberOfAssignments": 14,
-            "numberOfWorkingWeekends": 4,
-            "lastAssignedShiftType": "Late",
+            "numberOfAssignments": 16,
+            "numberOfWorkingWeekends": 5,
+            "lastAssignedShiftType": "Day",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
@@ -40,26 +40,26 @@
         },
         {
             "nurse": "NU_4",
-            "numberOfAssignments": 15,
-            "numberOfWorkingWeekends": 4,
-            "lastAssignedShiftType": "Late",
-            "numberOfConsecutiveAssignments": 1,
-            "numberOfConsecutiveWorkingDays": 1,
-            "numberOfConsecutiveDaysOff": 0
-        },
-        {
-            "nurse": "NU_5",
-            "numberOfAssignments": 15,
-            "numberOfWorkingWeekends": 6,
+            "numberOfAssignments": 14,
+            "numberOfWorkingWeekends": 5,
             "lastAssignedShiftType": "Early",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
         },
         {
+            "nurse": "NU_5",
+            "numberOfAssignments": 14,
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 3
+        },
+        {
             "nurse": "NU_6",
-            "numberOfAssignments": 12,
-            "numberOfWorkingWeekends": 0,
+            "numberOfAssignments": 15,
+            "numberOfWorkingWeekends": 2,
             "lastAssignedShiftType": "None",
             "numberOfConsecutiveAssignments": 0,
             "numberOfConsecutiveWorkingDays": 0,
@@ -67,8 +67,8 @@
         },
         {
             "nurse": "NU_7",
-            "numberOfAssignments": 13,
-            "numberOfWorkingWeekends": 2,
+            "numberOfAssignments": 15,
+            "numberOfWorkingWeekends": 4,
             "lastAssignedShiftType": "None",
             "numberOfConsecutiveAssignments": 0,
             "numberOfConsecutiveWorkingDays": 0,
@@ -77,7 +77,7 @@
         {
             "nurse": "NU_8",
             "numberOfAssignments": 14,
-            "numberOfWorkingWeekends": 6,
+            "numberOfWorkingWeekends": 2,
             "lastAssignedShiftType": "Night",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
@@ -85,16 +85,7 @@
         },
         {
             "nurse": "NU_9",
-            "numberOfAssignments": 13,
-            "numberOfWorkingWeekends": 4,
-            "lastAssignedShiftType": "None",
-            "numberOfConsecutiveAssignments": 0,
-            "numberOfConsecutiveWorkingDays": 0,
-            "numberOfConsecutiveDaysOff": 2
-        },
-        {
-            "nurse": "NU_10",
-            "numberOfAssignments": 15,
+            "numberOfAssignments": 11,
             "numberOfWorkingWeekends": 6,
             "lastAssignedShiftType": "Late",
             "numberOfConsecutiveAssignments": 1,
@@ -102,10 +93,19 @@
             "numberOfConsecutiveDaysOff": 0
         },
         {
-            "nurse": "NU_11",
+            "nurse": "NU_10",
             "numberOfAssignments": 13,
             "numberOfWorkingWeekends": 2,
-            "lastAssignedShiftType": "Night",
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 3
+        },
+        {
+            "nurse": "NU_11",
+            "numberOfAssignments": 15,
+            "numberOfWorkingWeekends": 4,
+            "lastAssignedShiftType": "Late",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
@@ -113,32 +113,14 @@
         {
             "nurse": "NU_12",
             "numberOfAssignments": 15,
-            "numberOfWorkingWeekends": 4,
-            "lastAssignedShiftType": "Early",
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "Late",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
         },
         {
             "nurse": "NU_13",
-            "numberOfAssignments": 14,
-            "numberOfWorkingWeekends": 4,
-            "lastAssignedShiftType": "None",
-            "numberOfConsecutiveAssignments": 0,
-            "numberOfConsecutiveWorkingDays": 0,
-            "numberOfConsecutiveDaysOff": 2
-        },
-        {
-            "nurse": "NU_14",
-            "numberOfAssignments": 13,
-            "numberOfWorkingWeekends": 2,
-            "lastAssignedShiftType": "None",
-            "numberOfConsecutiveAssignments": 0,
-            "numberOfConsecutiveWorkingDays": 0,
-            "numberOfConsecutiveDaysOff": 3
-        },
-        {
-            "nurse": "NU_15",
             "numberOfAssignments": 15,
             "numberOfWorkingWeekends": 6,
             "lastAssignedShiftType": "Late",
@@ -147,28 +129,46 @@
             "numberOfConsecutiveDaysOff": 0
         },
         {
-            "nurse": "NU_16",
-            "numberOfAssignments": 12,
-            "numberOfWorkingWeekends": 0,
+            "nurse": "NU_14",
+            "numberOfAssignments": 16,
+            "numberOfWorkingWeekends": 6,
+            "lastAssignedShiftType": "Early",
+            "numberOfConsecutiveAssignments": 1,
+            "numberOfConsecutiveWorkingDays": 1,
+            "numberOfConsecutiveDaysOff": 0
+        },
+        {
+            "nurse": "NU_15",
+            "numberOfAssignments": 14,
+            "numberOfWorkingWeekends": 2,
             "lastAssignedShiftType": "None",
             "numberOfConsecutiveAssignments": 0,
             "numberOfConsecutiveWorkingDays": 0,
             "numberOfConsecutiveDaysOff": 3
+        },
+        {
+            "nurse": "NU_16",
+            "numberOfAssignments": 11,
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 4
         },
         {
             "nurse": "CT_17",
-            "numberOfAssignments": 14,
-            "numberOfWorkingWeekends": 0,
-            "lastAssignedShiftType": "None",
-            "numberOfConsecutiveAssignments": 0,
-            "numberOfConsecutiveWorkingDays": 0,
-            "numberOfConsecutiveDaysOff": 3
+            "numberOfAssignments": 16,
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "Early",
+            "numberOfConsecutiveAssignments": 1,
+            "numberOfConsecutiveWorkingDays": 1,
+            "numberOfConsecutiveDaysOff": 0
         },
         {
             "nurse": "CT_18",
-            "numberOfAssignments": 14,
+            "numberOfAssignments": 15,
             "numberOfWorkingWeekends": 4,
-            "lastAssignedShiftType": "Night",
+            "lastAssignedShiftType": "Day",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
@@ -177,41 +177,41 @@
             "nurse": "CT_19",
             "numberOfAssignments": 15,
             "numberOfWorkingWeekends": 4,
-            "lastAssignedShiftType": "Day",
+            "lastAssignedShiftType": "Night",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
         },
         {
             "nurse": "CT_20",
-            "numberOfAssignments": 14,
+            "numberOfAssignments": 12,
             "numberOfWorkingWeekends": 2,
             "lastAssignedShiftType": "None",
             "numberOfConsecutiveAssignments": 0,
             "numberOfConsecutiveWorkingDays": 0,
-            "numberOfConsecutiveDaysOff": 3
+            "numberOfConsecutiveDaysOff": 2
         },
         {
             "nurse": "CT_21",
-            "numberOfAssignments": 12,
-            "numberOfWorkingWeekends": 0,
-            "lastAssignedShiftType": "None",
-            "numberOfConsecutiveAssignments": 0,
-            "numberOfConsecutiveWorkingDays": 0,
-            "numberOfConsecutiveDaysOff": 3
+            "numberOfAssignments": 17,
+            "numberOfWorkingWeekends": 4,
+            "lastAssignedShiftType": "Early",
+            "numberOfConsecutiveAssignments": 1,
+            "numberOfConsecutiveWorkingDays": 1,
+            "numberOfConsecutiveDaysOff": 0
         },
         {
             "nurse": "CT_22",
-            "numberOfAssignments": 13,
-            "numberOfWorkingWeekends": 2,
+            "numberOfAssignments": 14,
+            "numberOfWorkingWeekends": 4,
             "lastAssignedShiftType": "None",
             "numberOfConsecutiveAssignments": 0,
             "numberOfConsecutiveWorkingDays": 0,
-            "numberOfConsecutiveDaysOff": 3
+            "numberOfConsecutiveDaysOff": 2
         },
         {
             "nurse": "CT_23",
-            "numberOfAssignments": 15,
+            "numberOfAssignments": 14,
             "numberOfWorkingWeekends": 0,
             "lastAssignedShiftType": "None",
             "numberOfConsecutiveAssignments": 0,
@@ -220,42 +220,24 @@
         },
         {
             "nurse": "CT_24",
-            "numberOfAssignments": 16,
-            "numberOfWorkingWeekends": 4,
-            "lastAssignedShiftType": "Late",
-            "numberOfConsecutiveAssignments": 1,
-            "numberOfConsecutiveWorkingDays": 1,
-            "numberOfConsecutiveDaysOff": 0
+            "numberOfAssignments": 15,
+            "numberOfWorkingWeekends": 2,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 3
         },
         {
             "nurse": "TR_25",
             "numberOfAssignments": 15,
             "numberOfWorkingWeekends": 6,
-            "lastAssignedShiftType": "Late",
+            "lastAssignedShiftType": "Day",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
         },
         {
             "nurse": "TR_26",
-            "numberOfAssignments": 17,
-            "numberOfWorkingWeekends": 6,
-            "lastAssignedShiftType": "Late",
-            "numberOfConsecutiveAssignments": 1,
-            "numberOfConsecutiveWorkingDays": 1,
-            "numberOfConsecutiveDaysOff": 0
-        },
-        {
-            "nurse": "TR_27",
-            "numberOfAssignments": 12,
-            "numberOfWorkingWeekends": 2,
-            "lastAssignedShiftType": "Early",
-            "numberOfConsecutiveAssignments": 1,
-            "numberOfConsecutiveWorkingDays": 1,
-            "numberOfConsecutiveDaysOff": 0
-        },
-        {
-            "nurse": "TR_28",
             "numberOfAssignments": 16,
             "numberOfWorkingWeekends": 6,
             "lastAssignedShiftType": "Night",
@@ -264,10 +246,28 @@
             "numberOfConsecutiveDaysOff": 0
         },
         {
-            "nurse": "TR_29",
-            "numberOfAssignments": 15,
+            "nurse": "TR_27",
+            "numberOfAssignments": 14,
             "numberOfWorkingWeekends": 6,
-            "lastAssignedShiftType": "Day",
+            "lastAssignedShiftType": "Night",
+            "numberOfConsecutiveAssignments": 1,
+            "numberOfConsecutiveWorkingDays": 1,
+            "numberOfConsecutiveDaysOff": 0
+        },
+        {
+            "nurse": "TR_28",
+            "numberOfAssignments": 15,
+            "numberOfWorkingWeekends": 4,
+            "lastAssignedShiftType": "None",
+            "numberOfConsecutiveAssignments": 0,
+            "numberOfConsecutiveWorkingDays": 0,
+            "numberOfConsecutiveDaysOff": 3
+        },
+        {
+            "nurse": "TR_29",
+            "numberOfAssignments": 13,
+            "numberOfWorkingWeekends": 4,
+            "lastAssignedShiftType": "Late",
             "numberOfConsecutiveAssignments": 1,
             "numberOfConsecutiveWorkingDays": 1,
             "numberOfConsecutiveDaysOff": 0
