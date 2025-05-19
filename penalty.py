@@ -36,7 +36,7 @@ def calculate_h2_penalty(assignments, nurses, week_data):
     Input: nurses (from scenario), assignments (current schedule), week_data (dict)
     Output: penalty score (int)
     """
-    penalty_points = 500
+    penalty_points = 1000
 
     # Map nurse ID to skills
     nurse_skills = {n["id"]: set(n["skills"]) for n in nurses}
@@ -74,7 +74,7 @@ def calculate_h3_penalty(
     Input: forbidden_successions (from scenario), assignments (current schedule)
     Output: penalty score (int)
     """
-    penalty_points = 700
+    penalty_points = 1000
 
     # Step 1: Build nurse schedule per day
     nurse_schedule = {}
@@ -332,7 +332,7 @@ def calculate_ComC_penalty(assignments, coop_filepath, weight, epsilon=0.01):
     Output: penalty score (float)
     """
     cooperation_matrix = utils.load_data(coop_filepath)
-
+    
     # Convert cooperation matrix to a dictionary for quick lookup
     coop_dict = {}
     for entry in cooperation_matrix:
@@ -340,7 +340,12 @@ def calculate_ComC_penalty(assignments, coop_filepath, weight, epsilon=0.01):
         key2 = (entry["nurse2"], entry["nurse1"])
         coop_dict[key1] = entry["cooperation_score"]
         coop_dict[key2] = entry["cooperation_score"]
-
+    
+    max_score = max(coop_dict.values())
+    
+    norm_coop_dict = {
+            k: v / max_score for k, v in coop_dict.items()
+        }
     # Group assignments by (day, shiftType)
     shift_teams = defaultdict(list)
     for a in assignments:
@@ -356,7 +361,7 @@ def calculate_ComC_penalty(assignments, coop_filepath, weight, epsilon=0.01):
         # Iterate over all nurse pairs(every two nurses) in the shift
         for i, j in itertools.combinations(nurses, 2):
             key = (i, j)
-            coop_score = coop_dict.get(
+            coop_score = norm_coop_dict.get(
                 key, epsilon
             )  # Default to epsilon if they do not cooperate
 

@@ -90,7 +90,7 @@ def load_previous_coopdata(output_dir, prev_filename):
         return json.load(f)
 
 
-def accumulate_coopdata(current, previous):
+def accumulate_coopdata(current, previous, nomalize=False):
     print("\nAccumulating past cooperation data into current cooperation data... 🔄")
     print(
         f"There are {len(current)} pairs of nurses in current file, {len(previous)} pairs of nurses in previous file."
@@ -108,6 +108,19 @@ def accumulate_coopdata(current, previous):
         if key not in coop_dict.keys():
             print(f"❗nurse pair {key[0]}-{key[1]} not in the previous data")
         coop_dict[key] += entry["cooperation_score"]
+
+    if nomalize:
+        max_score = max(coop_dict.values())
+        if max_score == 0:
+            print("⚠️ All cooperation scores are zero, skip normalization.")
+            norm_coop_dict = {k: 0.0 for k in coop_dict}
+        else:
+            norm_coop_dict = {
+                k: v / max_score for k, v in coop_dict.items()
+            }
+    else:
+        norm_coop_dict = coop_dict
+
 
     # Convert to list of dicts
     return [

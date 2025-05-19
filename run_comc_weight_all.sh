@@ -1,13 +1,13 @@
 #!/bin/bash
 
-dataset_folder="./datasets_json"
+dataset_folder="./Data/datasets_json"
 
-output_dir="./Output_datasets0505"
+output_dir="./Output_datasets0515_0-250"
 comc_weight=0
-logs="logs-datasets0505"
+logs="logs-datasets0515_0-250"
 
-# SCENARIOS=("n030w4" "n040w4" "n050w4" "n060w4" "n080w4" "n100w4" "n120w4")
-SCENARIOS=("n050w4" "n030w8" "n040w8" "n050w8"  "n060w8" "n080w8" "n100w8" "n120w8")
+SCENARIOS=("n030w4" "n040w4" "n050w4" "n060w4" "n080w4" "n100w4" "n120w4")
+# SCENARIOS=("n050w4" "n030w8" "n040w8" "n050w8"  "n060w8" "n080w8" "n100w8" "n120w8")
 
 for SCENARIO in "${SCENARIOS[@]}"
 do
@@ -16,7 +16,7 @@ do
   scenario=$SCENARIO
   mkdir -p "${logs}/${scenario}"
 
-  for comc_weight in $(seq 50 50 1000)
+  for comc_weight in $(seq 0 5 250)
   do
     
     echo ">ComC weight: ${comc_weight}"
@@ -26,7 +26,11 @@ do
     do
 
       timestamp=$(date +"%Y%m%d_%H%M%S")
-      sol_dir="${output_dir}/${scenario}/Solutions-ComC${comc_weight}-${i}"
+      if [ "$comc_weight" -eq 0 ]; then
+          sol_dir="${output_dir}/${scenario}/Solutions-${i}"
+      else
+          sol_dir="${output_dir}/${scenario}/Solutions-ComC${comc_weight}-${i}"
+      fi
       
       echo ">>> 第 $i 次執行 NSP 排班"
       python3 main.py \

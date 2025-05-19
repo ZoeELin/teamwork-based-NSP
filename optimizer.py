@@ -482,7 +482,7 @@ def simulated_annealing_with_ComC(
 
 
 
-def simulated_annealing_with_ComC_version2(
+def simulated_annealing_with_ComC_MCTS2(
     run_id,
     output_dir,
     assignments,
@@ -754,6 +754,563 @@ def simulated_annealing_with_ComC_version2(
             break
 
     return best_assignments
+
+
+
+def simulated_annealing_with_ComC_version2_1(
+    run_id,
+    output_dir,
+    assignments,
+    forbidden_successions,
+    nurses,
+    shift_types,
+    weekdata_filepath,
+    scenario,
+    nurses_lastday_from_lastweek,
+    nurseHistory,
+    comc_w=0,
+    initial_temp=110.0,
+    min_temp=2.13,
+    cooling_rate=0.95,
+    max_iter=2 * 10 ** 4,
+    kmaxMS=7,
+    kmaxMC=2,
+    pMS=0.45,
+    pC=0.5,
+    pDC=0.05,
+    poff=0.33,
+    pchange=0.33,
+    pstay=0.34,
+):
+    """
+    Simulated Annealing algorithm as described by Ceschia et al.
+    Includes MultiSwap, MultiChange, DoubleChange moves and probabilistic control.
+    """
+    temperature = initial_temp
+    current_assignments = assignments
+    # Initialize cache for moves for current solution
+    current_move_cache = set()
+
+    def get_move_key(move_type, nurse1, nurse2=None, start=None, k=None):
+        """Generate a unique key for a move"""
+        if move_type == "MS":
+            return ((move_type, nurse1["id"], nurse2["id"]), start, k)
+        else:  
+            # MC or DC
+            return ((move_type, nurse1["id"]), start, k)
+        
+    def penalty(assigns, print_penalty=True, run_id=0):
+        return calculate_total_penalty(
+            nurses,
+            forbidden_successions,
+            assigns,
+            weekdata_filepath,
+            scenario,
+            nurses_lastday_from_lastweek,
+            nurseHistory,
+            output_dir,
+            comc_w,
+            print_each_penalty=print_penalty,
+            run_id=run_id,
+        )
+    
+    def make_frozenset(assignments):
+        key = frozenset((a["nurse"], a["day"], a["shiftType"], a["skill"]) for a in assignments)
+        return key
+
+
+    def multi_swap(assignments, n1, n2, k, start=0):
+        """
+        Swap two nurses' k days of schedule starting from `start` index in the sorted list of days.
+        Note: nurses must be skill-compatible on the same day to swap.
+        """
+        new_assignments = utils.fast_copy(assignments)
+        days = sorted(list(set(a["day"] for a in new_assignments)))
+
+        selected_days = days[start : start+k-1]
+        
+        for day in selected_days:
+            for a1 in new_assignments:
+                if a1["nurse"] == n1["id"] and a1["day"] == day:
+                    for a2 in new_assignments:
+                        if a2["nurse"] == n2["id"] and a2["day"] == day:
+                            if (
+                                a1["skill"] in n2["skills"]
+                                and a2["skill"] in n1["skills"]
+                            ):
+                                a1["nurse"], a2["nurse"] = a2["nurse"], a1["nurse"]
+        print(f"Finish multi swap {n1['id']}, {n2['id']} for {k} days from {DAYS_WEEK_ABB[start]} to {DAYS_WEEK_ABB[start+k-1]}")
+        return new_assignments
+
+    def multi_change(assignments, nurse, shift_types, k, start=0, poff=0.33, pchange=0.33, pstay=0.34):
+        """
+        Change a nurse's schedule for k days of schedule starting from `start` index in the sorted list of days.
+        Note: the nurse need to be skill-compatible with the shift type on the new shift.
+        """
+        new_assignments = utils.fast_copy(assignments)
+        days = sorted(list(set(a["day"] for a in new_assignments)))
+        if len(days) < k:
+            return new_assignments
+        selected_days = days[start : start + k-1]
+        
+        k_day_changed_shift = []
+        for day in selected_days:
+            # Remove existing assignment for the nurse on that day
+            new_assignments = [
+                a
+                for a in new_assignments
+                if not (a["nurse"] == nurse["id"] and a["day"] == day)
+            ]
+
+            r = random.random()
+            if r < poff:
+                shift = "na"
+                skill = ""
+                movement = "off"
+                k_day_changed_shift.append((movement, shift, skill))
+            elif r < poff + pchange:
+                shift = random.choice(shift_types)
+                skill = random.choice(nurse["skills"])
+                movement = "change"
+                k_day_changed_shift.append((movement, shift, skill))
+                new_assignments.append(
+                    {
+                        "nurse": nurse["id"],
+                        "day": day,
+                        "shiftType": shift,
+                        "skill": skill,
+                    }
+                )
+            else:
+                # If it does't day off or change shift, try to stay in the same shift as previous day.
+                # If the nurse does not have the previous day, then random choose a shift.
+                prev_day = days[start - 1] if start > 0 else None
+                prev_shift = None
+                for a in assignments:
+                    if a["nurse"] == nurse["id"] and a["day"] == prev_day:
+                        prev_shift = a["shiftType"]
+                        movement = "stay"
+                        k_day_changed_shift.append((movement, prev_shift, a["skill"]))
+                        break
+                shift = prev_shift if prev_shift else random.choice(shift_types)
+                skill = random.choice(nurse["skills"])
+                movement = "stay"
+                k_day_changed_shift.append((movement, shift, skill))
+                new_assignments.append(
+                    {
+                        "nurse": nurse["id"],
+                        "day": day,
+                        "shiftType": shift,
+                        "skill": skill,
+                    }
+                )
+
+        print(f"Finish multi change {nurse['id']} for {k} days from {DAYS_WEEK_ABB[start]} to {DAYS_WEEK_ABB[start+k-1]} ({k_day_changed_shift})")
+        return new_assignments
+    
+
+    def double_change(assignments, nurse, shift_types, k, start, poff, pchange, pstay):
+        return multi_change(assignments, nurse, shift_types, 2, start, poff, pchange, pstay)
+    
+
+    print("\nStart simulated annealing...🧊")
+    current_penalty = penalty(current_assignments, run_id)
+    best_assignments = current_assignments
+    best_penalty = current_penalty
+
+    total_temp_levels = int(math.log(min_temp / initial_temp) / math.log(cooling_rate))
+    ns_per_temp = max_iter // total_temp_levels
+
+    for temp_idx in range(total_temp_levels):
+        print(f"\n--- Temperature Level ({temp_idx + 1}/{total_temp_levels}) ---")
+        print(f"> Current temperature: {temperature:.4f}, current penalties: {current_penalty:.4f}")
+        accepted = 0
+        accepted_lower_penalty = 0
+        for inner_idx in range(ns_per_temp):
+            # Try to find a new move that hasn't been tried before
+            while True:
+                if random.random() < pMS:
+                    k = random.randint(1, kmaxMS)
+                    start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                    nurse1, nurse2 = random.sample(nurses, 2)
+                    move_key = get_move_key("MS", nurse1, nurse2, DAYS_WEEK_ABB[start_week_idx], k)
+                    if move_key not in current_move_cache:
+                        neighbor = multi_swap(current_assignments, nurse1, nurse2, k, start_week_idx)
+                        current_move_cache.add(move_key)
+                        break
+                else:
+                    k = random.randint(1, kmaxMC)
+                    start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                    nurse = random.choice(nurses)
+                    if random.random() < pC / (pC + pDC):
+                        move_key = get_move_key("MC", nurse, start=DAYS_WEEK_ABB[start_week_idx], k=k)
+                        if move_key not in current_move_cache:
+                            neighbor = multi_change(
+                                current_assignments,
+                                nurse,
+                                shift_types,
+                                k,
+                                start_week_idx, 
+                                poff,
+                                pchange,
+                                pstay,
+                            )
+                            current_move_cache.add(move_key)
+                            break
+
+                    else:
+                        k = 2
+                        start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                        move_key = get_move_key("MC", nurse, start=DAYS_WEEK_ABB[start_week_idx], k=k)
+                        if move_key not in current_move_cache:
+                            neighbor = double_change(
+                                current_assignments,
+                                nurse,
+                                shift_types,
+                                k,
+                                start_week_idx, 
+                                poff,
+                                pchange,
+                                pstay,
+                            )
+                            current_move_cache.add(move_key)
+                            break
+
+            neighbor_penalty = penalty(neighbor, run_id=run_id, print_penalty=True)
+            
+            delta = neighbor_penalty - current_penalty
+
+            if random.random() < math.exp(-delta / temperature):
+                # It is potential to accept the worse neighbor with the probability of exp(-delta / temperature).
+                # Note: if delta is zero, it also accept the neighbor.
+                current_assignments = neighbor
+                current_penalty = neighbor_penalty
+                accepted += 1
+                print(f"Accepted: {accepted}, current penalty: {current_penalty:.4f}")
+                # Clear cache when accepting a new solution
+                current_move_cache.clear()
+            
+            if delta < 0:
+                # Use new solution when the neighbor is better than the current solution.
+                current_assignments = neighbor
+                current_penalty = neighbor_penalty
+                accepted_lower_penalty += 1
+                print(f"Lower penalty solution count: {accepted_lower_penalty}, current penalty: {current_penalty:.4f}")
+
+                if current_penalty < best_penalty:
+                    best_assignments = current_assignments
+                    best_penalty = current_penalty
+                    accepted_lower_penalty = 0
+                    # Clear cache when finding a better solution
+                    current_move_cache.clear()
+
+            # Early cutoff: reduce temperature sooner if enough solutions accepted
+            if accepted >= ns_per_temp:
+                break
+
+        temperature *= cooling_rate
+        if temperature < min_temp or best_penalty == 0:
+            break
+
+    return best_assignments
+
+
+
+
+def simulated_annealing_with_ComC_version2_2(
+    run_id,
+    output_dir,
+    assignments,
+    forbidden_successions,
+    nurses,
+    shift_types,
+    weekdata_filepath,
+    scenario,
+    nurses_lastday_from_lastweek,
+    nurseHistory,
+    comc_w=0,
+    initial_temp=110.0,
+    min_temp=2.13,
+    cooling_rate=0.95,
+    max_iter=2 * 10 ** 4,
+    kmaxMS=7,
+    kmax = 7,
+    kmaxMC=2,
+    pMS=0.45,
+    pC=0.5,
+    pDC=0.05,
+    poff=0.33,
+    pchange=0.33,
+    pstay=0.34,
+):
+    """
+    Simulated Annealing algorithm as described by Ceschia et al.
+    Includes MultiSwap, MultiChange, DoubleChange moves and probabilistic control.
+    """
+    temperature = initial_temp
+    current_assignments = assignments
+    # Initialize cache for moves for current solution
+    current_move_cache = set()
+    all_move_cache = dict()
+
+    def get_move_key(move_type, nurse1, nurse2=None, start=None, k=None):
+        """Generate a unique key for a move"""
+        if move_type == "MS":
+            return ((move_type, nurse1["id"], nurse2["id"]), start, k)
+        else:  
+            # MC or DC
+            return ((move_type, nurse1["id"]), start, k)
+        
+    def penalty(assigns, print_penalty=True, run_id=0):
+        return calculate_total_penalty(
+            nurses,
+            forbidden_successions,
+            assigns,
+            weekdata_filepath,
+            scenario,
+            nurses_lastday_from_lastweek,
+            nurseHistory,
+            output_dir,
+            comc_w,
+            print_each_penalty=print_penalty,
+            run_id=run_id,
+        )
+    
+    def penalty_original(assigns):
+        return calculate_total_penalty(
+            nurses,
+            forbidden_successions,
+            assigns,
+            weekdata_filepath,
+            scenario,
+            nurses_lastday_from_lastweek,
+            nurseHistory,
+            output_dir,
+            comc_w,
+            print_each_penalty=False,
+            run_id=0,
+        )
+    
+    def make_frozenset(assignments):
+        key = frozenset((a["nurse"], a["day"], a["shiftType"], a["skill"]) for a in assignments)
+        return key
+    
+    def get_k(i, total_iters, sharpness=10):
+        x = i / (total_iters - 1)
+        sigmoid = 1 / (1 + math.exp(sharpness * (x - 0.5)))  # reversed sigmoid
+        max_k = round(3 + 4 * sigmoid)  # from 7 to 3
+        return random.randint(1, max_k)
+
+
+    def multi_swap(assignments, n1, n2, k, start=0):
+        """
+        Swap two nurses' k days of schedule starting from `start` index in the sorted list of days.
+        Note: nurses must be skill-compatible on the same day to swap.
+        """
+        new_assignments = utils.fast_copy(assignments)
+        days = sorted(list(set(a["day"] for a in new_assignments)))
+
+        selected_days = days[start : start+k-1]
+        
+        for day in selected_days:
+            for a1 in new_assignments:
+                if a1["nurse"] == n1["id"] and a1["day"] == day:
+                    for a2 in new_assignments:
+                        if a2["nurse"] == n2["id"] and a2["day"] == day:
+                            if (
+                                a1["skill"] in n2["skills"]
+                                and a2["skill"] in n1["skills"]
+                            ):
+                                a1["nurse"], a2["nurse"] = a2["nurse"], a1["nurse"]
+        print(f"Finish multi swap {n1['id']}, {n2['id']} for {k} days from {DAYS_WEEK_ABB[start]} to {DAYS_WEEK_ABB[start+k-1]}")
+        return new_assignments
+
+    def multi_change(assignments, nurse, shift_types, k, start=0, poff=0.33, pchange=0.33, pstay=0.34):
+        """
+        Change a nurse's schedule for k days of schedule starting from `start` index in the sorted list of days.
+        Note: the nurse need to be skill-compatible with the shift type on the new shift.
+        """
+        new_assignments = utils.fast_copy(assignments)
+        days = sorted(list(set(a["day"] for a in new_assignments)))
+        if len(days) < k:
+            return new_assignments
+        selected_days = days[start : start + k-1]
+        
+        k_day_changed_shift = []
+        for day in selected_days:
+            # Remove existing assignment for the nurse on that day
+            new_assignments = [
+                a
+                for a in new_assignments
+                if not (a["nurse"] == nurse["id"] and a["day"] == day)
+            ]
+
+            r = random.random()
+            if r < poff:
+                shift = "na"
+                skill = ""
+                movement = "off"
+                k_day_changed_shift.append((movement, shift, skill))
+            elif r < poff + pchange:
+                shift = random.choice(shift_types)
+                skill = random.choice(nurse["skills"])
+                movement = "change"
+                k_day_changed_shift.append((movement, shift, skill))
+                new_assignments.append(
+                    {
+                        "nurse": nurse["id"],
+                        "day": day,
+                        "shiftType": shift,
+                        "skill": skill,
+                    }
+                )
+            else:
+                # If it does't day off or change shift, try to stay in the same shift as previous day.
+                # If the nurse does not have the previous day, then random choose a shift.
+                prev_day = days[start - 1] if start > 0 else None
+                prev_shift = None
+                for a in assignments:
+                    if a["nurse"] == nurse["id"] and a["day"] == prev_day:
+                        prev_shift = a["shiftType"]
+                        movement = "stay"
+                        k_day_changed_shift.append((movement, prev_shift, a["skill"]))
+                        break
+                shift = prev_shift if prev_shift else random.choice(shift_types)
+                skill = random.choice(nurse["skills"])
+                movement = "stay"
+                k_day_changed_shift.append((movement, shift, skill))
+                new_assignments.append(
+                    {
+                        "nurse": nurse["id"],
+                        "day": day,
+                        "shiftType": shift,
+                        "skill": skill,
+                    }
+                )
+
+        print(f"Finish multi change {nurse['id']} for {k} days from {DAYS_WEEK_ABB[start]} to {DAYS_WEEK_ABB[start+k-1]} ({k_day_changed_shift})")
+        return new_assignments
+    
+
+    def double_change(assignments, nurse, shift_types, k, start, poff, pchange, pstay):
+        return multi_change(assignments, nurse, shift_types, 2, start, poff, pchange, pstay)
+    
+
+    print("\nStart simulated annealing...🧊")
+    current_penalty = penalty(current_assignments, run_id)
+    best_assignments = current_assignments
+    best_penalty = current_penalty
+
+    total_temp_levels = int(math.log(min_temp / initial_temp) / math.log(cooling_rate))
+    ns_per_temp = max_iter // total_temp_levels
+
+    for temp_idx in range(total_temp_levels):
+        print(f"\n--- Temperature Level ({temp_idx + 1}/{total_temp_levels}) ---")
+        print(f"> Current temperature: {temperature:.4f}, current penalties: {current_penalty:.4f}")
+        accepted = 0
+        accepted_lower_penalty = 0
+        kmax = get_k(temp_idx, total_temp_levels)
+        for inner_idx in range(ns_per_temp):
+            # Try to find a new move that hasn't been tried before
+            current_move_cache = all_move_cache.get(penalty_original(current_assignments), set())
+            while True:
+                if random.random() < pMS:
+                    # k = random.randint(1, kmaxMS)
+                    k = random.randint(1, kmax)
+                    start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                    nurse1, nurse2 = random.sample(nurses, 2)
+                    move_key = get_move_key("MS", nurse1, nurse2, DAYS_WEEK_ABB[start_week_idx], k)
+                    # if move_key not in current_move_cache:
+                    if True:
+                        neighbor = multi_swap(current_assignments, nurse1, nurse2, k, start_week_idx)
+                        current_move_cache.add(move_key)
+                        break
+                else:
+                    # k = random.randint(1, kmaxMC)
+                    # k = random.randint(1, kmax)
+                    k = 1
+                    start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                    nurse = random.choice(nurses)
+                    if random.random() < pC / (pC + pDC):
+                        move_key = get_move_key("MC", nurse, start=DAYS_WEEK_ABB[start_week_idx], k=k)
+                        if move_key not in current_move_cache:
+                            # if random.random() < 0.5:
+                            #     break
+                            neighbor = multi_change(
+                                current_assignments,
+                                nurse,
+                                shift_types,
+                                k,
+                                start_week_idx, 
+                                poff,
+                                pchange,
+                                pstay,
+                            )
+                            current_move_cache.add(move_key)
+                            break
+
+                    else:
+                        k = 2
+                        start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                        move_key = get_move_key("MC", nurse, start=DAYS_WEEK_ABB[start_week_idx], k=k)
+                        if move_key not in current_move_cache:
+                            neighbor = double_change(
+                                current_assignments,
+                                nurse,
+                                shift_types,
+                                k,
+                                start_week_idx, 
+                                poff,
+                                pchange,
+                                pstay,
+                            )
+                            current_move_cache.add(move_key)
+                            break
+
+            neighbor_penalty = penalty(neighbor, run_id=run_id, print_penalty=True)
+            
+            delta = neighbor_penalty - current_penalty
+
+            if random.random() < math.exp(-delta / temperature):
+                # It is potential to accept the worse neighbor with the probability of exp(-delta / temperature).
+                # Note: if delta is zero, it also accept the neighbor.
+                current_assignments = neighbor
+                current_penalty = neighbor_penalty
+                accepted += 1
+                print(f"Accepted: {accepted}, current penalty: {current_penalty:.4f}")
+                # Save the move cache for the current solution
+                all_move_cache[make_frozenset(current_assignments)] = current_move_cache
+                # Clear cache when accepting a new solution
+                current_move_cache.clear()
+            
+            if delta < 0:
+                # Use new solution when the neighbor is better than the current solution.
+                current_assignments = neighbor
+                current_penalty = neighbor_penalty
+                accepted_lower_penalty += 1
+                print(f"Lower penalty solution count: {accepted_lower_penalty}, current penalty: {current_penalty:.4f}")
+
+                if current_penalty < best_penalty:
+                    best_assignments = current_assignments
+                    best_penalty = current_penalty
+                    accepted_lower_penalty = 0
+                    # Save the move cache for the current solution
+                    all_move_cache[make_frozenset(current_assignments)] = current_move_cache
+                    # Clear cache when finding a better solution
+                    current_move_cache.clear()
+
+            # Early cutoff: reduce temperature sooner if enough solutions accepted
+            if accepted >= ns_per_temp:
+                break
+
+        temperature *= cooling_rate
+        if temperature < min_temp or best_penalty == 0:
+            break
+
+    return best_assignments
+
+
+
 
 
 
@@ -1047,6 +1604,240 @@ def simulated_annealing_with_ComC_version3(
             break
 
     return best_assignments
+
+
+
+
+
+def simulated_annealing_with_ComC_baseline(
+    run_id,
+    output_dir,
+    assignments,
+    forbidden_successions,
+    nurses,
+    shift_types,
+    weekdata_filepath,
+    scenario,
+    nurses_lastday_from_lastweek,
+    nurseHistory,
+    comc_w=0,
+    initial_temp=110.0,
+    min_temp=2.13,
+    cooling_rate=0.95,
+    max_iter=2 * 10 ** 4,
+    kmaxMS=7,
+    kmaxMC=2,
+    pMS=0.45,
+    pC=0.5,
+    pDC=0.05,
+    poff=0.33,
+    pchange=0.33,
+    pstay=0.34,
+):
+    """
+    Simulated Annealing algorithm as described by Ceschia et al.
+    Includes MultiSwap, MultiChange, DoubleChange moves and probabilistic control.
+    """
+    temperature = initial_temp
+    current_assignments = assignments
+        
+    def penalty(assigns, print_penalty=True, run_id=0):
+        return calculate_total_penalty(
+            nurses,
+            forbidden_successions,
+            assigns,
+            weekdata_filepath,
+            scenario,
+            nurses_lastday_from_lastweek,
+            nurseHistory,
+            output_dir,
+            comc_w,
+            print_each_penalty=print_penalty,
+            run_id=run_id,
+        )
+
+
+    def multi_swap(assignments, n1, n2, k, start=0):
+        """
+        Swap two nurses' k days of schedule starting from `start` index in the sorted list of days.
+        Note: nurses must be skill-compatible on the same day to swap.
+        """
+        new_assignments = utils.fast_copy(assignments)
+        days = sorted(list(set(a["day"] for a in new_assignments)))
+
+        selected_days = days[start : start+k]
+        
+        for day in selected_days:
+            for a1 in new_assignments:
+                if a1["nurse"] == n1["id"] and a1["day"] == day:
+                    for a2 in new_assignments:
+                        if a2["nurse"] == n2["id"] and a2["day"] == day:
+                            if (
+                                a1["skill"] in n2["skills"]
+                                and a2["skill"] in n1["skills"]
+                            ):
+                                a1["nurse"], a2["nurse"] = a2["nurse"], a1["nurse"]
+        print(f"Finish multi swap {n1['id']}, {n2['id']} for {k} days from {DAYS_WEEK_ABB[start]} to {DAYS_WEEK_ABB[start+k-1]}")
+        return new_assignments
+
+    def multi_change(assignments, nurse, shift_types, k, start=0, poff=0.33, pchange=0.33, pstay=0.34):
+        """
+        Change a nurse's schedule for k days of schedule starting from `start` index in the sorted list of days.
+        Note: the nurse need to be skill-compatible with the shift type on the new shift.
+        """
+        new_assignments = utils.fast_copy(assignments)
+        days = sorted(list(set(a["day"] for a in new_assignments)))
+        if len(days) < k:
+            return new_assignments
+        selected_days = days[start : start + k]
+        
+        k_day_changed_shift = []
+        for day in selected_days:
+            # Remove existing assignment for the nurse on that day
+            new_assignments = [
+                a
+                for a in new_assignments
+                if not (a["nurse"] == nurse["id"] and a["day"] == day)
+            ]
+
+            r = random.random()
+            if r < poff:
+                shift = "na"
+                skill = ""
+                movement = "off"
+                k_day_changed_shift.append((movement, shift, skill))
+            elif r < poff + pchange:
+                shift = random.choice(shift_types)
+                skill = random.choice(nurse["skills"])
+                movement = "change"
+                k_day_changed_shift.append((movement, shift, skill))
+                new_assignments.append(
+                    {
+                        "nurse": nurse["id"],
+                        "day": day,
+                        "shiftType": shift,
+                        "skill": skill,
+                    }
+                )
+            else:
+                # If it does't day off or change shift, try to stay in the same shift as previous day.
+                # If the nurse does not have the previous day, then random choose a shift.
+                prev_day = days[start - 1] if start > 0 else None
+                prev_shift = None
+                for a in assignments:
+                    if a["nurse"] == nurse["id"] and a["day"] == prev_day:
+                        prev_shift = a["shiftType"]
+                        movement = "stay"
+                        k_day_changed_shift.append((movement, prev_shift, a["skill"]))
+                        break
+                shift = prev_shift if prev_shift else random.choice(shift_types)
+                skill = random.choice(nurse["skills"])
+                movement = "stay"
+                k_day_changed_shift.append((movement, shift, skill))
+                new_assignments.append(
+                    {
+                        "nurse": nurse["id"],
+                        "day": day,
+                        "shiftType": shift,
+                        "skill": skill,
+                    }
+                )
+
+        print(f"Finish multi change {nurse['id']} for {k} days from {DAYS_WEEK_ABB[start]} to {DAYS_WEEK_ABB[start+k-1]} ({k_day_changed_shift})")
+        return new_assignments
+    
+
+    def double_change(assignments, nurse, shift_types, k, start, poff, pchange, pstay):
+        return multi_change(assignments, nurse, shift_types, 2, start, poff, pchange, pstay)
+    
+
+    print("\nStart simulated annealing...🧊")
+    current_penalty = penalty(current_assignments, run_id)
+    best_assignments = current_assignments
+    best_penalty = current_penalty
+
+    total_temp_levels = int(math.log(min_temp / initial_temp) / math.log(cooling_rate))
+    ns_per_temp = max_iter // total_temp_levels
+
+    for temp_idx in range(total_temp_levels):
+        print(f"\n--- Temperature Level ({temp_idx + 1}/{total_temp_levels}) ---")
+        print(f"> Current temperature: {temperature:.4f}, current penalties: {current_penalty:.4f}")
+        accepted = 0
+        accepted_lower_penalty = 0
+        for inner_idx in range(ns_per_temp):
+            if random.random() < pMS:
+                k = random.randint(1, kmaxMS)
+                start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                nurse1, nurse2 = random.sample(nurses, 2)
+                neighbor = multi_swap(current_assignments, nurse1, nurse2, k, start_week_idx)
+            else:
+                k = random.randint(1, kmaxMC)
+                start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                nurse = random.choice(nurses)
+                if random.random() < pC / (pC + pDC):
+                    neighbor = multi_change(
+                        current_assignments,
+                        nurse,
+                        shift_types,
+                        1,
+                        start_week_idx, 
+                        poff,
+                        pchange,
+                        pstay,
+                    )
+
+                else:
+                    k = 2
+                    start_week_idx = random.randint(0, len(DAYS_WEEK) - k)
+                    neighbor = double_change(
+                        current_assignments,
+                        nurse,
+                        shift_types,
+                        k,
+                        start_week_idx, 
+                        poff,
+                        pchange,
+                        pstay,
+                    )
+
+            neighbor_penalty = penalty(neighbor, run_id=run_id, print_penalty=True)
+            
+            delta = neighbor_penalty - current_penalty
+
+
+            # if delta > 0 and random.random() < math.exp(-delta / temperature):
+            if random.random() < math.exp(-delta / temperature):
+                # Accept worse solution with certain probability
+                current_assignments = neighbor
+                current_penalty = neighbor_penalty
+                accepted += 1
+                print(f"Accepted: {accepted}, current penalty: {current_penalty:.4f}")
+            
+
+            if delta < 0:
+                # Always accept better solution
+                current_assignments = neighbor
+                current_penalty = neighbor_penalty
+                accepted_lower_penalty += 1
+                print(f"Lower penalty solution count: {accepted_lower_penalty}, current penalty: {current_penalty:.4f}")
+
+                if current_penalty < best_penalty:
+                    best_assignments = current_assignments
+                    best_penalty = current_penalty
+                    accepted_lower_penalty = 0
+            
+
+            # Early cutoff: reduce temperature sooner if enough solutions accepted
+            if accepted >= ns_per_temp:
+                break
+
+        temperature *= cooling_rate
+        if temperature < min_temp or best_penalty == 0:
+            break
+
+    return best_assignments
+
+
 
 
 def simulated_annealing_with_ComC_MCTS(

@@ -2,15 +2,6 @@ import json
 import os
 import matplotlib.pyplot as plt
 
-# ========================================
-# 📌 說明：
-# 這支程式會讀取多個 simulation 結果中的「合作強度 JSON 檔」，
-# 每個 JSON 檔記錄某次模擬中各對護士 (nurse pairs) 的合作強度分數。
-# 程式會統整所有護士配對的合作強度變化，
-# 並用折線圖繪出每對護士在多次模擬中的合作強度趨勢。
-# 圖片最後會儲存成 PNG 檔案。
-# ========================================
-
 
 # Edit these variables
 folder = "Output-weight50-50-1000/n100w4" # <-- Edit this to your coop-intensity folder
@@ -33,30 +24,34 @@ for i in range(1, num_files + 1):
     for entry in data:
         nurse_pair = tuple(sorted((entry["nurse1"], entry["nurse2"])))
         if (nurse_pair) not in all_data:
-            all_data[nurse_pair] = []
+            all_data[nurse_pair] = [0.0]
         all_data[nurse_pair].append(entry["cooperation_score"])
 
 # 畫折線圖
 plt.figure(figsize=(12, 8))
+base_color = "#1f77b4"
 
 for nurse_pair, values in all_data.items():
-    plt.plot(range(1, num_files + 1), values, label=str(nurse_pair))  # ✅ 修正 warning
+    plt.plot(range(len(values)), values, label=str(nurse_pair), color=base_color, linewidth=0.1, alpha=0.5)
+
+plt.xticks(range(len(values)))  # x軸: 0 ~ num_files
+plt.yticks(range(0, int(max(max(v) for v in all_data.values())) + 2))  # y軸: 0 ~ max value + 1
 
 plt.xlabel("Simulation Number")
 plt.ylabel("Cooperation Intensity")
 plt.title(f"Each Nurse Pair Cooperation Intensity Over Simulations with ComC penalty({weight})")
 
-# ✅ legend 移到圖外
+# legend 移到圖外
 # plt.legend(fontsize="small", bbox_to_anchor=(1.05, 1), loc="upper left")
 
-# ✅ 自動調整 layout，如果太滿可以改用 subplots_adjust
+
+plt.grid(True, which='both', linestyle='--', alpha=0.3)
 plt.tight_layout()
 
-# ✅ 儲存圖片
-output_path = os.path.join(folder, output_file_name)
-plt.savefig(output_path, dpi=300, bbox_inches="tight")  # 儲存高畫質圖片
+# 儲存圖片
+plt.savefig(output_file_name, dpi=300, bbox_inches="tight")  # 儲存高畫質圖片
 
 plt.grid(True)
 plt.show()
 
-print(f"✅ 圖片已儲存至：{output_path}")
+print(f"✅ 圖片已儲存至：{output_file_name}")

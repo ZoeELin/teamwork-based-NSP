@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 
 # filepath = "processed/soft_penalty_summary_n030w4.txt"
-filepath = "processed/soft_penalty_summary_n021w4.txt"
-scenario = "n021w4"
+filepath = "soft_penalty_summary_n030w4_weight0_250.txt"
+scenario = "n030w4"
 
 
 # 讀取文字檔案
@@ -72,6 +72,6 @@ plt.title(f"Soft Penalty vs ComC Weight for {scenario}")
 plt.tight_layout()
 
 # 儲存圖片
-output_filename = f"soft_penalty_vs_comc_{scenario}.png"
+output_filename = f"soft_penalty_vs_comc_{scenario}_weight0_250.png"
 plt.savefig(output_filename, dpi=300)
 print(f"✅ 圖片已儲存為 {output_filename}")

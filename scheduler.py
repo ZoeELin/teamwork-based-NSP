@@ -399,7 +399,7 @@ def base_scheduler(
     print(f"🟥 Initial solution penalty: {init_sol_penalty}")
 
     # Step 2: Simulated Annealing
-    assignments = optimizer.simulated_annealing_with_ComC_version3(
+    assignments = optimizer.simulated_annealing_with_ComC_baseline(
         run_id,
         sce_dir,
         assignments,
